@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import AppRouters from './appRouters';
 
 function App() {
   return (
     <div className="App">
-        {/* <h1 className='text-danger'>welcome to react</h1> */}
+        <AppRouters/>
     </div>
   );
 }
