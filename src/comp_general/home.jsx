@@ -1,5 +1,6 @@
 import React from 'react';
 import RecentJobsList from '../comps_user/jobs/recentJobsList';
+import JobItem from '../comps_user/jobs/jobItem';
 // import '../App.css';
 
 const Home = () => {

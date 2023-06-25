@@ -15,6 +15,7 @@ import AboutPage from './comps_user/aboutUs/aboutPage'
 import FlightsPage from './comps_user/flights/FlightsPage'
 import LoginUser from './comps_user/loginUser'
 import Home from './comp_general/home'
+import JobInfo from './comps_user/jobs/jobInfo'
 
 export default function AppRouters() {
     return (
@@ -27,6 +28,7 @@ export default function AppRouters() {
 
                 <Route path="/" element={<Home />} />
                 <Route path="/jobs" element={<JobPage />} />
+                <Route path="/jobs/:id" element={<JobInfo />} />
                 <Route path="/match" element={<MatchPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/flights" element={<FlightsPage />} />
