@@ -1,6 +1,14 @@
 /* global css */
+
 header a{
     text-decoration: none;
-    color: white;
+    color: black;
     font-weight: bolder;
 }
+
+main {
+    background: url('../public/design/homeMainB.mp4');
+    background-size: cover;
+} 
+
+
