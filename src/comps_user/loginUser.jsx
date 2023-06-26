@@ -21,7 +21,7 @@ const LoginUser = () => {
             console.log(data);
             if (data.token) {
                 toast.success("Welcome, you logged in")
-                nav("/admin/users")
+                nav("/")
             }
         }
         catch (err) {
@@ -32,7 +32,7 @@ const LoginUser = () => {
 
     return (
         <div className='container'>
-            <h1 className='display-4 text-center'>Login to admin</h1>
+            <h1 className='display-4 text-center'>Login</h1>
             <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubForm)}  >
                 <label>email</label>
                 <input {...register("email", { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })} className="form-control" type="text" />
