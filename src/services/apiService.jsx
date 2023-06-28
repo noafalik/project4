@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const API_URL = "http://localhost:3001";
 
-// export const TOKEN_KEY = "jobs_token" 
+ export const TOKEN_KEY = "token"; 
 
 export const doApiGet = async(_url) => {
   try {
