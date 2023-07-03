@@ -16,7 +16,7 @@ const Home = () => {
                 </div>
             </main>
             <div className='container d-flex justify-content-center align-item-center'>
-                <h2 className='display-5'>Recent Jobs</h2>
+                <h2 className='display-5 m-2'>Recent Jobs</h2>
             </div>
             <div className='container'>
                 <RecentJobsList />
