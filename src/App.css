@@ -1,4 +1,12 @@
 /* global css */
+header{
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
 header a{
     text-decoration: none;
@@ -6,9 +14,31 @@ header a{
     font-weight: bolder;
 }
 
-main {
-    background: url('../public/design/homeMainB.mp4');
-    background-size: cover;
-} 
+.background-video {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .video-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -99999;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
 
 
