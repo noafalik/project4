@@ -25,7 +25,7 @@ const JobPage = () => {
   }
 
   return (
-    <>
+    <div style={{marginTop:'70px'}}>
       <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
         <h1 className='display-6 text-white'>JOB OPTIONS-</h1>
       </div>
@@ -47,7 +47,7 @@ const JobPage = () => {
           {loading && <Loading />}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

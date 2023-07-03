@@ -31,7 +31,7 @@ const LoginUser = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='container' style={{marginTop:'70px'}}>
             <h1 className='display-4 text-center'>Login</h1>
             <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubForm)}  >
                 <label>email</label>

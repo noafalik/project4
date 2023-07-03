@@ -12,7 +12,7 @@ const Home = () => {
                     <source src="/design/homeMainB.mp4" type="video/mp4" />
                 </video>
                 <div className='content'>
-                    <h1 className='display-2 '>ReloMatch</h1>
+                    <h1 className='display-2 ' style={{color:'#5C2018', fontWeight:'bolder'}}>ReloMatch</h1>
                 </div>
             </main>
             <div className='container d-flex justify-content-center align-item-center'>
