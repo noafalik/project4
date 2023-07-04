@@ -1,24 +1,39 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { JobContext } from '../context/jobContext';
 import { toast } from 'react-toastify';
-import { TOKEN_KEY } from '../services/apiService';
+import { TOKEN_KEY, apiCheckToken } from '../services/apiService';
+import { useUserData } from '../hooks/useUserData';
 
 const HeaderUser = () => {
-    const nav = useNavigate();
-    const {userSignOut} = useContext(JobContext);
+    const { userSignOut } = useUserData();
+    const { user } = useUserData();
+
+    useEffect(() => {
+
+        checkToken();
+    }, [])
+
+    const checkToken = async () => {
+        try {
+            const data = await apiCheckToken();
+            console.log(data);
+        }
+        catch (err) {
+            if(err){
+                userSignOut();
+            }
+        }
+
+    }
 
     const onLogOut = () => {
-        
-        localStorage.removeItem(TOKEN_KEY);
         userSignOut();
-        nav("/")
-        toast.info("You logged out, see you soon...");
-      }
+    }
 
     return (
         <header className='py-1 px-5 d-flex justify-content-between' style={{ height: "70px" }}>
-            <div className='col-2 h-100 logo' style={{zIndex:'99999999'}}>
+            <div className='col-2 h-100 logo' style={{ zIndex: '99999999' }}>
                 <Link to="/">
                     <div className='h-100 col-3' style={{ backgroundImage: `url("./design/logo1.png")`, backgroundPosition: "center", backgroundSize: "cover" }}></div>
                 </Link>
@@ -29,19 +44,19 @@ const HeaderUser = () => {
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/match">Match</Link></li>
                     <li><Link to="/flights">flight</Link></li>
+                    <li><Link to="/userinfo">userInfo</Link></li>
 
-                {console.log(localStorage[TOKEN_KEY])}
-                {localStorage[TOKEN_KEY] ?
-                    <li className="log_out col-auto d-flex align-items-center ">
-                        <button onClick={onLogOut} className="btn btn-danger">Log out</button>
-                    </li>
-                    :
-                    <li className="log_in col-auto">
-                        <Link to="/login">
-                            Log in </Link>|
-                        <Link to="/signup"> Sign up</Link>
-                    </li>
-                }
+                    {localStorage[TOKEN_KEY] ?
+                        <li className="log_out col-auto d-flex align-items-center ">
+                            <button onClick={onLogOut} className="btn btn-danger">Log out</button>
+                        </li>
+                        :
+                        <li className="log_in col-auto">
+                            <Link to="/login">
+                                Log in </Link>|
+                            <Link to="/signup"> Sign up</Link>
+                        </li>
+                    }
                 </ul>
             </nav>
         </header>

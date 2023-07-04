@@ -17,6 +17,7 @@ import LoginUser from './comps_user/loginUser'
 import Home from './comp_general/home'
 import JobInfo from './comps_user/jobs/jobInfo'
 import Signup from './comp_general/signup'
+import UserInfo from './userInfo'
 
 export default function AppRouters() {
     return (
@@ -35,6 +36,7 @@ export default function AppRouters() {
                 <Route path="/flights" element={<FlightsPage />} />
                 <Route path="/login" element={<LoginUser />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/userinfo" element={<UserInfo />} />
 
 
                 <Route path="/admin" element={<LoginAdmin />} />

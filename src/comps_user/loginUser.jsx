@@ -3,11 +3,13 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { doApiMethod, API_URL } from '../services/apiService';
 import { toast } from 'react-toastify';
+import { useUserData } from '../hooks/useUserData';
 
 const LoginUser = () => {
 
     const nav = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const {doApiUser}=useUserData();
 
     const onSubForm = (_bodyData) => {
         console.log(_bodyData);
@@ -19,7 +21,13 @@ const LoginUser = () => {
             const url = API_URL + "/users/login";
             const data = await doApiMethod(url, "POST", _bodyData)
             console.log(data);
-            if (data.token) {
+            // if (data.token) {
+            //     toast.success("Welcome, you logged in")
+            //     nav("/")
+            // }
+            if(data.login){
+                console.log("works");
+                doApiUser();
                 toast.success("Welcome, you logged in")
                 nav("/")
             }
