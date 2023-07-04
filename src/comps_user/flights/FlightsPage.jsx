@@ -2,7 +2,7 @@ import React from 'react'
 
 const FlightsPage = () => {
   return (
-    <div>FlightsPage</div>
+    <div style={{marginTop:'70px'}}>FlightsPage</div>
   )
 }
 

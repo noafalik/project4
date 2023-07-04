@@ -48,7 +48,7 @@ const JobInfo = () => {
   //   }
 
   return (
-    <>
+    <div style={{ marginTop: '70px' }}>
       <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
         <h1 className='display-6 text-white'>JOB INFO-</h1>
       </div>
@@ -62,10 +62,11 @@ const JobInfo = () => {
               <article className="col-lg-8">
                 <div>
                   <h2>{itemJob.job_title}</h2>
-                  <p>Info: {itemJob.info} </p>
-                  <div>Category:
+                  <div>Category: 
                     {itemJob.category}
                   </div>
+                  <div>Info: {itemJob.info} </div>
+
                   {/* <div className='mt-2'>
                   <a className='btn btn-info me-3' target="_blank" href={itemMovie.video_url}>Link to movie page</a>
                   {(favs_ar.includes(itemMovie._id)) ?
@@ -79,7 +80,15 @@ const JobInfo = () => {
                     }}>Add to favorite</button>
                   }
                 </div> */}
-
+                  <div>Location:
+                    {itemJob.location}
+                  </div>
+                  <div>Visa:
+                    {itemJob.visa}
+                  </div>
+                  <div>Salary:
+                    {itemJob.salary.toLocaleString()}
+                  </div>
                 </div>
               </article>
             </div>
@@ -90,7 +99,7 @@ const JobInfo = () => {
         <RecommendVideosList currentVideoId={itemMovie._id} category={itemMovie.category_code} />
       } */}
       </div>
-    </>
+    </div>
   )
 }
 

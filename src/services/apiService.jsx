@@ -2,35 +2,51 @@ import axios from "axios";
 
 export const API_URL = "http://localhost:3001";
 
-// export const TOKEN_KEY = "jobs_token" 
+export const TOKEN_KEY = "user";
 
-export const doApiGet = async(_url) => {
+export const doApiGet = async (_url) => {
   try {
-    axios.defaults.withCredentials=true;
     const resp = await axios({
       url: _url,
-      data:{}
+      method: 'GET',
+      withCredentials: true,
+      data: {}
     })
     return resp.data;
   }
-  catch(err){
+  catch (err) {
     // throw -> reject מקביל ל
     // ככה שנדע שיש בעיה עם הבקשה
     throw err;
   }
 }
 
-export const doApiMethod = async(_url,_method,_body = {}) => {
-  try{
-    axios.defaults.withCredentials=true;
+export const doApiMethod = async (_url, _method, _body = {}) => {
+  try {
     const resp = await axios({
-      url:_url,
-      method:_method,
-      data:_body
+      url: _url,
+      method: _method,
+      withCredentials: true,
+      data: _body
     })
     return resp.data;
   }
-  catch(err){
+  catch (err) {
     throw err;
+  }
+}
+
+export const apiCheckToken = async () => {
+  try {
+    const resp = await axios({
+      url: API_URL+'/users/checkToken',
+      method: 'GET',
+      withCredentials: true,
+      data: {}
+    })
+    return resp.data;
+  }
+  catch (err) {
+    throw err.response;
   }
 }

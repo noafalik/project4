@@ -2,7 +2,7 @@ import React from 'react'
 
 const AboutPage = () => {
   return (
-    <>
+    <div style={{marginTop:'70px'}}>
       <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
         <h1 className='display-6 text-white'>ABOUT US-</h1>
       </div>
@@ -18,7 +18,7 @@ const AboutPage = () => {
           Let us introduce ourselves. Our names are Noa and Dora. We developed this company to help as many people as we can to achieve their goals and make the dream of a successful career come true. This website was created in 2023 to give our clients an opportunity to make a relocation in the most pleasant and calm way.
         </p>
       </div>
-    </>
+    </div>
   )
 }
 
