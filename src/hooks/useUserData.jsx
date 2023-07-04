@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export const useUserData = () => {
   // const [userData,setUserData] = useState({});
 
-  const { user,setUser,favs_ar}= useContext(JobContext);
+  const { user,setUser,favs_ar,setFavsAr}= useContext(JobContext);
   const nav = useNavigate();
 
   // useEffect(() => {
@@ -39,6 +39,7 @@ export const useUserData = () => {
       toast.info("You logged out, see you soon...");
     }
   }
+  
   // const userSignOut = () => {
   //   setFavsAr([]);
   //   setUserData({})
@@ -46,36 +47,36 @@ export const useUserData = () => {
 
   // מעדכן את המועדפים , גם בהחסרה וגם בהוספה
   // ואת המסד של המשתמש
-  // const updateFav = async(_newIdFav) => {
-  //   const temp_ar = [...favs_ar];
-  //   // בודק אם האיי די קיים במועדפים כבר או לא ופועל בהתאם
-  //   if(!temp_ar.includes(_newIdFav)){
-  //     // מוסיף אותו למועדפים
-  //     temp_ar.push(_newIdFav)
-  //   }
-  //   else{
-  //     // מחסיר אותו מהמערך של המעודפים
-  //     temp_ar.splice(temp_ar.indexOf(_newIdFav),1)
-  //   }
-  //   setFavsAr(temp_ar)
+  const updateFav = async(_newIdFav) => {
+    const temp_ar = [...favs_ar];
+    // בודק אם האיי די קיים במועדפים כבר או לא ופועל בהתאם
+    if(!temp_ar.includes(_newIdFav)){
+      // מוסיף אותו למועדפים
+      temp_ar.push(_newIdFav)
+    }
+    else{
+      // מחסיר אותו מהמערך של המעודפים
+      temp_ar.splice(temp_ar.indexOf(_newIdFav),1)
+    }
+    setFavsAr(temp_ar)
 
-  //   try{
-  //     const url = API_URL + "/users/updateFav"
-  //     const data = await doApiMethod(url,"PATCH",{favs_ar:temp_ar})
-  //     if(data.modifiedCount){
-  //       toast.success("add/remove from favorite")
-  //     }
-  //   }
-  //   catch(err){
-  //     console.log(err)
-  //     alert("There problem, try again later")
-  //   }
-  // }
+    try{
+      const url = API_URL + "/users/updateFav"
+      const data = await doApiMethod(url,"PATCH",{favs_ar:temp_ar})
+      if(data.modifiedCount){
+        toast.success("add/remove from favorite")
+      }
+    }
+    catch(err){
+      console.log(err)
+      alert("There problem, try again later")
+    }
+  }
 
   // פונקציה שתעדכן את המועדפים גם בזכרון
   // וגם בשרת
 //  doApiUser -> נצטרך את הפונקציה כאשר משתמש
 // מתחבר 
-  return {doApiUser,user,userSignOut,favs_ar};
+  return {doApiUser,user,userSignOut,favs_ar,updateFav };
   // return {favs_ar,userData,doApiUser,userSignOut,updateFav,user}
 }
