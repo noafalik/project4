@@ -4,6 +4,7 @@ import { JobContext } from '../context/jobContext';
 import { toast } from 'react-toastify';
 import { TOKEN_KEY, apiCheckToken } from '../services/apiService';
 import { useUserData } from '../hooks/useUserData';
+import { FaUser } from "react-icons/fa";
 
 const HeaderUser = () => {
     const { userSignOut } = useUserData();
@@ -20,7 +21,7 @@ const HeaderUser = () => {
             console.log(data);
         }
         catch (err) {
-            if(err){
+            if (err) {
                 userSignOut();
             }
         }
@@ -44,12 +45,15 @@ const HeaderUser = () => {
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/match">Match</Link></li>
                     <li><Link to="/flights">flight</Link></li>
-                    <li><Link to="/userinfo">userInfo</Link></li>
 
                     {localStorage[TOKEN_KEY] ?
-                        <li className="log_out col-auto d-flex align-items-center ">
-                            <button onClick={onLogOut} className="btn btn-danger">Log out</button>
-                        </li>
+                        <>
+
+                            <li className="log_out col-auto d-flex align-items-center ">
+                                <button onClick={onLogOut} className="btn btn-danger">Log out</button>
+                            </li>
+                            <li><Link to="/userinfo"><FaUser style={{ border: '1px black solid', borderRadius: '25px', fontSize: '32px' }} /></Link></li>
+                        </>
                         :
                         <li className="log_in col-auto">
                             <Link to="/login">

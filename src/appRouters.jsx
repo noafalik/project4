@@ -17,7 +17,7 @@ import LoginUser from './comps_user/loginUser'
 import Home from './comp_general/home'
 import JobInfo from './comps_user/jobs/jobInfo'
 import Signup from './comp_general/signup'
-import UserInfo from './userInfo'
+import UserInfo from './comps_user/userInfo'
 
 export default function AppRouters() {
     return (
