@@ -41,7 +41,7 @@ const JobsList = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='container mt-5'>
             <h1 className='display-4'>List of users in system</h1>
             <PagesBtns apiUrl={API_URL + "/jobs/count"} linkTo={"/admin/jobs?page="} cssClass="btn btn-primary ms-2" />
             <table className='table table-striped table-hover table-info'>

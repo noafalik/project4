@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HeaderAdmin from './comps_admin/headerAdmin'
 import LoginAdmin from './comps_admin/LoginAdmin'
@@ -38,14 +38,15 @@ export default function AppRouters() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/userinfo" element={<UserInfo />} />
 
-
                 <Route path="/admin" element={<LoginAdmin />} />
-                <Route path="/admin/users" element={<UsersList />} />
-                <Route path="/admin/companies" element={<CompaniesList />} />
-                <Route path="/admin/categories" element={<CategoriesList />} />
-                <Route path="/admin/categories/add" element={<AddCategory />} />
-                <Route path="/admin/categories/edit/:id" element={<EditCategory />} />
-                <Route path="/admin/jobs" element={<JobsList />} />
+                {localStorage["user"]&&(JSON.parse(localStorage["user"])).role == "admin" && <>
+                    <Route path="/admin/users" element={<UsersList />} />
+                    <Route path="/admin/companies" element={<CompaniesList />} />
+                    <Route path="/admin/categories" element={<CategoriesList />} />
+                    <Route path="/admin/categories/add" element={<AddCategory />} />
+                    <Route path="/admin/categories/edit/:id" element={<EditCategory />} />
+                    <Route path="/admin/jobs" element={<JobsList />} />
+                </>}
             </Routes>
         </BrowserRouter>
     )

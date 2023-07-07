@@ -15,6 +15,7 @@ function App() {
   // const { favs_ar, userData, doApiUser, userSignOut, updateFav } = useUserData();
   const [user,setUser]= useState(JSON.parse(localStorage.getItem(TOKEN_KEY)) || null);
   const [favs_ar,setFavsAr] = useState([]);
+  const [authorized, setAuthorized] = useState(false);
 
   useEffect(()=>{
       if(user){
@@ -27,7 +28,7 @@ function App() {
       // favs_ar, userData,
       // doApiUser, userSignOut,
       user,setUser,
-      favs_ar,setFavsAr
+      favs_ar,setFavsAr,authorized, setAuthorized
       // updateFav
     }}>
       <AppRouters />
