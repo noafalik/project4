@@ -41,7 +41,7 @@ export default function CategoriesList() {
     }
 
     return (
-        <div className='container'>
+        <div className='container mt-5'>
             <h1 className='display-4'>List of categories in system</h1>
             <Link to="/admin/categories/add" className='btn btn-info my-2'>Add category</Link>
             <PagesBtns apiUrl={API_URL+"/categories/count"} linkTo={"/admin/categories?page="} cssClass="btn btn-primary ms-2"/>

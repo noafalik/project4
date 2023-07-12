@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 const PagesBtns = (props) => {
   const [pages, setPages] = useState(0);
+  const url = props.apiUrl;
 
   useEffect(() => {
     doApi();
-  }, []);
+  }, [url]);
 
   const doApi = async () => {
     try {
-      const url = props.apiUrl;
       const resp = await axios.get(url);
       console.log(resp.data);
       setPages(resp.data.pages);
