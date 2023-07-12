@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const PagesBtns = (props) => {
   const [pages, setPages] = useState(0);
+  const count = props.count;
 
   useEffect(() => {
     doApi();
