@@ -12,6 +12,7 @@ const JobsList = () => {
     const [ar, setAr] = useState([]);
     const page = query.get("page") || 1;
     const [url, setUrl] = useState(API_URL + "/jobs?");
+    const [pagesUrl, setPagesUrl] = useState(API_URL + "/jobs/count?");
 
     useEffect(() => {
         doApi();
@@ -46,8 +47,8 @@ const JobsList = () => {
     return (
         <div className='container mt-5'>
             <h1 className='display-4'>List of users in system</h1>
-            <SearchComp func={setUrl} />
-            <PagesBtns apiUrl={API_URL + "/jobs/count"} linkTo={"/admin/jobs?page="} cssClass="btn btn-primary ms-2" />
+            <SearchComp setUrl={setUrl} setPagesUrl={setPagesUrl}/>
+            <PagesBtns apiUrl={pagesUrl} linkTo={"/admin/jobs?page="} cssClass="btn btn-primary ms-2" />
             <table className='table table-striped table-hover table-info'>
                 <thead>
                     <tr>
