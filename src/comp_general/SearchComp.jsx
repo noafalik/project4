@@ -21,7 +21,7 @@ const SearchComp = ({setUrl, setPagesUrl}) => {
     }, [])
 
     const getCompanies = async () => {
-        const url = API_URL + "/companies/companiesList";
+        const url = API_URL + "/companies/companiesList?perPage=Infinity";
         try {
             const data = await doApiGet(url);
             setCompaniesAr(data);
@@ -32,7 +32,7 @@ const SearchComp = ({setUrl, setPagesUrl}) => {
     }
 
     const getCategories = async () => {
-        const url = API_URL + "/categories";
+        const url = API_URL + "/categories?perPage=Infinity";
         try {
             const data = await doApiGet(url);
             setCategoriesAr(data);
@@ -61,7 +61,7 @@ const SearchComp = ({setUrl, setPagesUrl}) => {
                 <label>Category</label>
                 <br />
                 <select className='select-box' ref={categoryRef}>
-                    <option value={""}>test</option>
+                    <option value={""}>All</option>
                     {categoriesAr.map((item, i) => {
                         return (
                             <option key={i} value={item.category}>{item.category_name}</option>
@@ -73,7 +73,7 @@ const SearchComp = ({setUrl, setPagesUrl}) => {
                 <label>Company</label>
                 <br />
                 <select className='select-box' ref={companyRef}>
-                    <option value={""}>test</option>
+                    <option value={""}>All</option>
                     {companiesAr.map((item, i) => {
                         return (
                             <option key={i} value={item._id}>{item.company_name}</option>
