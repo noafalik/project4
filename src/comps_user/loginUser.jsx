@@ -9,7 +9,8 @@ const LoginUser = () => {
 
     const nav = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {doApiUser}=useUserData();
+    const {doApiUser,updateFav}=useUserData();
+    
 
     const onSubForm = (_bodyData) => {
         console.log(_bodyData);

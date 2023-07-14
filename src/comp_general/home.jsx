@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import RecentJobsList from '../comps_user/jobs/recentJobsList';
 import JobItem from '../comps_user/jobs/jobItem';
+import JobListFav from '../comps_user/jobs/jobListFav';
+import { useUserData } from '../hooks/useUserData';
 // import '../App.css';
 
 const Home = () => {
+    const { user } = useUserData();
+    useEffect(() => {
+        // doApiUser();
+    
+      }, [user])
+
     return (
         // <main className='container-fluid'>
         <>
@@ -21,6 +29,13 @@ const Home = () => {
             <div className='container'>
                 <RecentJobsList />
             </div>
+            {user?
+            <div className='container'>
+                <JobListFav />
+            </div>
+            :
+            <div></div>
+            }
 
         </>
 
