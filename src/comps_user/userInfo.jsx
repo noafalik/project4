@@ -3,10 +3,11 @@ import AuthUser from './authUser';
 import { API_URL, doApiGet, doApiMethod } from '.././services/apiService';
 import { useUserData } from '../hooks/useUserData';
 import Loading from '../comp_general/loading';
+import JobListFav from './jobs/jobListFav';
 
 const UserInfo = () => {
     const [itemInfo, setItemInfo] = useState({});
-    const {user} = useUserData();
+    const { user } = useUserData();
 
     // useEffect(() => {
     //     doApi();
@@ -35,12 +36,16 @@ const UserInfo = () => {
                             <h4 className='h3'><strong>Account name:</strong> {user.full_name}</h4>
                             <h4 className='h3'><strong>Birth year:</strong> {user.birth_date.substring(0, 10)} </h4>
                             <h4 className='h3'><strong>Email:</strong> {user.email}</h4>
-                            <h4 className='h3'><strong>NickName:</strong> {user.gender}</h4>
+                            <h4 className='h3'><strong>Gender:</strong> {user.gender}</h4>
                             <h4 className='h3'><strong>Signup date:</strong> {user.date_created ? user.date_created.substring(0, 10) : user.createdAt.substring(0, 10)}</h4>
                         </> : <Loading />}
                 </div>
 
             </div>
+            <div className='container'>
+                <JobListFav />
+            </div>
+
         </div>
     )
 }
