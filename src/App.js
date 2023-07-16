@@ -14,6 +14,7 @@ import { TOKEN_KEY } from './services/apiService';
 function App() {
   // const { favs_ar, userData, doApiUser, userSignOut, updateFav } = useUserData();
   const [user,setUser]= useState(JSON.parse(localStorage.getItem(TOKEN_KEY)) || null);
+  const [company,setCompany]= useState(JSON.parse(localStorage.getItem("company")) || null);
   const [favs_ar,setFavsAr] = useState([]);
   const [authorized, setAuthorized] = useState(false);
 
@@ -28,6 +29,7 @@ function App() {
       // favs_ar, userData,
       // doApiUser, userSignOut,
       user,setUser,
+      company, setCompany,
       favs_ar,setFavsAr,authorized, setAuthorized
       // updateFav
     }}>

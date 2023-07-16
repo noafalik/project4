@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { doApiMethod, API_URL } from '../services/apiService';
+import { doApiMethod, API_URL, TOKEN_KEY } from '../services/apiService';
 import { toast } from 'react-toastify';
 import { useUserData } from '../hooks/useUserData';
 
@@ -27,9 +27,9 @@ const LoginUser = () => {
             // }
             if(data.login){
                 console.log("works");
-                doApiUser();
+                await doApiUser();
                 toast.success("Welcome, you logged in")
-                nav("/")
+                JSON.parse(localStorage["user"]).role == "company"?nav("/company"):nav("/");
             }
         }
         catch (err) {

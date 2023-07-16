@@ -18,6 +18,9 @@ import Home from './comp_general/home'
 import JobInfo from './comps_user/jobs/jobInfo'
 import Signup from './comp_general/signup'
 import UserInfo from './comps_user/userInfo'
+import HeaderCompany from './comps_company/HeaderCompany'
+import CompanyInfo from './comps_company/CompanyInfo'
+import EditCompanyInfo from './comps_company/EditCompanyInfo'
 
 export default function AppRouters() {
     return (
@@ -25,6 +28,7 @@ export default function AppRouters() {
             <Routes>
                 <Route path="/*" element={<HeaderUser />} />
                 <Route path='/admin/*' element={<HeaderAdmin />} />
+                <Route path='/company/*' element={<HeaderCompany />} />
             </Routes>
             <Routes>
 
@@ -47,6 +51,9 @@ export default function AppRouters() {
                     <Route path="/admin/categories/edit/:id" element={<EditCategory />} />
                     <Route path="/admin/jobs" element={<JobsList />} />
                 </>}
+
+                <Route path='/company' element={<CompanyInfo/>}/>
+                <Route path='/company/editInfo/:id' element={<EditCompanyInfo/>}/>
             </Routes>
         </BrowserRouter>
     )

@@ -9,6 +9,7 @@ export const useUserData = () => {
   // const [userData,setUserData] = useState({});
 
   const { user,setUser,favs_ar}= useContext(JobContext);
+  const { company,setCompany}= useContext(JobContext);
   const nav = useNavigate();
 
   // useEffect(() => {
@@ -22,6 +23,12 @@ export const useUserData = () => {
     console.log(data);
     localStorage.setItem('user',JSON.stringify(data));
     setUser(data);
+    if(data.role=="company"){
+      const companyUrl = API_URL+"/companies/companyInfo";
+      const companyData = await doApiGet(companyUrl);
+      localStorage.setItem('company',JSON.stringify(companyData));
+      setCompany(companyData);
+    }
     // setFavsAr(data.favs_ar);
   }
 
@@ -76,6 +83,6 @@ export const useUserData = () => {
   // וגם בשרת
 //  doApiUser -> נצטרך את הפונקציה כאשר משתמש
 // מתחבר 
-  return {doApiUser,user,userSignOut,favs_ar};
+  return {doApiUser,user,userSignOut,favs_ar, company};
   // return {favs_ar,userData,doApiUser,userSignOut,updateFav,user}
 }
