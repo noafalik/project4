@@ -43,12 +43,11 @@ const HeaderUser = () => {
                 <ul className='list-unstyled d-flex justify-content-between align-items-center gap-5'>
                     <li><Link to="/jobs">Jobs</Link></li>
                     <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/match">Match</Link></li>
-                    <li><Link to="/flights">flight</Link></li>
+                    <li><Link to="/flights">flights</Link></li>
 
                     {localStorage[TOKEN_KEY] ?
                         <>
-
+                            <li><Link to="/match">Match</Link></li>
                             <li className="log_out col-auto d-flex align-items-center ">
                                 <button onClick={onLogOut} className="btn btn-danger">Log out</button>
                             </li>

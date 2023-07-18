@@ -79,6 +79,32 @@ export const useUserData = () => {
     }
   }
 
+  // const updateRequest = async (_newIdJobR) => {
+  //   const temp_ar = [...request_jobs];
+  //   // בודק אם האיי די קיים במועדפים כבר או לא ופועל בהתאם
+  //   if (!temp_ar.includes(_newIdJobR)) {
+  //     // מוסיף אותו למועדפים
+  //     temp_ar.push(_newIdJobR)
+  //   }
+  //   else {
+  //     // מחסיר אותו מהמערך של המעודפים
+  //     temp_ar.splice(temp_ar.indexOf(_newIdJobR), 1)
+  //   }
+  //   setFavsAr(temp_ar)
+
+  //   try {
+  //     const url = API_URL + "/users/updateFav"
+  //     const data = await doApiMethod(url, "PATCH", { request_jobs: temp_ar })
+  //     if (data.modifiedCount) {
+  //       toast.success("add/remove from favorite")
+  //     }
+  //   }
+  //   catch (err) {
+  //     console.log(err)
+  //     alert("There problem, try again later")
+  //   }
+  // }
+
   // פונקציה שתעדכן את המועדפים גם בזכרון
   // וגם בשרת
   //  doApiUser -> נצטרך את הפונקציה כאשר משתמש

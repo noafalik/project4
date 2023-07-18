@@ -12,7 +12,7 @@ const JobsListByCategory = (props) => {
 
   useEffect(() => {
     doApi(category);
-  },[ar]);
+  },[]);
 
   const doApi = async(_category) => {
     try{
@@ -40,6 +40,7 @@ const JobsListByCategory = (props) => {
   return (
     <div className='container-fluid py-3'>
       <div className="container">
+        
         <div className="row justify-content-around">
           {ar.map(item => {
             return(
@@ -47,6 +48,7 @@ const JobsListByCategory = (props) => {
             )
           })}
         </div>
+
         {loading && <Loading />}
       </div>
     </div>
