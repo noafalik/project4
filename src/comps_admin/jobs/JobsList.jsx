@@ -58,8 +58,8 @@ const JobsList = () => {
                         <th>Info</th>
                         <th>Salary</th>
                         <th>Location</th>
-                        <th>Approved</th>
                         <th>Visa</th>
+                        <th>Approved</th>
                         <th>Del/Edit</th>
                     </tr>
                 </thead>

@@ -1,14 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { JobContext } from '../context/jobContext';
-import { toast } from 'react-toastify';
 import { TOKEN_KEY, apiCheckToken } from '../services/apiService';
 import { useUserData } from '../hooks/useUserData';
 import { FaUser } from "react-icons/fa";
 
 const HeaderCompany = () => {
     const { userSignOut } = useUserData();
-    const { user } = useUserData();
 
     useEffect(() => {
 
@@ -41,15 +38,15 @@ const HeaderCompany = () => {
             </div>
             <nav className='d-flex justify-content-between align-items-center'>
                 <ul className='list-unstyled d-flex justify-content-between align-items-center gap-5'>
-                    <li><Link to="/company/jobs">My jobs</Link></li>
-                    <li><Link to="/company/contenders">My contenders</Link></li>
+                    <li><Link to="/company/myJobs">My jobs</Link></li>
+                    <li><Link to="/company/myContenders">My contenders</Link></li>
                     {localStorage[TOKEN_KEY] ?
                         <>
 
                             <li className="log_out col-auto d-flex align-items-center ">
                                 <button onClick={onLogOut} className="btn btn-danger">Log out</button>
                             </li>
-                            <li><Link to="/company/companyInfo"><FaUser style={{ border: '1px black solid', borderRadius: '25px', fontSize: '32px' }} /></Link></li>
+                            <li><Link to="/company"><FaUser style={{ border: '1px black solid', borderRadius: '25px', fontSize: '32px' }} /></Link></li>
                         </>
                         :
                         <li className="log_in col-auto">

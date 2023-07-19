@@ -25,10 +25,10 @@ const UsersList = () => {
     }
   
   const changeRole = async(userInfo) => {
-    const newRole = userInfo.role == "admin"? "user":"admin";
     try {
-      const url = `${API_URL}/users/changeRole/${userInfo._id}/${newRole}`;
+      const url = `${API_URL}/users/changeRole/${userInfo._id}`;
       const data = await doApiMethod(url, "PATCH");
+      JSON.parse(localStorage["user"]).role = data.newRole;
       if(data.modifiedCount){
         doApi();
       }

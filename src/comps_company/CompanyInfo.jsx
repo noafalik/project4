@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React from 'react';
 import AuthUser from '../comps_user/authUser';
-import { API_URL, doApiGet, doApiMethod } from '.././services/apiService';
 import { useUserData } from '../hooks/useUserData';
 import Loading from '../comp_general/loading';
 import { Link } from 'react-router-dom';
 
 const CompanyInfo = () => {
-    const [itemInfo, setItemInfo] = useState({});
     const { user, company } = useUserData();
 
     return (
@@ -17,7 +15,9 @@ const CompanyInfo = () => {
             </div>
             <div className='container-fluid'>
                 <div className="container col-md-6 mx-auto py-4">
-                    <button className='btn btn-dark text-center my-3'><Link className='text-white text-decoration-none' to={"/company/editInfo/"+company._id}>Edit my Info</Link></button>
+                    <div className='container d-flex justify-content-center mb-3'>
+                        <button className='btn btn-dark text-center'><Link className='text-white text-decoration-none' to={"/company/editInfo/" + JSON.parse(localStorage["company"])._id}>Edit my Info</Link></button>
+                    </div>
                     {user.full_name ?
                         <>
                             <h4 className='h3'><strong>Email:</strong> {user.email}</h4>

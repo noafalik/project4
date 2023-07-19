@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { API_URL, doApiGet, doApiMethod } from '../services/apiService';
-import { useUserData } from '../hooks/useUserData';
+import { API_URL, doApiMethod } from '../services/apiService';
 import { JobContext } from '../context/jobContext';
 
 export default function EditCompanyInfo() {
@@ -36,6 +35,7 @@ export default function EditCompanyInfo() {
             const url = API_URL + "/companies/" + params["id"];
             const data = await doApiMethod(url, "PUT", _bodyData);
             if (data.modifiedCount) {
+                _bodyData._id = params["id"];
                 setCompany(_bodyData);
                 localStorage.setItem("company", JSON.stringify(_bodyData));
                 toast.success("company updated");

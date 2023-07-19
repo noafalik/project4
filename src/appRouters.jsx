@@ -21,6 +21,10 @@ import UserInfo from './comps_user/userInfo'
 import HeaderCompany from './comps_company/HeaderCompany'
 import CompanyInfo from './comps_company/CompanyInfo'
 import EditCompanyInfo from './comps_company/EditCompanyInfo'
+import MyJobsList from './comps_company/jobs/myJobsList'
+import EditJob from './comps_company/jobs/EditJob'
+import AddJob from './comps_company/jobs/AddJob'
+import ContendersList from './comps_company/contenders/ContendersList'
 
 export default function AppRouters() {
     return (
@@ -54,6 +58,10 @@ export default function AppRouters() {
 
                 <Route path='/company' element={<CompanyInfo/>}/>
                 <Route path='/company/editInfo/:id' element={<EditCompanyInfo/>}/>
+                <Route path='/company/myJobs' element={<MyJobsList/>}/>
+                <Route path='/company/editJob/:id' element={<EditJob/>}/>
+                <Route path='/company/addJob' element={<AddJob/>}/>
+                <Route path='/company/myContenders' element={<ContendersList/>}/>
             </Routes>
         </BrowserRouter>
     )
