@@ -91,7 +91,7 @@ const JobInfo = () => {
                             }
 
                           </div>
-                          <div className='mt-2 col-1'>
+                          {/* <div className='mt-2 col-1'>
 
                             {(favs_ar.includes(itemJob._id)) ?
                               <button className='btn btn-info' onClick={() => {
@@ -103,7 +103,7 @@ const JobInfo = () => {
                               }}>APPLY</button>
                             }
 
-                          </div>
+                          </div> */}
                         </div>
                       }
                     </div>

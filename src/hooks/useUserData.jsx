@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export const useUserData = () => {
   // const [userData,setUserData] = useState({});
 
-  const { user, setUser, favs_ar, setFavsAr } = useContext(JobContext);
+  const { user, setUser, favs_ar, setFavsAr} = useContext(JobContext);
   const nav = useNavigate();
 
   useEffect(() => {
@@ -90,13 +90,13 @@ export const useUserData = () => {
   //     // מחסיר אותו מהמערך של המעודפים
   //     temp_ar.splice(temp_ar.indexOf(_newIdJobR), 1)
   //   }
-  //   setFavsAr(temp_ar)
+  //   setRequestJobs(temp_ar)
 
   //   try {
-  //     const url = API_URL + "/users/updateFav"
+  //     const url = API_URL + "/users/updateRequest"
   //     const data = await doApiMethod(url, "PATCH", { request_jobs: temp_ar })
   //     if (data.modifiedCount) {
-  //       toast.success("add/remove from favorite")
+  //       toast.success("add/remove from request")
   //     }
   //   }
   //   catch (err) {

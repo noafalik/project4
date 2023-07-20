@@ -16,7 +16,7 @@ const JobsListByCategory = (props) => {
 
   const doApi = async(_category) => {
     try{
-      const url = API_URL+"/jobs?perPage=4&&category="+_category;
+      const url = API_URL+"/jobs?perPage=4&category="+_category;
       const data = await doApiGet(url);
       // מחפש אם הוידיאו המוצג תחילה קיים במערך
       const currentVidId = data.findIndex(item => item._id == props.currentJobId)
