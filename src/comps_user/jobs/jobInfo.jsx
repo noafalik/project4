@@ -91,6 +91,13 @@ const JobInfo = () => {
                             }
 
                           </div>
+                          <div className='mt-2 col-1'>
+
+                          <Link to= {"/jobs/apply/" + itemJob._id}  style={{ textDecoration: 'none' }}>
+                              APPLY
+                            </Link>
+
+                          </div>
                           {/* <div className='mt-2 col-1'>
 
                             {(favs_ar.includes(itemJob._id)) ?
