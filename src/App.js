@@ -15,6 +15,7 @@ function App() {
   // const { favs_ar, userData, doApiUser, userSignOut, updateFav } = useUserData();
   const [user,setUser]= useState(JSON.parse(localStorage.getItem(TOKEN_KEY)) || null);
   const [favs_ar,setFavsAr] = useState([]);
+  // const [request_jobs,setRequestJobs] = useState([]);
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(()=>{
@@ -25,10 +26,10 @@ function App() {
 
   return (
     <JobContext.Provider value={{
-      // favs_ar, userData,
       // doApiUser, userSignOut,
       user,setUser,
-      favs_ar,setFavsAr,authorized, setAuthorized
+      favs_ar,setFavsAr,authorized, setAuthorized,
+      // request_jobs,setRequestJobs
       // updateFav
     }}>
       <AppRouters />

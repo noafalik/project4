@@ -18,6 +18,7 @@ import Home from './comp_general/home'
 import JobInfo from './comps_user/jobs/jobInfo'
 import Signup from './comp_general/signup'
 import UserInfo from './comps_user/userInfo'
+import ApplyPage from './comps_user/jobs/applyPage'
 
 export default function AppRouters() {
     return (
@@ -31,6 +32,7 @@ export default function AppRouters() {
                 <Route path="/" element={<Home />} />
                 <Route path="/jobs" element={<JobPage />} />
                 <Route path="/jobs/:id" element={<JobInfo />} />
+                <Route path="/jobs/apply/:id" element={<ApplyPage />} />
                 <Route path="/match" element={<MatchPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/flights" element={<FlightsPage />} />

@@ -77,18 +77,40 @@ const JobInfo = () => {
                         {itemJob.salary.toLocaleString()}
                       </div>
                       {user &&
-                        <div className='mt-2'>
+                        <div className='row'>
+                          <div className='mt-2 col-1'>
 
-                          {(favs_ar.includes(itemJob._id)) ?
-                            <button className='btn btn-danger' onClick={() => {
-                              localStorage[TOKEN_KEY] ? updateFav(itemJob._id) : toast.info("You need to login to add to favorite ")
-                            }}><AiFillHeart /></button>
-                            :
-                            <button className='btn btn-dark' onClick={() => {
-                              localStorage[TOKEN_KEY] ? updateFav(itemJob._id) : toast.info("You need to login to add to favorite ")
-                            }}><AiOutlineHeart /></button>
-                          }
+                            {(favs_ar.includes(itemJob._id)) ?
+                              <button className='btn btn-danger' onClick={() => {
+                                localStorage[TOKEN_KEY] ? updateFav(itemJob._id) : toast.info("You need to login to add to favorite ")
+                              }}><AiFillHeart /></button>
+                              :
+                              <button className='btn btn-dark' onClick={() => {
+                                localStorage[TOKEN_KEY] ? updateFav(itemJob._id) : toast.info("You need to login to add to favorite ")
+                              }}><AiOutlineHeart /></button>
+                            }
 
+                          </div>
+                          <div className='mt-2 col-1'>
+
+                          <Link to= {"/jobs/apply/" + itemJob._id}  style={{ textDecoration: 'none' }}>
+                              APPLY
+                            </Link>
+
+                          </div>
+                          {/* <div className='mt-2 col-1'>
+
+                            {(favs_ar.includes(itemJob._id)) ?
+                              <button className='btn btn-info' onClick={() => {
+                                localStorage[TOKEN_KEY] ? updateFav(itemJob._id) : toast.info("You need to login to add to favorite ")
+                              }}>UNAPPLY</button>
+                              :
+                              <button className='btn btn-dark' onClick={() => {
+                                localStorage[TOKEN_KEY] ? updateFav(itemJob._id) : toast.info("You need to login to add to favorite ")
+                              }}>APPLY</button>
+                            }
+
+                          </div> */}
                         </div>
                       }
                     </div>

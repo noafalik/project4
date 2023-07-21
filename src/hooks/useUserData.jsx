@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export const useUserData = () => {
   // const [userData,setUserData] = useState({});
 
-  const { user, setUser, favs_ar, setFavsAr } = useContext(JobContext);
+  const { user, setUser, favs_ar, setFavsAr} = useContext(JobContext);
   const nav = useNavigate();
 
   useEffect(() => {
@@ -78,6 +78,32 @@ export const useUserData = () => {
       alert("There problem, try again later")
     }
   }
+
+  // const updateRequest = async (_newIdJobR) => {
+  //   const temp_ar = [...request_jobs];
+  //   // בודק אם האיי די קיים במועדפים כבר או לא ופועל בהתאם
+  //   if (!temp_ar.includes(_newIdJobR)) {
+  //     // מוסיף אותו למועדפים
+  //     temp_ar.push(_newIdJobR)
+  //   }
+  //   else {
+  //     // מחסיר אותו מהמערך של המעודפים
+  //     temp_ar.splice(temp_ar.indexOf(_newIdJobR), 1)
+  //   }
+  //   setRequestJobs(temp_ar)
+
+  //   try {
+  //     const url = API_URL + "/users/updateRequest"
+  //     const data = await doApiMethod(url, "PATCH", { request_jobs: temp_ar })
+  //     if (data.modifiedCount) {
+  //       toast.success("add/remove from request")
+  //     }
+  //   }
+  //   catch (err) {
+  //     console.log(err)
+  //     alert("There problem, try again later")
+  //   }
+  // }
 
   // פונקציה שתעדכן את המועדפים גם בזכרון
   // וגם בשרת
