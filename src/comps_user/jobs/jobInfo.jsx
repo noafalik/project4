@@ -4,18 +4,25 @@ import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { JobContext } from '../../context/jobContext';
 import JobItem from './jobItem';
-import { API_URL, doApiGet, doApiMethod } from '../../services/apiService';
+import { API_URL, TOKEN_KEY, doApiGet, doApiMethod } from '../../services/apiService';
 import Loading from '../../comp_general/loading';
+import { useUserData } from '../../hooks/useUserData';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import JobsListByCategory from './jobsListByCategory';
 
 const JobInfo = () => {
   // const { favs_ar, updateFav } = useContext(JobContext)
   const [itemJob, setItemJob] = useState({});
   const [loading, setLoading] = useState(false);
-  const params = useParams()
+  const params = useParams();
 
+  const { favs_ar, updateFav, user } = useUserData();
+
+  // let category = itemJob.category;
 
   useEffect(() => {
     doApi();
+    console.log(itemJob);
   }, [params])
 
   const doApi = async () => {
@@ -25,7 +32,7 @@ const JobInfo = () => {
         const url = API_URL + "/jobs/single/" + params["id"];
         const data = await doApiGet(url)
         console.log(data);
-        setItemJob(data)
+        setItemJob(data);
         // מוסיף 1 לויוס 
         // const urlInc = API_URL + "/jobs/inc/" + params["id"];
         // const dataInc = await doApiMethod(urlInc, "patch");
@@ -39,67 +46,92 @@ const JobInfo = () => {
 
   }
 
-  //   const getJobCode = (_urlVideo) => {
-  //     // מחפשים איפה נמצא הוי בקווארי שבתוכו יש את הקוד של הוידאו
-  //     const vIndex = _urlVideo.indexOf("?v=");
-  //     // אוספים רק את הוידיאו קוד
-  //     const videoCode = _urlVideo.substring(vIndex + 3, 99999)
-  //     return videoCode
-  //   }
-
   return (
-    <div style={{ marginTop: '70px' }}>
-      <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
-        <h1 className='display-6 text-white'>JOB INFO-</h1>
-      </div>
-      <div className='container-fluid py-4'>
-        <div className="container">
-          {itemJob.img_url &&
-            <div className="row">
-              <div className="col-lg-4">
-                <img src={itemJob.img_url} alt="img" width={400} />
-              </div>
-              <article className="col-lg-8">
-                <div>
-                  <h2>{itemJob.job_title}</h2>
-                  <div>Category: 
-                    {itemJob.category}
+    <>
+      {localStorage.getItem(TOKEN_KEY) !== null ?
+        <div style={{ marginTop: '70px' }}>
+          <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
+            <h1 className='display-6 text-white'>JOB INFO-</h1>
+          </div>
+          <div className='container-fluid py-4'>
+            <div className="container">
+              {itemJob.img_url &&
+                <div className="row">
+                  <div className="col-lg-4">
+                    <img src={itemJob.img_url} alt="img" width={400} />
                   </div>
-                  <div>Info: {itemJob.info} </div>
+                  <article className="col-lg-8">
+                    <div>
+                      <h2>{itemJob.job_title}</h2>
+                      <div>Category:
+                        {itemJob.category}
+                      </div>
+                      <div>Info: {itemJob.info} </div>
+                      <div>Location:
+                        {itemJob.location}
+                      </div>
+                      <div>Visa:
+                        {itemJob.visa}
+                      </div>
+                      <div>Salary:
+                        {itemJob.salary.toLocaleString()}
+                      </div>
+                      {user &&
+                        <div className='row'>
+                          <div className='mt-2 col-1'>
 
-                  {/* <div className='mt-2'>
-                  <a className='btn btn-info me-3' target="_blank" href={itemMovie.video_url}>Link to movie page</a>
-                  {(favs_ar.includes(itemMovie._id)) ?
-                    <button className='btn btn-danger' onClick={() => {
-                      localStorage[TOKEN_KEY] ? updateFav(itemMovie._id) : toast.info("You need to login to add to favorite ")
-                    }}>Remove from favorite</button>
+                            {(favs_ar.includes(itemJob._id)) ?
+                              <button className='btn btn-danger' onClick={() => {
+                                localStorage[TOKEN_KEY] ? updateFav(itemJob._id) : toast.info("You need to login to add to favorite ")
+                              }}><AiFillHeart /></button>
+                              :
+                              <button className='btn btn-dark' onClick={() => {
+                                localStorage[TOKEN_KEY] ? updateFav(itemJob._id) : toast.info("You need to login to add to favorite ")
+                              }}><AiOutlineHeart /></button>
+                            }
 
-                    :
-                    <button className='btn btn-dark' onClick={() => {
-                      localStorage[TOKEN_KEY] ? updateFav(itemMovie._id) : toast.info("You need to login to add to favorite ")
-                    }}>Add to favorite</button>
-                  }
-                </div> */}
-                  <div>Location:
-                    {itemJob.location}
-                  </div>
-                  <div>Visa:
-                    {itemJob.visa}
-                  </div>
-                  <div>Salary:
-                    {itemJob.salary.toLocaleString()}
+                          </div>
+                          <div className='mt-2 col-1'>
+
+                          <Link to= {"/jobs/apply/" + itemJob._id}  style={{ textDecoration: 'none' }}>
+                              APPLY
+                            </Link>
+
+                          </div>
+                          {/* <div className='mt-2 col-1'>
+
+                            {(favs_ar.includes(itemJob._id)) ?
+                              <button className='btn btn-info' onClick={() => {
+                                localStorage[TOKEN_KEY] ? updateFav(itemJob._id) : toast.info("You need to login to add to favorite ")
+                              }}>UNAPPLY</button>
+                              :
+                              <button className='btn btn-dark' onClick={() => {
+                                localStorage[TOKEN_KEY] ? updateFav(itemJob._id) : toast.info("You need to login to add to favorite ")
+                              }}>APPLY</button>
+                            }
+
+                          </div> */}
+                        </div>
+                      }
+                    </div>
+
+                  </article>
+                  <div className='container text-center m-4'>
+                    <div className='container d-flex justify-content-center col-5 mb-4' style={{ borderRadius: '5px' }}>
+                      <h2 className='display-6' style={{ fontSize: '35px', color: '#5c2018', fontWeight: 'bold' }}>Other Jobs In The Same Category:</h2>
+                    </div>
+                    <JobsListByCategory currentJobId={itemJob._id} category={itemJob.category} />
+
                   </div>
                 </div>
-              </article>
+              }
+              {/* {loading && <Loading />} */}
             </div>
-          }
-          {/* {loading && <Loading />} */}
+          </div>
         </div>
-        {/* {itemMovie.category_code &&
-        <RecommendVideosList currentVideoId={itemMovie._id} category={itemMovie.category_code} />
-      } */}
-      </div>
-    </div>
+        : null
+      }
+    </>
   )
 }
 

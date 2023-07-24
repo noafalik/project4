@@ -14,7 +14,7 @@ const RecentJobsList = () => {
   const doApi = async() => {
     try{
 
-      const url = API_URL+"/jobs?perPage=4";
+      const url = API_URL+"/jobs?perPage=4&approved=true";
       const data = await doApiGet(url);
       console.log(data);
       setAr(data);

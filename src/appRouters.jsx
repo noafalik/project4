@@ -25,6 +25,8 @@ import MyJobsList from './comps_company/jobs/myJobsList'
 import EditJob from './comps_company/jobs/EditJob'
 import AddJob from './comps_company/jobs/AddJob'
 import ContendersList from './comps_company/contenders/ContendersList'
+import ApplyPage from './comps_user/jobs/applyPage'
+
 
 export default function AppRouters() {
     return (
@@ -39,6 +41,7 @@ export default function AppRouters() {
                 <Route path="/" element={<Home />} />
                 <Route path="/jobs" element={<JobPage />} />
                 <Route path="/jobs/:id" element={<JobInfo />} />
+                <Route path="/jobs/apply/:id" element={<ApplyPage />} />
                 <Route path="/match" element={<MatchPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/flights" element={<FlightsPage />} />
