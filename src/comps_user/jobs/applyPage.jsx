@@ -39,7 +39,7 @@ const ApplyPage = () => {
 
     return (
         <div className='container' style={{ marginTop: '70px' }}>
-            <h1 className='display-4 text-center'>Apply </h1>
+            <h1 className='display-4 text-center'>Apply- {params["job_title"]}</h1>
             <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubmit)}>
                 <label>Starting Date</label>
                 <input {...register("starting")} type="date" className="form-control" />

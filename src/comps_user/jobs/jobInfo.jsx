@@ -93,8 +93,8 @@ const JobInfo = () => {
                           </div>
                           <div className='mt-2 col-1'>
 
-                          <Link to= {"/jobs/apply/" + itemJob._id}  style={{ textDecoration: 'none' }}>
-                              APPLY
+                            <Link to={"/jobs/apply/" + itemJob._id+"/"+itemJob.job_title} style={{ textDecoration: 'none' }}>
+                              <button className='btn btn-dark'>APPLY</button>
                             </Link>
 
                           </div>
