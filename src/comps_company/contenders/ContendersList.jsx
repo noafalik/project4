@@ -3,6 +3,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { API_URL, doApiGet } from '../../services/apiService';
 import SearchComp from '../../comp_general/SearchComp';
 import PagesBtns from '../../comp_general/PagesBtns';
+import CompanySearchComp from '../jobs/CompanySearchComp';
+import ContendersSearch from './ContendersSearch';
 
 const ContendersList = () => {
     const nav = useNavigate();
@@ -14,14 +16,27 @@ const ContendersList = () => {
 
     useEffect(() => {
         doApi();
-    }, [page,url])
+    }, [page, url])
 
     const doApi = async () => {
         try {
             console.log(url)
-            const data = await doApiGet(url+(page==1?"":"&page="+page));
+            const data = await doApiGet(url + (page == 1 ? "" : "&page=" + page));
             console.log(data);
-            setAr(data);
+            const dataWithJobTitle = await Promise.all(
+                data.map(async (item) => {
+                    try{
+                    const job = await doApiGet(API_URL + "/jobs/single/" + item.job_id);
+                    const user = await doApiGet(API_URL + "/users/single/"+item.user_id);
+                    return { ...item, job_title: job.job_title, user_name:user.full_name };
+                }
+                catch(error){
+                    console.log(error)
+                }
+                })
+            );
+            console.log(dataWithJobTitle)
+            setAr(dataWithJobTitle);
         }
         catch (error) {
             console.log(error);
@@ -30,15 +45,16 @@ const ContendersList = () => {
 
     return (
         <div className='container mt-5'>
-            <h1 className='display-4'>List of users in system</h1>
-            <SearchComp setUrl={setUrl} setPagesUrl={setPagesUrl}/>
+            <h1 className='display-4'>My contenders</h1>
+            <ContendersSearch setUrl={setUrl} setPagesUrl={setPagesUrl} />
             <PagesBtns apiUrl={pagesUrl} linkTo={"/company/myContenders?page="} cssClass="btn btn-primary ms-2" />
             <table className='table table-striped table-hover table-info'>
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Job</th>
+                        <th>Job ID</th>
+                        <th>Job title</th>
                         <th>Notes</th>
                         <th>Starting</th>
                         <th>CV link</th>
@@ -51,11 +67,13 @@ const ContendersList = () => {
                         return (
                             <tr key={item._id}>
                                 <td>{(page - 1) * 5 + i + 1}</td>
+                                <td>{item.user_name}</td>
+                                <td>{item.job_id}</td>
                                 <td>{item.job_title}</td>
-                                <td>{item.category}</td>
                                 <td title={item.notes}>{item.notes && item.notes.substring(0, 100)}</td>
-                                <td>{item.starting}</td>
-                                <td title={item.notes}>{item.notes && item.notes.substring(0, 100)}</td>
+                                <td>{item.starting.substring(0, 10)}</td>
+                                <td title={item.cv_link}><a target='_blank' href={item.cv_link && item.cv_link.substring(0, 15)}>See CV
+                                </a></td>
                                 <td><button className='bg-danger'>X</button></td>
                             </tr>
                         )

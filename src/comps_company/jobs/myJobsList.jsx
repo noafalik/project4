@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { API_URL, doApiGet } from '../../services/apiService';
 import PagesBtns from '../../comp_general/PagesBtns';
 import CompanySearchComp from './CompanySearchComp';
+import SearchComp from '../../comp_general/SearchComp';
 
 const MyJobsList = () => {
   const nav = useNavigate();
@@ -38,6 +39,7 @@ const MyJobsList = () => {
               <thead>
                   <tr>
                       <th>#</th>
+                      <th>ID</th>
                       <th>Job title</th>
                       <th>Category</th>
                       <th>Info</th>
@@ -55,6 +57,7 @@ const MyJobsList = () => {
                       return (
                           <tr key={item._id}>
                               <td>{(page - 1) * 5 + i + 1}</td>
+                              <td>{item._id}</td>
                               <td>{item.job_title}</td>
                               <td>{item.category}</td>
                               <td title={item.info}>{item.info && item.info.substring(0, 15)}</td>
