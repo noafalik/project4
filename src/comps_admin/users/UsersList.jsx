@@ -25,10 +25,10 @@ const UsersList = () => {
     }
   
   const changeRole = async(userInfo) => {
-    const newRole = userInfo.role == "admin"? "user":"admin";
     try {
-      const url = `${API_URL}/users/changeRole/${userInfo._id}/${newRole}`;
+      const url = `${API_URL}/users/changeRole/${userInfo._id}`;
       const data = await doApiMethod(url, "PATCH");
+      JSON.parse(localStorage["user"]).role = data.newRole;
       if(data.modifiedCount){
         doApi();
       }
@@ -36,6 +36,21 @@ const UsersList = () => {
       
     }
   }
+
+  const deleteItem = async (id) => {
+    try {
+        if (window.confirm("Delete item?")) {
+            const url = API_URL + "/users/" + id;
+            const data = await doApiMethod(url, "DELETE");
+            if (data.deletedCount) {
+                doApi();
+            }
+        }
+    } catch (error) {
+        console.log(error);
+        alert("there problem");
+    }
+}
   
     return (
       <div className='container mt-5'>
@@ -58,12 +73,12 @@ const UsersList = () => {
               return(
                 <tr key={item._id}>
                   <td>{i+1}</td>
-                  <td>{item.name}</td>
+                  <td>{item.full_name}</td>
                   <td>{item.email}</td>
-                  <td>{item.birth_year}</td>
-                  <td>{item.nickname}</td>
+                  <td>{item.birth_date.substring(0,10)}</td>
+                  <td>{item.gender}</td>
                   <td><button onClick={() => changeRole(item)} style={{background:item.role=="admin"?"orange":"silver"}}>{item.role}</button></td>
-                  <td><button className='bg-danger'>X</button></td>
+                  <td><button className='bg-danger' onClick={() => deleteItem(item._id)}>X</button></td>
                 </tr>
               )
             })}

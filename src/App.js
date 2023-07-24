@@ -14,6 +14,7 @@ import { TOKEN_KEY } from './services/apiService';
 function App() {
   // const { favs_ar, userData, doApiUser, userSignOut, updateFav } = useUserData();
   const [user,setUser]= useState(JSON.parse(localStorage.getItem(TOKEN_KEY)) || null);
+  const [company,setCompany]= useState(JSON.parse(localStorage.getItem("company")) || null);
   const [favs_ar,setFavsAr] = useState([]);
   // const [request_jobs,setRequestJobs] = useState([]);
   const [authorized, setAuthorized] = useState(false);
@@ -28,8 +29,10 @@ function App() {
     <JobContext.Provider value={{
       // doApiUser, userSignOut,
       user,setUser,
-      favs_ar,setFavsAr,authorized, setAuthorized,
-      // request_jobs,setRequestJobs
+      company, setCompany,
+      favs_ar,setFavsAr,authorized, setAuthorized
+    // request_jobs,setRequestJobs
+
       // updateFav
     }}>
       <AppRouters />
