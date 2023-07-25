@@ -91,7 +91,6 @@ export const useUserData = () => {
         console.log("unApplied successfully!");
         toast.success("you unapplied!");
         // nav("/"); // Navigate to the desired page after form submission
-        setA
       }
     } catch (err) {
       console.log(err);
