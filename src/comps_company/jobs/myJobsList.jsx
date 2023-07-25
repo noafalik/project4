@@ -63,7 +63,7 @@ const MyJobsList = () => {
                               <td title={item.info}>{item.info && item.info.substring(0, 15)}</td>
                               <td>{item.salary}</td>
                               <td>{item.location}</td>
-                              <td>{item.visa}</td>
+                              <td>{item.visa=="true"?"required":"not required"}</td>
                               <td><div className="text-center" style={{ background: item.approved ? "green" : "red" }}>{item.approved ? "approved" : "approve"}</div></td>
                               <td><button className='bg-info' onClick={() => nav("/company/editJob/"+item._id)}>Edit</button></td>
                               <td><button className='bg-danger'>X</button></td>

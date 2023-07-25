@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { API_URL, doApiGet } from '../../services/apiService';
-import SearchComp from '../../comp_general/SearchComp';
+import { API_URL, doApiGet, doApiMethod } from '../../services/apiService';
 import PagesBtns from '../../comp_general/PagesBtns';
-import CompanySearchComp from '../jobs/CompanySearchComp';
 import ContendersSearch from './ContendersSearch';
 
 const ContendersList = () => {
@@ -43,6 +41,22 @@ const ContendersList = () => {
         }
     }
 
+    const deleteItem = async (id) => {
+        try {
+            if (window.confirm("Delete item?")) {
+                const url = API_URL + "/contenders/" + id;
+                const data = await doApiMethod(url, "DELETE");
+                console.log(data);
+                if (data.deletedCount) {
+                    doApi();
+                }
+            }
+        } catch (error) {
+            console.log(error);
+            alert("there problem");
+        }
+    }
+
     return (
         <div className='container mt-5'>
             <h1 className='display-4'>My contenders</h1>
@@ -74,7 +88,7 @@ const ContendersList = () => {
                                 <td>{item.starting.substring(0, 10)}</td>
                                 <td title={item.cv_link}><a target='_blank' href={item.cv_link && item.cv_link.substring(0, 15)}>See CV
                                 </a></td>
-                                <td><button className='bg-danger'>X</button></td>
+                                <td><button className='bg-danger' onClick={() => deleteItem(item._id)}>X</button></td>
                             </tr>
                         )
                     })}

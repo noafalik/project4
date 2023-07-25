@@ -5,7 +5,6 @@ import { API_URL, doApiGet, doApiMethod } from '../../services/apiService';
 import PagesBtns from '../../comp_general/PagesBtns';
 import { useEffect } from 'react';
 import SearchComp from '../../comp_general/SearchComp';
-import CompanySearchComp from '../../comps_company/jobs/CompanySearchComp';
 
 const JobsList = () => {
     const nav = useNavigate();
@@ -105,7 +104,7 @@ const JobsList = () => {
                                 <td title={item.info}>{item.info && item.info.substring(0, 15)}</td>
                                 <td>{item.salary}</td>
                                 <td>{item.location}</td>
-                                <td>{item.visa}</td>
+                                <td>{item.visa=="true"?"required":"not required"}</td>
                                 <td><button onClick={() => changeApproval(item)} style={{ background: item.approved ? "green" : "red" }}>{item.approved ? "approved" : "approve"}</button></td>
                                 <td><button className='bg-danger' onClick={() => deleteItem(item._id)}>X</button></td>
                             </tr>
