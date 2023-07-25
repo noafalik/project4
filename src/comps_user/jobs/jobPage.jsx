@@ -3,7 +3,7 @@ import { API_URL, doApiGet } from '../../services/apiService';
 import JobItem from './jobItem';
 import Loading from '../../comp_general/loading';
 import { useUserData } from '../../hooks/useUserData';
-import SearchComp from '../../comp_general/SearchComp';
+import SearchCompJobs from '../SearchCompJobs';
 
 const JobPage = () => {
   const [ar, setAr] = useState([]);
@@ -38,7 +38,7 @@ const JobPage = () => {
         <h1 className='display-6 text-white'>JOB OPTIONS</h1>
       </div>
       <div className='container' >
-        <SearchComp setUrl={setUrl} setPagesUrl={setPagesUrl}/>
+        <SearchCompJobs setUrl={setUrl} setPagesUrl={setPagesUrl}/>
       </div>
 
       <div className='container-fluid py-3'>
