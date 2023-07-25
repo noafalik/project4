@@ -16,7 +16,9 @@ const JobInfo = () => {
   const [loading, setLoading] = useState(false);
   const params = useParams();
 
-  const { favs_ar, updateFav, user } = useUserData();
+  const [applied, setApplied] = useState(false);
+
+  const { favs_ar, updateFav, user, unApplay } = useUserData();
 
   // let category = itemJob.category;
 
@@ -31,12 +33,22 @@ const JobInfo = () => {
         setLoading(true);
         const url = API_URL + "/jobs/single/" + params["id"];
         const data = await doApiGet(url)
-        console.log(data);
+        // console.log(data);
         setItemJob(data);
         // מוסיף 1 לויוס 
         // const urlInc = API_URL + "/jobs/inc/" + params["id"];
         // const dataInc = await doApiMethod(urlInc, "patch");
         setLoading(false);
+
+        const urlApp = API_URL + "/contenders/exists?job_id=" + params["id"];
+        const dataApp = await doApiGet(urlApp)
+        // console.log(dataApp)
+        if (dataApp) {
+          setApplied(true);
+        }
+        // else{
+        //   setApplied(true);
+        // }
       }
 
     }
@@ -92,10 +104,16 @@ const JobInfo = () => {
 
                           </div>
                           <div className='mt-2 col-1'>
-
-                            <Link to={"/jobs/apply/" + itemJob._id+"/"+itemJob.job_title} style={{ textDecoration: 'none' }}>
-                              <button className='btn btn-dark'>APPLY</button>
-                            </Link>
+                            {applied ?
+                                <button onClick={()=>{
+                                  unApplay(params["id"])
+                                  setApplied(false)
+                                }} className='btn btn-info' style={{ textDecoration: 'none' }}>UNAPPLY</button>
+                              :
+                              <Link to={"/jobs/apply/" + itemJob._id + "/" + itemJob.job_title} style={{ textDecoration: 'none' }}>
+                                <button className='btn btn-dark'>APPLY</button>
+                              </Link>
+                            }
 
                           </div>
                           {/* <div className='mt-2 col-1'>
