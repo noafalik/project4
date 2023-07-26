@@ -10,23 +10,23 @@ const MatchPage = () => {
 
   const onSubForm = (_bodyData) => {
     console.log(_bodyData);
-    doApiPost(_bodyData);
+    // doApiPost(_bodyData);
   }
 
   const doApiPost = async (_bodyData) => {
-    try {
-      const url = API_URL + "/users/login";
-      const data = await doApiMethod(url, "POST", _bodyData)
-      console.log(data);
-      if (data.token) {
-        toast.success("Welcome, you logged in")
-        nav("/admin/users")
-      }
-    }
-    catch (err) {
-      console.log(err);
-      alert("User or password is wrong!");
-    }
+    // try {
+    //   const url = API_URL + "/users/login";
+    //   const data = await doApiMethod(url, "POST", _bodyData)
+    //   console.log(data);
+    //   if (data.token) {
+    //     toast.success("Welcome, you logged in")
+    //     nav("/admin/users")
+    //   }
+    // }
+    // catch (err) {
+    //   console.log(err);
+    //   alert("User or password is wrong!");
+    // }
   }
   return (
     <div style={{ marginTop: '70px' }}>
@@ -44,13 +44,21 @@ const MatchPage = () => {
             <option value="North America"> North America</option>
             <option value="South America"> South America</option>
           </select>
-          {errors.email && <div className="text-danger">* Enter valid email</div>}
-          <label>password</label>
-          <input {...register("password", { required: true, minLength: 3 })} className="form-control" type="text" />
-          {errors.password && <div className="text-danger">* Enter valid password (min 3 chars)</div>}
+          <br/>
+          <label>Location</label>
+          <input {...register("location", { required: true, minLength: 2 })} placeholder='Exemple: New York, USA' className="form-control" type="text" />
+          {errors.location && <div className="text-danger">* Enter valid location (min 2 chars)</div>}
+         
+          <label>Category</label>
+          <input {...register("category", { required: true, minLength: 2 })} placeholder='Exemple: Full-Stack' className="form-control" type="text" />
+          {errors.category && <div className="text-danger">* Enter valid category (min 2 chars)</div>}
+         
+          <label>Salary Expectation</label>
+          <input {...register("salary", { required: true, minLength: 1 })} placeholder='Exemple: 20,000' className="form-control" type="text" />
+          {errors.salary && <div className="text-danger">* Enter valid category (min 1 number)</div>}
+         
           <div className='text-center'>
-
-            <button className='btn btn-dark mt-3 '>Log in</button>
+            <button className='btn btn-dark mt-3 '>Find My Match</button>
           </div>
         </form>
       </div>

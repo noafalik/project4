@@ -7,15 +7,15 @@ import { useNavigate } from "react-router-dom";
 
 export const useUserData = () => {
   // const [userData,setUserData] = useState({});
-
-
-  const { company,setCompany}= useContext(JobContext);
-  const { user, setUser, favs_ar, setFavsAr} = useContext(JobContext);
+  
+  const { user, setUser, favs_ar, setFavsAr,company,setCompany} = useContext(JobContext);
 
   const nav = useNavigate();
-
+  console.log(user);
   useEffect(() => {
-    doApiUser();
+     if(user===null)
+    {doApiUser();}
+
 
   }, [])
 
@@ -87,38 +87,30 @@ export const useUserData = () => {
     }
   }
 
-  // const updateRequest = async (_newIdJobR) => {
-  //   const temp_ar = [...request_jobs];
-  //   // בודק אם האיי די קיים במועדפים כבר או לא ופועל בהתאם
-  //   if (!temp_ar.includes(_newIdJobR)) {
-  //     // מוסיף אותו למועדפים
-  //     temp_ar.push(_newIdJobR)
-  //   }
-  //   else {
-  //     // מחסיר אותו מהמערך של המעודפים
-  //     temp_ar.splice(temp_ar.indexOf(_newIdJobR), 1)
-  //   }
-  //   setRequestJobs(temp_ar)
-
-  //   try {
-  //     const url = API_URL + "/users/updateRequest"
-  //     const data = await doApiMethod(url, "PATCH", { request_jobs: temp_ar })
-  //     if (data.modifiedCount) {
-  //       toast.success("add/remove from request")
-  //     }
-  //   }
-  //   catch (err) {
-  //     console.log(err)
-  //     alert("There problem, try again later")
-  //   }
-  // }
+  const unApplay = async (_jobId) => {
+    try {
+      const url = API_URL + "/contenders/?job_id=" + _jobId; // Change this URL to the appropriate endpoint for your apply form
+      // console.log(formData);
+      const data = await doApiMethod(url, "DELETE");
+      console.log(data);
+      // Handle success or failure as per your API response
+      // For example, assuming the response contains a success message
+      if (data.deletedCount) {
+        console.log("unApplied successfully!");
+        toast.success("you unapplied!");
+        // nav("/"); // Navigate to the desired page after form submission
+      }
+    } catch (err) {
+      console.log(err);
+      alert("Error submitting the application!");
+    }
+  }
 
   // פונקציה שתעדכן את המועדפים גם בזכרון
   // וגם בשרת
 
   //  doApiUser -> נצטרך את הפונקציה כאשר משתמש
   // מתחבר 
-  return { doApiUser, user, userSignOut, favs_ar, updateFav,company };
+  return { doApiUser, user, userSignOut, favs_ar, updateFav,company, unApplay };
 
-  // return {favs_ar,userData,doApiUser,userSignOut,updateFav,user}
 }

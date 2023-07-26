@@ -12,14 +12,14 @@ const JobsListByCategory = (props) => {
 
   useEffect(() => {
     doApi(category);
-  },[]);
+  },[currentJobId]);
 
   const doApi = async(_category) => {
     try{
       const url = API_URL+"/jobs?perPage=4&category="+_category;
       const data = await doApiGet(url);
       // מחפש אם הוידיאו המוצג תחילה קיים במערך
-      const currentVidId = data.findIndex(item => item._id == props.currentJobId)
+      const currentVidId = data.findIndex(item => item._id == currentJobId)
       // console.log(currentVidId);
       // בודק אם הסרט שהרשימה מופיעה בו נמצא במערך ואם כן יסיר אותו
       if(currentVidId > -1){
@@ -41,7 +41,7 @@ const JobsListByCategory = (props) => {
     <div className='container-fluid py-3'>
       <div className="container">
         
-        <div className="row justify-content-around">
+        <div className="row justify-content-center">
           {ar.map(item => {
             return(
               <JobItem key={item._id} item={item} />

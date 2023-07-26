@@ -13,8 +13,8 @@ const ApplyPage = () => {
 
     const onSubmit = async (formData) => {
         console.log(formData);
-        formData.job_id=params["id"];
-        formData.user_id=user._id;
+        formData.job_id = params["id"];
+        formData.user_id = user._id;
         doApiPost(formData);
     };
 
@@ -39,7 +39,10 @@ const ApplyPage = () => {
 
     return (
         <div className='container' style={{ marginTop: '70px' }}>
-            <h1 className='display-4 text-center'>Apply </h1>
+            <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
+                <h1 className='display-6 text-white'>Apply- {params["job_title"]}</h1>
+            </div>
+
             <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubmit)}>
                 <label>Starting Date</label>
                 <input {...register("starting")} type="date" className="form-control" />

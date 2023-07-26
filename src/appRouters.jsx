@@ -41,7 +41,7 @@ export default function AppRouters() {
                 <Route path="/" element={<Home />} />
                 <Route path="/jobs" element={<JobPage />} />
                 <Route path="/jobs/:id" element={<JobInfo />} />
-                <Route path="/jobs/apply/:id" element={<ApplyPage />} />
+                <Route path="/jobs/apply/:id/:job_title" element={<ApplyPage />} />
                 <Route path="/match" element={<MatchPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/flights" element={<FlightsPage />} />
