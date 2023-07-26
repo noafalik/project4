@@ -41,7 +41,7 @@ const JobsListByCategory = (props) => {
     <div className='container-fluid py-3'>
       <div className="container">
         
-        <div className="row justify-content-around">
+        <div className="row justify-content-center">
           {ar.map(item => {
             return(
               <JobItem key={item._id} item={item} />

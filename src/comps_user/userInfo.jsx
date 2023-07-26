@@ -9,20 +9,7 @@ const UserInfo = () => {
     const [itemInfo, setItemInfo] = useState({});
     const { user } = useUserData();
 
-    // useEffect(() => {
-    //     doApi();
-    // }, [])
-
-    // const doApi = async () => {
-    //     try {
-    //         const url = API_URL + "/users/userInfo";
-    //         const data = await doApiGet(url);
-    //         setItemInfo(data);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-
-    // }
+    
     return (
         <div style={{ marginTop: '70px' }}>
             <AuthUser />
