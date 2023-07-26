@@ -44,7 +44,7 @@ const ContendersList = () => {
     const deleteItem = async (id) => {
         try {
             if (window.confirm("Delete item?")) {
-                const url = API_URL + "/contenders/" + id;
+                const url = API_URL + "/contenders?id=" + id;
                 const data = await doApiMethod(url, "DELETE");
                 console.log(data);
                 if (data.deletedCount) {
