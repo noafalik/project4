@@ -51,7 +51,8 @@ export default function CategoriesList() {
                         <th>#</th>
                         <th>Name</th>
                         <th>info</th>
-                        <th colSpan={2}>Del/edit</th>
+                        <th>Delete</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>

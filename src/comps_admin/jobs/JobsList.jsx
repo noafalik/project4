@@ -16,14 +16,25 @@ const JobsList = () => {
 
     useEffect(() => {
         doApi();
-    }, [page,url])
+    }, [page, url])
 
     const doApi = async () => {
         try {
             console.log(url)
-            const data = await doApiGet(url+(page==1?"":"&page="+page));
-            console.log(data);
-            setAr(data);
+            const data = await doApiGet(url + (page == 1 ? "" : "&page=" + page));
+            const dataWithCompanies = await Promise.all(
+                data.map(async (item) => {
+                    try {
+                        const company = await doApiGet(API_URL + "/companies/companiesList?id=" + item.company_id);
+                        console.log(company)
+                        return { ...item, company: company[0].company_name }
+                    } catch (error) {
+                        console.log(error)
+                    }
+                })
+            )
+            console.log(dataWithCompanies);
+            setAr(dataWithCompanies);
         }
         catch (error) {
             console.log(error);
@@ -44,23 +55,40 @@ const JobsList = () => {
         }
     }
 
+    const deleteItem = async (id) => {
+        try {
+            if (window.confirm("Delete item?")) {
+                const url = API_URL + "/jobs/" + id;
+                const data = await doApiMethod(url, "DELETE");
+                if (data.deletedCount) {
+                    doApi();
+                }
+            }
+        } catch (error) {
+            console.log(error);
+            alert("there problem");
+        }
+    }
+
     return (
         <div className='container mt-5'>
-            <h1 className='display-4'>List of users in system</h1>
-            <SearchComp setUrl={setUrl} setPagesUrl={setPagesUrl}/>
+            <h1 className='display-4'>List of jobs in system</h1>
+            <SearchComp setUrl={setUrl} setPagesUrl={setPagesUrl} />
             <PagesBtns apiUrl={pagesUrl} linkTo={"/admin/jobs?page="} cssClass="btn btn-primary ms-2" />
             <table className='table table-striped table-hover table-info'>
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>ID</th>
                         <th>Job title</th>
                         <th>Category</th>
+                        <th>Company</th>
                         <th>Info</th>
                         <th>Salary</th>
                         <th>Location</th>
-                        <th>Approved</th>
                         <th>Visa</th>
-                        <th>Del/Edit</th>
+                        <th>Approved</th>
+                        <th>Del</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,14 +97,16 @@ const JobsList = () => {
                         return (
                             <tr key={item._id}>
                                 <td>{(page - 1) * 5 + i + 1}</td>
+                                <td>{item._id}</td>
                                 <td>{item.job_title}</td>
                                 <td>{item.category}</td>
+                                <td>{item.company}</td>
                                 <td title={item.info}>{item.info && item.info.substring(0, 15)}</td>
                                 <td>{item.salary}</td>
                                 <td>{item.location}</td>
-                                <td>{item.visa}</td>
+                                <td>{item.visa=="true"?"required":"not required"}</td>
                                 <td><button onClick={() => changeApproval(item)} style={{ background: item.approved ? "green" : "red" }}>{item.approved ? "approved" : "approve"}</button></td>
-                                <td><button className='bg-danger'>X</button></td>
+                                <td><button className='bg-danger' onClick={() => deleteItem(item._id)}>X</button></td>
                             </tr>
                         )
                     })}
