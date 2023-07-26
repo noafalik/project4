@@ -83,7 +83,7 @@ export const useUserData = () => {
 
   const unApplay = async (_jobId) => {
     try {
-      const url = API_URL + "/contenders/delete?job_id=" + _jobId; // Change this URL to the appropriate endpoint for your apply form
+      const url = API_URL + "/contenders/?job_id=" + _jobId; // Change this URL to the appropriate endpoint for your apply form
       // console.log(formData);
       const data = await doApiMethod(url, "DELETE");
       console.log(data);
