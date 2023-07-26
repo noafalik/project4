@@ -74,7 +74,12 @@ export default function AddJob() {
                 <input {...register("location", { required: true, minLength: 2 })} className="form-control" type="text" />
                 {errors.location && <div className="text-danger">* Enter valid location</div>}
                 <label>Visa</label>
-                <input {...register("visa", { required: true, minLength: 2 })} className="form-control" type="text" />
+                <br/>
+                <select {...register("visa", { required: true })}>
+                    <option value={true}>required</option>
+                    <option value={false}>not required</option>
+                </select>
+                <br/>
                 {errors.visa && <div className="text-danger">* Enter valid visa info</div>}
                 <label>Job Image</label>
                 <input {...register("img_url", { required: true, minLength: 2 })} className="form-control" type="text" />

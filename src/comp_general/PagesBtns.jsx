@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { doApiGet } from '../services/apiService';
 
 const PagesBtns = (props) => {
   const [pages, setPages] = useState(0);
@@ -12,9 +13,9 @@ const PagesBtns = (props) => {
 
   const doApi = async () => {
     try {
-      const resp = await axios.get(url);
-      console.log(resp.data);
-      setPages(resp.data.pages);
+      const data = await doApiGet(url);
+      console.log(data);
+      setPages(data.pages);
     } catch (error) {
       console.log(error);
     }
