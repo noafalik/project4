@@ -27,12 +27,12 @@ const Home = () => {
                 <h2 className='display-5 m-2'>Recent Jobs</h2>
             </div>
             
-            <div className='container-fluid'>
+            <div className='container-fluid '>
                 <div className='container'>
                     <RecentJobsList />
                 </div>
                 {user ?
-                    <div className='container'>
+                    <div className='container my-4'>
                         <JobListFav />
                     </div>
                     :
