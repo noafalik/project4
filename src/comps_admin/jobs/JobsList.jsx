@@ -71,7 +71,7 @@ const JobsList = () => {
     }
 
     return (
-        <div className='container mt-5'>
+        <div className='container mt-5' style={{ minHeight:'100vh'}}>
             <h1 className='display-4'>List of jobs in system</h1>
             <SearchComp setUrl={setUrl} setPagesUrl={setPagesUrl} />
             <PagesBtns apiUrl={pagesUrl} linkTo={"/admin/jobs?page="} cssClass="btn btn-primary ms-2" />

@@ -25,7 +25,7 @@ const CompaniesList = () => {
   }
 
   return (
-    <div className='container mt-5'>
+    <div className='container mt-5' style={{ minHeight:'100vh'}}>
       <h1 className='display-4'>List of companies in system</h1>
       <PagesBtns apiUrl={API_URL + "/companies/count"} linkTo={"/admin/companies?page="} cssClass="btn btn-primary ms-2" />
       <table className='table table-striped table-hover table-info'>

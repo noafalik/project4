@@ -59,7 +59,7 @@ const JobInfo = () => {
   }
 
   return (
-    <>
+    <div style={{ minHeight:'100vh'}}>
       {localStorage.getItem(TOKEN_KEY) !== null ?
         <div style={{ marginTop: '70px' }}>
           <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
@@ -149,7 +149,7 @@ const JobInfo = () => {
         </div>
         : null
       }
-    </>
+    </div>
   )
 }
 

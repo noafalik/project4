@@ -4,6 +4,7 @@ import { API_URL, doApiGet, doApiMethod } from '.././services/apiService';
 import { useUserData } from '../hooks/useUserData';
 import Loading from '../comp_general/loading';
 import JobListFav from './jobs/jobListFav';
+import AppliedJobsList from './jobs/appliedJobsList';
 
 const UserInfo = () => {
     const [itemInfo, setItemInfo] = useState({});
@@ -11,7 +12,7 @@ const UserInfo = () => {
 
     
     return (
-        <div style={{ marginTop: '70px' }}>
+        <div style={{ marginTop: '70px', minHeight:'100vh' }}>
             <AuthUser />
             <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
                 <h1 className='display-6 text-white'>USER INFO-</h1>
@@ -29,8 +30,11 @@ const UserInfo = () => {
                 </div>
 
             </div>
-            <div className='container'>
+            <div className='container '>
                 <JobListFav />
+            </div>
+            <div className='container'>
+                <AppliedJobsList />
             </div>
 
         </div>
