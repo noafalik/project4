@@ -26,6 +26,7 @@ import EditJob from './comps_company/jobs/EditJob'
 import AddJob from './comps_company/jobs/AddJob'
 import ContendersList from './comps_company/contenders/ContendersList'
 import ApplyPage from './comps_user/jobs/applyPage'
+import Footer from './comp_general/footer'
 
 
 export default function AppRouters() {
@@ -50,7 +51,7 @@ export default function AppRouters() {
                 <Route path="/userinfo" element={<UserInfo />} />
 
                 <Route path="/admin" element={<LoginAdmin />} />
-                {localStorage["user"]&&(JSON.parse(localStorage["user"])).role == "admin" && <>
+                {localStorage["user"] && (JSON.parse(localStorage["user"])).role == "admin" && <>
                     <Route path="/admin/users" element={<UsersList />} />
                     <Route path="/admin/companies" element={<CompaniesList />} />
                     <Route path="/admin/categories" element={<CategoriesList />} />
@@ -59,14 +60,15 @@ export default function AppRouters() {
                     <Route path="/admin/jobs" element={<JobsList />} />
                 </>}
 
-                <Route path='/company' element={<CompanyInfo/>}/>
-                <Route path='/company/editInfo/:id' element={<EditCompanyInfo/>}/>
-                <Route path='/company/myJobs' element={<MyJobsList/>}/>
-                <Route path='/company/editJob/:id' element={<EditJob/>}/>
-                <Route path='/company/addJob' element={<AddJob/>}/>
-                <Route path='/company/myContenders' element={<ContendersList/>}/>
+                <Route path='/company' element={<CompanyInfo />} />
+                <Route path='/company/editInfo/:id' element={<EditCompanyInfo />} />
+                <Route path='/company/myJobs' element={<MyJobsList />} />
+                <Route path='/company/editJob/:id' element={<EditJob />} />
+                <Route path='/company/addJob' element={<AddJob />} />
+                <Route path='/company/myContenders' element={<ContendersList />} />
             </Routes>
+
+            <Footer/>
         </BrowserRouter>
     )
 }
- 

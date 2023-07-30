@@ -38,18 +38,19 @@ const ApplyPage = () => {
     };
 
     return (
-        <div className='container' style={{ marginTop: '70px' }}>
-            <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
+        <div className='container' style={{ marginTop: '70px' ,minHeight:'100vh'}}>
+            <div className='container mb-5 d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
                 <h1 className='display-6 text-white'>Apply- {params["job_title"]}</h1>
             </div>
 
-            <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubmit)}>
+            <form className='col-md-7 p-4 border mx-auto' onSubmit={handleSubmit(onSubmit)}>
                 <label>Starting Date</label>
                 <input {...register("starting")} type="date" className="form-control" />
-
-                <label>Upload Resume</label>
-                <input {...register("cv_link")} type="text" className="form-control-file" />
                 <br />
+                <label>Upload Resume</label>
+                <br />
+                <input {...register("cv_link")} type="text" className="form-control-file" />
+                <br /> <br />
                 {/* <label>Upload Resume</label>
                 <input {...register("cv_link")} type="file" accept=".pdf,.doc,.docx" className="form-control-file" />
                 <br /> */}

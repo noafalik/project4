@@ -7,31 +7,31 @@ import { useNavigate } from "react-router-dom";
 
 export const useUserData = () => {
   // const [userData,setUserData] = useState({});
-  
-  const { user, setUser, favs_ar, setFavsAr,company,setCompany} = useContext(JobContext);
+
+  const { user, setUser, favs_ar, setFavsAr, company, setCompany } = useContext(JobContext);
 
   const nav = useNavigate();
   console.log(user);
   useEffect(() => {
-     if(user===null)
-    {doApiUser();}
-
+    //  if(user===null)
+    // {doApiUser();}
+    doApiUser();
 
   }, [])
 
   const doApiUser = async () => {
     try {
-      const url = API_URL+"/users/userInfo";
-    const data = await doApiGet(url)
-    console.log(data);
-    localStorage.setItem('user',JSON.stringify(data));
-    setUser(data);
-    if(data.role=="company"){
-      const companyUrl = API_URL+"/companies/companyInfo";
-      const companyData = await doApiGet(companyUrl);
-      localStorage.setItem('company',JSON.stringify(companyData));
-      setCompany(companyData);
-    }
+      const url = API_URL + "/users/userInfo";
+      const data = await doApiGet(url)
+      console.log(data);
+      localStorage.setItem('user', JSON.stringify(data));
+      setUser(data);
+      if (data.role == "company") {
+        const companyUrl = API_URL + "/companies/companyInfo";
+        const companyData = await doApiGet(companyUrl);
+        localStorage.setItem('company', JSON.stringify(companyData));
+        setCompany(companyData);
+      }
     }
     catch (error) {
       console.log(error)
@@ -111,6 +111,6 @@ export const useUserData = () => {
 
   //  doApiUser -> נצטרך את הפונקציה כאשר משתמש
   // מתחבר 
-  return { doApiUser, user, userSignOut, favs_ar, updateFav,company, unApplay };
+  return { doApiUser, user, userSignOut, favs_ar, updateFav, company, unApplay };
 
 }

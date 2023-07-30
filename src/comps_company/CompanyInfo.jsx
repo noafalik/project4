@@ -8,7 +8,7 @@ const CompanyInfo = () => {
     const { user, company } = useUserData();
 
     return (
-        <div style={{ marginTop: '70px' }}>
+        <div style={{ marginTop: '70px', minHeight:'100vh' }}>
             <AuthUser />
             <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
                 <h1 className='display-6 text-white'>COMPANY INFO</h1>

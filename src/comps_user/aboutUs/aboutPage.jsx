@@ -2,7 +2,7 @@ import React from 'react'
 
 const AboutPage = () => {
   return (
-    <div style={{marginTop:'70px'}}>
+    <div style={{marginTop:'70px', minHeight:'100vh'}}>
       <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
         <h1 className='display-6 text-white'>ABOUT US-</h1>
       </div>

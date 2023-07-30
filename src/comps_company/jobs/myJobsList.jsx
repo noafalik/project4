@@ -30,7 +30,7 @@ const MyJobsList = () => {
   }
 
   return (
-      <div className='container mt-5'>
+      <div className='container mt-5' style={{ minHeight:'100vh'}}>
           <h1 className='display-4'>My jobs</h1>
           <Link to="/company/addJob" className='btn btn-info my-2'>Add job</Link>
           <CompanySearchComp setUrl={setUrl} setPagesUrl={setPagesUrl}/>

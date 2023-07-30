@@ -41,7 +41,7 @@ const LoginAdmin = () => {
   }
 
   return (
-    <div className='container mt-5'>
+    <div className='container mt-5' style={{ minHeight:'100vh'}}>
       <h1 className='display-4 text-center'>Login to admin</h1>
       <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubForm)}  >
         <label>email</label>

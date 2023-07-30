@@ -34,7 +34,7 @@ const Signup = () => {
         }
     }
     return (
-        <div className='container py-4' style={{marginTop:'70px'}}>
+        <div className='container py-4' style={{marginTop:'70px', minHeight:'100vh'}} >
             <h1 className='display-4 text-center'>Sign up</h1>
             <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubForm)}  >
                 <label>Full name:</label>
