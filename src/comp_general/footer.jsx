@@ -1,96 +1,50 @@
-import React from 'react'
+import React from 'react';
+import { BsLinkedin, BsGithub } from "react-icons/bs";
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer = () => {
     return (
         <>
             <footer className="footer">
-                <div className="footer__addr">
-                    <h1 className="footer__logo">Something</h1>
+                <Row className="d-flex justify-content-between text-center">
+                    <Col className='Noa'>
+                    <br/>
+                        <h3>Noa Falik</h3>
+                        <div className="d-flex justify-content-center align-items-center ">
+                            <a className='m-2' href="https://www.linkedin.com/in/noa-falik-607389266/" target="_blank" style={{ fontSize:'1.5rem'}}>
+                                <BsLinkedin />
+                            </a>
+                            <a className='m-2' href="https://github.com/noafalik" target="_blank" style={{ fontSize:'1.5rem'}}>
+                                <BsGithub />
+                            </a>
+                        </div>
+                    </Col>
 
-                    <h2>Contact</h2>
+                    <Col className="footer__addr ">
+                        <h1 className="footer__logo">ReloMatch</h1>
+                        <address className='d-flex justify-content-center align-items-center'>
+                            <a className="footer__btn" href="mailto:reloMatch@gmail.com">Email Us</a>
+                        </address>
+                    </Col>
 
-                    <address>
-                        5534 Somewhere In. The World 22193-10212<br />
+                    <Col className='Dora'>
+                    <br/>
+                        <h3>Dora Yaroshenko</h3>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <a className='m-2' href="https://www.linkedin.com/in/dora-yaroshenko-27544226a/" target="_blank" style={{ fontSize:'1.5rem'}}>
+                                <BsLinkedin />
+                            </a>
+                            <a className='m-2' href="https://github.com/DoraYaroshenko" target="_blank" style={{ fontSize:'1.5rem'}}>
+                                <BsGithub />
+                            </a>
+                        </div>
+                    </Col>
+                </Row>
 
-                        <a className="footer__btn" href="mailto:example@gmail.com">Email Us</a>
-                    </address>
+                <div class="legal d-flex justify-content-center align-items-center">
+                    <p>&copy; 2023 ReloMatch - Noa Falik & Dora Yaroshenko. All rights reserved.</p>
                 </div>
 
-                <ul className="footer__nav">
-                    <li className="nav__item">
-                        <h2 className="nav__title">Media</h2>
-
-                        <ul className="nav__ul">
-                            <li>
-                                <a href="#">Online</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Print</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Alternative Ads</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li className="nav__item nav__item--extra">
-                        <h2 className="nav__title">Technology</h2>
-
-                        <ul className="nav__ul nav__ul--extra">
-                            <li>
-                                <a href="#">Hardware Design</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Software Design</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Digital Signage</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Automation</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Artificial Intelligence</a>
-                            </li>
-
-                            <li>
-                                <a href="#">IoT</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li className="nav__item">
-                        <h2 className="nav__title">Legal</h2>
-
-                        <ul className="nav__ul">
-                            <li>
-                                <a href="#">Privacy Policy</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Terms of Use</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Sitemap</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <div class="legal">
-                    <p>&copy; 2019 Something. All rights reserved.</p>
-
-                    <div class="legal__links">
-                        <span>Made with <span class="heart">♥</span> remotely from Anywhere</span>
-                    </div>
-                </div>
             </footer>
         </>
     )
