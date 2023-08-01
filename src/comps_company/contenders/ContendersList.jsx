@@ -9,7 +9,7 @@ const ContendersList = () => {
     const [query] = useSearchParams();
     const [ar, setAr] = useState([]);
     const page = query.get("page") || 1;
-    const [url, setUrl] = useState(API_URL + "/contenders?");
+    const [url, setUrl] = useState(API_URL + "/contenders/myContenders?");
     const [pagesUrl, setPagesUrl] = useState(API_URL + "/contenders/count?");
 
     useEffect(() => {
@@ -21,20 +21,7 @@ const ContendersList = () => {
             console.log(url)
             const data = await doApiGet(url + (page == 1 ? "" : "&page=" + page));
             console.log(data);
-            const dataWithJobTitle = await Promise.all(
-                data.map(async (item) => {
-                    try{
-                    const job = await doApiGet(API_URL + "/jobs/single/" + item.job_id);
-                    const user = await doApiGet(API_URL + "/users/single/"+item.user_id);
-                    return { ...item, job_title: job.job_title, user_name:user.full_name };
-                }
-                catch(error){
-                    console.log(error)
-                }
-                })
-            );
-            console.log(dataWithJobTitle)
-            setAr(dataWithJobTitle);
+            setAr(data);
         }
         catch (error) {
             console.log(error);
@@ -81,9 +68,9 @@ const ContendersList = () => {
                         return (
                             <tr key={item._id}>
                                 <td>{(page - 1) * 5 + i + 1}</td>
-                                <td>{item.user_name}</td>
-                                <td>{item.job_id}</td>
-                                <td>{item.job_title}</td>
+                                <td>{item.user_id.full_name}</td>
+                                <td>{item.job_id._id}</td>
+                                <td>{item.job_id.job_title}</td>
                                 <td title={item.notes}>{item.notes && item.notes.substring(0, 100)}</td>
                                 <td>{item.starting.substring(0, 10)}</td>
                                 <td title={item.cv_link}><a target='_blank' href={item.cv_link && item.cv_link.substring(0, 15)}>See CV

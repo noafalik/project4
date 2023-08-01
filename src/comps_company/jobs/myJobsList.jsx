@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { API_URL, doApiGet } from '../../services/apiService';
+import { API_URL, doApiGet, doApiMethod } from '../../services/apiService';
 import PagesBtns from '../../comp_general/PagesBtns';
 import CompanySearchComp from './CompanySearchComp';
 import SearchComp from '../../comp_general/SearchComp';
@@ -28,6 +28,22 @@ const MyJobsList = () => {
           console.log(error);
       }
   }
+
+  const deleteItem = async (id) => {
+    try {
+        if (window.confirm("Delete item?")) {
+            const url = API_URL + "/jobs/" + id;
+            const data = await doApiMethod(url, "DELETE");
+            console.log(data)
+            if (data.deletedCount) {
+                doApi();
+            }
+        }
+    } catch (error) {
+        console.log(error);
+        alert("there problem");
+    }
+}
 
   return (
       <div className='container mt-5' style={{ minHeight:'100vh'}}>
@@ -64,9 +80,9 @@ const MyJobsList = () => {
                               <td>{item.salary}</td>
                               <td>{item.location}</td>
                               <td>{item.visa=="true"?"required":"not required"}</td>
-                              <td><div className="text-center" style={{ background: item.approved ? "green" : "red" }}>{item.approved ? "approved" : "approve"}</div></td>
+                              <td><div className="text-center" style={{ background: item.approved ? "green" : "red" }}>{item.approved ? "approved" : "not approved"}</div></td>
                               <td><button className='bg-info' onClick={() => nav("/company/editJob/"+item._id)}>Edit</button></td>
-                              <td><button className='bg-danger'>X</button></td>
+                              <td><button className='bg-danger' onClick={() => deleteItem(item._id)}>X</button></td>
                           </tr>
                       )
                   })}
