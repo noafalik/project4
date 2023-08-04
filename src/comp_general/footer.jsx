@@ -41,7 +41,7 @@ const Footer = () => {
                     </Col>
                 </Row>
 
-                <div class="legal d-flex justify-content-center align-items-center">
+                <div className="legal d-flex justify-content-center align-items-center">
                     <p>&copy; 2023 ReloMatch - Noa Falik & Dora Yaroshenko. All rights reserved.</p>
                 </div>
 

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { API_URL, doApiGet, doApiMethod } from '../../services/apiService';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import { imgToString } from '../../services/cloudinaryServive';
 
 const EditJob = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -10,6 +11,8 @@ const EditJob = () => {
     const params = useParams();
     const nav = useNavigate();
     const [categoriesAr, setCategoriesAr] = useState([]);
+    const uploadRef = useRef();
+    let imgUrl;
 
     useEffect(() => {
         doApiInit();
@@ -28,6 +31,24 @@ const EditJob = () => {
             console.log(error);
         }
     }
+
+    const doApiUpload = async () => {
+        try {
+            const myFile = uploadRef.current.files[0];
+            // הופך את הקובץ למידע כסטרינג
+            const imgData = await imgToString(myFile);
+            const url = "http://localhost:3001/upload/cloud";
+            const resp = await doApiMethod(url, "POST", { image: imgData })
+            console.log(resp);
+            console.log(resp.data.secure_url)
+            imgUrl = resp.data.secure_url;
+        }
+        catch (err) {
+            console.log(err);
+            alert("There problem , come back later")
+        }
+    }
+
     const getCategories = async () => {
         const url = API_URL + "/categories?perPage=Infinity";
         try {
@@ -39,14 +60,16 @@ const EditJob = () => {
         }
     }
 
-    const onSubForm = (_bodyData) => {
+    const onSubForm = async(_bodyData) => {
         console.log(_bodyData);
+        await doApiUpload();
         doApiEdit(_bodyData);
     }
 
     const doApiEdit = async (_bodyData) => {
         try {
             const url = API_URL + "/jobs/" + params["id"];
+            _bodyData.img_url = imgUrl;
             const data = await doApiMethod(url, "PUT", _bodyData);
             console.log(data);
             if (data.modifiedCount) {
@@ -58,7 +81,6 @@ const EditJob = () => {
             alert("there problem");
         }
     }
-
 
     return (
         <div className='container'>
@@ -72,7 +94,7 @@ const EditJob = () => {
                     <textarea defaultValue={item.info} {...register("info", { required: true, minLength: 2 })} className="form-control" type="textarea"></textarea>
                     {errors.info && <div className="text-danger">* Enter valid info</div>}
                     <label>Category</label>
-                    <br/>
+                    <br />
                     <select {...register("category", { required: true, minLength: 2 })}>
                         {
                             categoriesAr.map((item, i) => {
@@ -83,7 +105,7 @@ const EditJob = () => {
                         }
                     </select>
                     {errors.category && <div className="text-danger">* Enter valid category</div>}
-                    <br/>
+                    <br />
                     <label>Salary</label>
                     <input defaultValue={item.salary} {...register("salary", { required: true })} className="form-control" type="number"></input>
                     {errors.salary && <div className="text-danger">* Enter valid salary</div>}
@@ -94,7 +116,7 @@ const EditJob = () => {
                     <input defaultValue={item.visa} {...register("visa", { required: true, minLength: 2 })} className="form-control" type="text" />
                     {errors.visa && <div className="text-danger">* Enter valid visa info</div>}
                     <label>Job Image</label>
-                    <input defaultValue={item.img_url} {...register("img_url", { required: true, minLength: 2 })} className="form-control" type="text" />
+                    <input ref={uploadRef} type="file" className='form-control' />
                     {errors.img_url && <div className="text-danger">* Enter valid img_url</div>}
                     <label>Continent</label>
                     <input defaultValue={item.continent} {...register("continent", { required: true, minLength: 2 })} className="form-control" type="text" />
