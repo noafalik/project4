@@ -52,7 +52,7 @@ const SearchComp = ({setUrl, setPagesUrl}) => {
         setPagesUrl(API_URL+"/jobs/count?"+(titleRef.current.value&&"s="+titleRef.current.value)+(idRef.current.value&&"&id="+idRef.current.value)+(categoryRef.current.value&&"&category="+categoryRef.current.value)+(companyRef.current.value&&"&company_id="+companyRef.current.value)+(minRef.current.value&&"&minSalary="+minRef.current.value)+(maxRef.current.value&&"&maxSalary="+maxRef.current.value)+(locationRef.current.value&&"&location="+locationRef.current.value)+(visaRef.current.value&&"&visa="+visaRef.current.value)+(approvedRef.current.value&&"&approved="+approvedRef.current.value));
     }
     return (
-        <form onSubmit={onSub} className='shadow my-4 p-2 d-flex gap-2 text-center align-items-center'>
+        <form onSubmit={onSub} className='my-4 p-2 d-flex flex-wrap gap-3 text-center justify-content-center align-items-center text-white rounded-4 col-8 mx-auto' style={{backgroundColor: '#5C2018'}}>
              {localStorage[TOKEN_KEY].role!="user"&&<div>
                 <label>ID</label>
                 <br />
@@ -116,7 +116,9 @@ const SearchComp = ({setUrl, setPagesUrl}) => {
                     <option value={"false"}>Not approved</option>
                 </select>
             </div>
-            <button type="submit" className='btn-light btn text-info h-25'>Find</button>
+            <div className='col-12'>
+            <button type="submit" className='btn btn-light my-3'><h5 className='m-0' style={{color: '#5C2018'}} >Find!</h5></button>
+            </div>
         </form>
     )
 }

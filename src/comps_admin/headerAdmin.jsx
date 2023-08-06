@@ -31,9 +31,9 @@ const HeaderAdmin = () => {
     }
 
     return (
-        <header className='py-1 px-5 d-flex justify-content-between' style={{ height: "70px" }}>
-            <div className='col-2 h-100 logo' style={{ zIndex: '99999999' }}>
-                <Link to="/">
+        <header className='admin py-1 px-4 d-flex justify-content-between' style={{ height: "70px" }}>
+            <div className='h-100 logo col-md-4 col-8 col-sm-6 col-lg-2' style={{ zIndex: '99999999' }}>
+                <Link to="/admin/users">
                     <div className='h-100 col-3' style={{ backgroundImage: `url("./design/logo1.png")`, backgroundPosition: "center", backgroundSize: "cover" }}></div>
                 </Link>
             </div>

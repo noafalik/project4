@@ -46,9 +46,10 @@ const ContendersList = () => {
 
     return (
         <div className='container mt-5' style={{ minHeight:'100vh'}}>
-            <h1 className='display-4'>My contenders</h1>
+            <h1 className='display-4 text-center'>My contenders</h1>
             <ContendersSearch setUrl={setUrl} setPagesUrl={setPagesUrl} />
             <PagesBtns apiUrl={pagesUrl} linkTo={"/company/myContenders?page="} cssClass="btn btn-primary ms-2" />
+            <div className='scroll-container'>
             <table className='table table-striped table-hover table-info'>
                 <thead>
                     <tr>
@@ -81,6 +82,7 @@ const ContendersList = () => {
                     })}
                 </tbody>
             </table>
+            </div>
         </div>
     )
 }

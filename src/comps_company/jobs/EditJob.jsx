@@ -60,7 +60,7 @@ const EditJob = () => {
         }
     }
 
-    const onSubForm = async(_bodyData) => {
+    const onSubForm = async (_bodyData) => {
         console.log(_bodyData);
         await doApiUpload();
         doApiEdit(_bodyData);
@@ -84,18 +84,20 @@ const EditJob = () => {
 
     return (
         <div className='container'>
-            <h1>Edit category form</h1>
+            <h1 className='display-4 mx-auto text-center pt-5'>Edit job</h1>
             {item.job_title ?
-                <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 border p-2" >
-                    <label>Job title</label>
-                    <input defaultValue={item.job_title} {...register("job_title", { required: true, minLength: 2 })} className="form-control" type="text" />
+                <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 p-2 mx-auto" >
+                    <label className='h5'>Job title:</label>
+                    <input defaultValue={item.job_title} {...register("job_title", { minLength: 2 })} className="form-control" type="text" />
                     {errors.job_title && <div className="text-danger">* Enter valid name</div>}
-                    <label>info</label>
-                    <textarea defaultValue={item.info} {...register("info", { required: true, minLength: 2 })} className="form-control" type="textarea"></textarea>
-                    {errors.info && <div className="text-danger">* Enter valid info</div>}
-                    <label>Category</label>
                     <br />
-                    <select {...register("category", { required: true, minLength: 2 })}>
+                    <label className='h5'>Info:</label>
+                    <textarea defaultValue={item.info} {...register("info", { minLength: 2 })} className="form-control" type="textarea"></textarea>
+                    {errors.info && <div className="text-danger">* Enter valid info</div>}
+                    <br />
+                    <label className='h5'>Category:</label>
+                    <br />
+                    <select {...register("category", { minLength: 2 })}>
                         {
                             categoriesAr.map((item, i) => {
                                 return (
@@ -106,22 +108,34 @@ const EditJob = () => {
                     </select>
                     {errors.category && <div className="text-danger">* Enter valid category</div>}
                     <br />
-                    <label>Salary</label>
-                    <input defaultValue={item.salary} {...register("salary", { required: true })} className="form-control" type="number"></input>
+                    <br />
+                    <label className='h5'>Salary:</label>
+                    <input defaultValue={item.salary} {...register("salary")} className="form-control" type="number"></input>
                     {errors.salary && <div className="text-danger">* Enter valid salary</div>}
-                    <label>Location</label>
-                    <input defaultValue={item.location} {...register("location", { required: true, minLength: 2 })} className="form-control" type="text" />
+                    <br />
+                    <label className='h5'>Location:</label>
+                    <input defaultValue={item.location} {...register("location", { minLength: 2 })} className="form-control" type="text" />
                     {errors.location && <div className="text-danger">* Enter valid location</div>}
-                    <label>Visa</label>
-                    <input defaultValue={item.visa} {...register("visa", { required: true, minLength: 2 })} className="form-control" type="text" />
+                    <br />
+                    <label className='h5'>Visa:</label>
+                    <br />
+                    <select {...register("visa")}>
+                        <option value={true}>required</option>
+                        <option value={false}>not required</option>
+                    </select>
+                    <br />
                     {errors.visa && <div className="text-danger">* Enter valid visa info</div>}
-                    <label>Job Image</label>
+                    <br />
+                    <label className='h5'>Job Image:</label>
                     <input ref={uploadRef} type="file" className='form-control' />
                     {errors.img_url && <div className="text-danger">* Enter valid img_url</div>}
-                    <label>Continent</label>
-                    <input defaultValue={item.continent} {...register("continent", { required: true, minLength: 2 })} className="form-control" type="text" />
+                    <br />
+                    <label className='h5'>Continent</label>
+                    <input defaultValue={item.continent} {...register("continent", { minLength: 2 })} className="form-control" type="text" />
                     {errors.continent && <div className="text-danger">* Enter valid continent</div>}
-                    <button className='btn btn-warning mt-3'>Update</button>
+                    <div className='text-center'>
+                        <button className='btn text-white my-4' style={{ backgroundColor: '#5C2018' }}><h5 className='m-0'>Update</h5></button>
+                    </div>
                 </form> : <h2>Loading...</h2>}
         </div >
     )

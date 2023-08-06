@@ -32,7 +32,7 @@ const HeaderCompany = () => {
     return (
         <header className='py-1 px-5 d-flex justify-content-between' style={{ height: "70px" }}>
             <div className='col-2 h-100 logo' style={{ zIndex: '99999999' }}>
-                <Link to="/">
+                <Link to="/company">
                     <div className='h-100 col-3' style={{ backgroundImage: `url("./design/logo1.png")`, backgroundPosition: "center", backgroundSize: "cover" }}></div>
                 </Link>
             </div>

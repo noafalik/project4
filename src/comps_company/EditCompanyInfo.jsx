@@ -71,24 +71,29 @@ export default function EditCompanyInfo() {
 
 
     return (
-        <div className='container-fluid pt-5'>
-            <div className='container mt-5'>
-                <h1 className='mt-5'>Edit company info</h1>
+        <div className='container-fluid pt-5' style={{minHeight:'100vh'}}>
+            <div className='container'>
+                <h1 className='display-4 mx-auto text-center pt-5'>Edit company info</h1>
                 {item.company_name ?
-                    <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 border p-2" >
-                        <label>Company Name</label>
+                    <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 p-2 mx-auto" >
+                        <label className='h5'>Company Name:</label>
                         <input defaultValue={item.company_name} {...register("company_name", { required: true, minLength: 2 })} className="form-control" type="text" />
                         {errors.company_name && <div className="text-danger">* Enter valid name</div>}
-                        <label>Contact phone</label>
+                        <br/>
+                        <label className='h5'>Contact phone:</label>
                         <textarea defaultValue={item.contactPhone} {...register("contactPhone", { required: true, minLength: 2 })} className="form-control" type="textarea"></textarea>
                         {errors.contactPhone && <div className="text-danger">* Enter valid phone</div>}
-                        <label>State</label>
+                        <br/>
+                        <label className='h5'>State:</label>
                         <textarea defaultValue={item.state} {...register("state", { required: true, minLength: 2 })} className="form-control" type="textarea"></textarea>
                         {errors.state && <div className="text-danger">* Enter valid state</div>}
-                        <label>Logo url</label>
+                        <br/>
+                        <label className='h5'>Logo:</label>
                         <input ref={uploadRef} type="file" className='form-control' />
                         {errors.logo_url && <div className="text-danger">* Enter valid phone</div>}
-                        <button className='btn btn-warning mt-3'>Update</button>
+                        <div className='text-center'>
+                        <button className='btn text-white mt-3' style={{backgroundColor: '#5C2018'}}><h5 className='m-0'>Update</h5></button>
+                        </div>
                     </form> : <h2>Loading...</h2>}
             </div >
         </div>

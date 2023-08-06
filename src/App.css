@@ -1,13 +1,45 @@
 /* global css */
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;600&family=Courgette&display=swap');
 
-header {
+table{
+  margin-top: 30px;
+}
+
+th,td{
+  text-align: center;
+}
+
+.scroll-container {
+  overflow: auto;
+}
+
+.scroll td:first-of-type {
+  position: sticky;
+  left: 0;
+  border-left: none;
+  background: #f4f4f4;
+  color: #212121;
+  font-weight: bold;
+}
+
+header:not(.admin){
   background-color: transparent;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 999999;
+}
+
+
+header .admin{
+  /* background-color: transparent; */
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  /* width: 100%;
+  height: 100%; */
   z-index: 999999;
 }
 

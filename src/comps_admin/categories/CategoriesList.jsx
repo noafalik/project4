@@ -42,9 +42,12 @@ export default function CategoriesList() {
 
     return (
         <div className='container mt-5' style={{ minHeight:'100vh'}}>
-            <h1 className='display-4'>List of categories in system</h1>
-            <Link to="/admin/categories/add" className='btn btn-info my-2'>Add category</Link>
+            <h1 className='display-4 text-center'>List of categories in system</h1>
+            <div className='text-center'>
+            <Link to="/admin/categories/add" className='btn text-white my-3' style={{backgroundColor: '#5C2018'}}>Add category</Link>
+            </div>
             <PagesBtns apiUrl={API_URL+"/categories/count"} linkTo={"/admin/categories?page="} cssClass="btn btn-primary ms-2"/>
+            <div className='scroll-container'>
             <table className='table table-striped table-hover table-info'>
                 <thead>
                     <tr>
@@ -67,12 +70,13 @@ export default function CategoriesList() {
                                 }} className='bg-danger'>X</button></td>
                                 <td><button onClick={() => {
                                     nav(`/admin/categories/edit/`+item._id)
-                                }} className='bg-info'>Edit</button></td>
+                                }} className='bg-info' >Edit</button></td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
+            </div>
         </div>
     )
 }
