@@ -28,7 +28,7 @@ const Home = () => {
             </div>
             
             <div className='container-fluid '>
-                <div className='container'>
+                <div className='container my-4'>
                     <RecentJobsList />
                 </div>
                 {user ?

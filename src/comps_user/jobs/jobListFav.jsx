@@ -38,7 +38,7 @@ const JobListFav = () => {
     return (
         <>
             {localStorage.getItem(TOKEN_KEY) !== null ? (
-                <div className='container-fluid py-2'>
+                <div className='container-fluid'>
                     {length > 0 &&
                         <div className='container d-flex justify-content-center align-item-center'>
                             <h2 className='display-5 m-1'>Favorite Jobs</h2>

@@ -25,8 +25,7 @@ const RecentJobsList = () => {
   }
 
   return (
-    <div className='container-fluid py-3'>
-      <div className="container">
+    <div className='container-fluid my-3'>
         <div className="row">
           {ar.map(item => {
             return(
@@ -35,7 +34,6 @@ const RecentJobsList = () => {
           })}
         </div>
         {loading && <Loading />}
-      </div>
     </div>
   )
 }

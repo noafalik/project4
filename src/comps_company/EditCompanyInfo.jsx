@@ -87,7 +87,7 @@ export default function EditCompanyInfo() {
                         {errors.state && <div className="text-danger">* Enter valid state</div>}
                         <label>Logo url</label>
                         <input ref={uploadRef} type="file" className='form-control' />
-                        {errors.logo_url && <div className="text-danger">* Enter valid phone</div>}
+                        {errors.logo_url && <div className="text-danger">* Enter valid file</div>}
                         <button className='btn btn-warning mt-3'>Update</button>
                     </form> : <h2>Loading...</h2>}
             </div >
