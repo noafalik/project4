@@ -5,28 +5,38 @@ import { useUserData } from '../hooks/useUserData';
 import Loading from '../comp_general/loading';
 import JobListFav from './jobs/jobListFav';
 import AppliedJobsList from './jobs/appliedJobsList';
+import { Link } from 'react-router-dom';
+import { BsPencil } from "react-icons/bs";
 
 const UserInfo = () => {
     const [itemInfo, setItemInfo] = useState({});
     const { user } = useUserData();
 
-    
+
+
     return (
-        <div style={{ marginTop: '70px', minHeight:'100vh' }}>
+        <div style={{ marginTop: '70px', minHeight: '100vh' }}>
             <AuthUser />
+
             <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
-                <h1 className='display-6 text-white'>USER INFO-</h1>
+                <h1 className='display-6 text-white'>USER INFO</h1>
             </div>
-            <div className='container-fluid'>
-                <div className="container col-md-6 mx-auto py-4">
-                    {user.full_name ?
-                        <>
-                            <h4 className='h3'><strong>Account name:</strong> {user.full_name}</h4>
-                            <h4 className='h3'><strong>Birth year:</strong> {user.birth_date.substring(0, 10)} </h4>
-                            <h4 className='h3'><strong>Email:</strong> {user.email}</h4>
-                            <h4 className='h3'><strong>Gender:</strong> {user.gender}</h4>
-                            <h4 className='h3'><strong>Signup date:</strong> {user.date_created ? user.date_created.substring(0, 10) : user.createdAt.substring(0, 10)}</h4>
-                        </> : <Loading />}
+            <div className='container row justify-content-center'>
+                
+                <div className='container-fluid col-md-8'>
+                    <div className="container col-md-6 mx-auto py-4">
+                        {user.full_name ?
+                            <>
+                                <h4 className='h3'><strong>Account name:</strong> {user.full_name}</h4>
+                                <h4 className='h3'><strong>Birth year:</strong> {user.birth_date.substring(0, 10)} </h4>
+                                <h4 className='h3'><strong>Email:</strong> {user.email}</h4>
+                                <h4 className='h3'><strong>Gender:</strong> {user.gender}</h4>
+                                <h4 className='h3'><strong>Signup date:</strong> {user.date_created ? user.date_created.substring(0, 10) : user.createdAt.substring(0, 10)}</h4>
+                            </> : <Loading />}
+                    </div>
+                </div>
+                <div className='container col-auto' style={{maxHeight:'50px'}}>
+                    <button className='btn text-center' style={{backgroundColor:'#d1cf60'}}><Link className='text-black text-decoration-none' to={"/editUserInfo/" + user._id}> <BsPencil/> </Link></button>
                 </div>
 
             </div>

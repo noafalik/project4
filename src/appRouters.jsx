@@ -27,6 +27,8 @@ import AddJob from './comps_company/jobs/AddJob'
 import ContendersList from './comps_company/contenders/ContendersList'
 import ApplyPage from './comps_user/jobs/applyPage'
 import Footer from './comp_general/footer'
+import EditUserInfo from './comps_user/editUserInfo'
+import MatchForm from './comps_user/match/matchForm'
 
 
 export default function AppRouters() {
@@ -49,6 +51,8 @@ export default function AppRouters() {
                 <Route path="/login" element={<LoginUser />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/userinfo" element={<UserInfo />} />
+                <Route path='/editUserInfo/:id' element={<EditUserInfo />} />
+                <Route path='/match/matchform' element={<MatchForm />} />
 
                 <Route path="/admin" element={<LoginAdmin />} />
                 {localStorage["user"] && (JSON.parse(localStorage["user"])).role == "admin" && <>

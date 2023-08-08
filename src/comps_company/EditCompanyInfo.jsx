@@ -90,10 +90,12 @@ export default function EditCompanyInfo() {
                         <br/>
                         <label className='h5'>Logo:</label>
                         <input ref={uploadRef} type="file" className='form-control' />
+
                         {errors.logo_url && <div className="text-danger">* Enter valid phone</div>}
                         <div className='text-center'>
                         <button className='btn text-white mt-3' style={{backgroundColor: '#5C2018'}}><h5 className='m-0'>Update</h5></button>
                         </div>
+
                     </form> : <h2>Loading...</h2>}
             </div >
         </div>

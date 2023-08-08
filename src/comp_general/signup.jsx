@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useForm } from "react-hook-form"
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { API_URL, doApiMethod, TOKEN_KEY } from '../services/apiService';
+//import { useUserData } from '../hooks/useUserData';
+
 
 const Signup = () => {
     const nav = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const uploadRef = useRef();
+    // const { doApiUpload } = useUserData();
 
-    const onSubForm = (_bodyData) => {
+    const onSubForm = async(_bodyData) => {
         console.log(_bodyData);
+        //let data=await doApiUpload(uploadRef);
+        //console.log(data+"here");
         doApiPost(_bodyData);
     }
 
@@ -34,7 +40,7 @@ const Signup = () => {
         }
     }
     return (
-        <div className='container py-4' style={{marginTop:'70px', minHeight:'100vh'}} >
+        <div className='container py-4' style={{ marginTop: '70px', minHeight: '100vh' }} >
             <h1 className='display-4 text-center'>Sign up</h1>
             <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubForm)}  >
                 <label>Full name:</label>
@@ -49,7 +55,7 @@ const Signup = () => {
 
 
                 <label>Your birth year:</label>
-                <input {...register("birth_date", { required: true, min: 1900, max: 2100 })} className="form-control" type="number" defaultValue={1990} />
+                <input {...register("birth_date", { required: true, min: 1900, max: 2100 })} className="form-control" type="date" defaultValue={1990} />
                 {errors.birth_date && <div className="text-danger">* Enter valid Year (1900 to 2030)</div>}
 
                 <label>Gender: </label>
@@ -57,6 +63,10 @@ const Signup = () => {
                     <option value="F">Female</option>
                     <option value="M">Male</option>
                 </select>
+                {/* <br />
+                <label>Resume: </label>
+                <input ref={uploadRef} type="file" className='form-control' />
+                {errors.logo_url && <div className="text-danger">* Enter valid file</div>} */}
 
                 <div className='text-center'>
                     <button className='btn btn-success mt-3 '>Sign up</button>

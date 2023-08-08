@@ -5,6 +5,7 @@ export const imgToString = async(_file) => {
       reader.readAsDataURL(_file);
       
       reader.addEventListener("loadend", async() => {
+        console.log(reader.result)
         resolve(reader.result)
       })
     })

@@ -3,12 +3,13 @@ import { API_URL, TOKEN_KEY, doApiGet, doApiMethod } from "../services/apiServic
 import { toast } from "react-toastify";
 import { JobContext } from "../context/jobContext";
 import { useNavigate } from "react-router-dom";
+import { imgToString } from "../services/cloudinaryServive";
 
 
 export const useUserData = () => {
   // const [userData,setUserData] = useState({});
 
-  const { user, setUser, favs_ar, setFavsAr, company, setCompany } = useContext(JobContext);
+  const { user, setUser, favs_ar, setFavsAr, company, setCompany, data, setData } = useContext(JobContext);
 
   const nav = useNavigate();
   console.log(user);
@@ -26,7 +27,11 @@ export const useUserData = () => {
       console.log(data);
       localStorage.setItem('user', JSON.stringify(data));
       setUser(data);
-      if (data.role == "company") {
+      if (data.role === "user"||data.role === "admin") {
+        MatchDataUpdate()
+      }
+
+      if (data.role === "company") {
         const companyUrl = API_URL + "/companies/companyInfo";
         const companyData = await doApiGet(companyUrl);
         localStorage.setItem('company', JSON.stringify(companyData));
@@ -35,6 +40,25 @@ export const useUserData = () => {
     }
     catch (error) {
       console.log(error)
+    }
+  }
+
+  const MatchDataUpdate = async () => {
+    try {
+      const url = user.match_url;
+      console.log(url)
+      const data = await doApiGet(url)
+      // console.log(data);
+      if (data.jobsFive) {
+        setData(data)
+        console.log("here i am" + data)
+        // user.match_url = url;
+        // updateMatchUrl(url);
+      }
+    }
+    catch (err) {
+      console.log(err);
+      // alert("value is wrong!");
     }
   }
 
@@ -54,10 +78,7 @@ export const useUserData = () => {
     }
   }
 
-  // const userSignOut = () => {
-  //   setFavsAr([]);
-  //   setUserData({})
-  // }
+
 
   // מעדכן את המועדפים , גם בהחסרה וגם בהוספה
   // ואת המסד של המשתמש
@@ -106,11 +127,29 @@ export const useUserData = () => {
     }
   }
 
+
+  const doApiUpload = async (uploadRef) => {
+    try {
+      const myFile = uploadRef.current.files[0];
+      // הופך את הקובץ למידע כסטרינג
+      const imgData = await imgToString(myFile);
+      const url = API_URL + "/upload/cloud";
+      const resp = await doApiMethod(url, "POST", { image: imgData })
+      console.log(resp);
+      console.log(resp.data.secure_url)
+      // imgUrl = resp.data.secure_url;
+    }
+    catch (err) {
+      console.log(err);
+      alert("There problem , come back later")
+    }
+  }
+
   // פונקציה שתעדכן את המועדפים גם בזכרון
   // וגם בשרת
 
   //  doApiUser -> נצטרך את הפונקציה כאשר משתמש
   // מתחבר 
-  return { doApiUser, user, userSignOut, favs_ar, updateFav, company, unApplay };
+  return { doApiUser, user, userSignOut, favs_ar, updateFav, company, doApiUpload, unApplay, data, setData };
 
 }
