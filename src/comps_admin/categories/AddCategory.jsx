@@ -28,16 +28,19 @@ export default function AddCategory() {
   }
 
   return (
-    <div className='container'>
-      <h1>Add new category form</h1>
-      <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 border p-2" >
-        <label>Category name</label>
+    <div className='container my-5' style={{ minHeight:'100vh'}}>
+      <h1 className='display-4 mx-auto text-center pt-5'>Add new category</h1>
+      <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 p-2 mx-auto">
+        <label className='h5'>Category name:</label>
         <input {...register("category_name", { required: true, minLength: 2 })} className="form-control" type="text" />
         {errors.name && <div className="text-danger">* Enter valid name</div>}
-        <label>Info</label>
+        <br/>
+        <label className='h5'>Info:</label>
         <textarea {...register("info", { required: true, minLength: 2 })} className="form-control" type="textarea"></textarea>
         {errors.info && <div className="text-danger">* Enter valid info</div>}
-        <button className='btn btn-success mt-3'>Add new</button>
+        <div className='text-center'>
+        <button className='btn text-white my-4' style={{backgroundColor: '#5C2018'}}><h5 className='m-0'>Add new</h5></button>
+        </div>
       </form>
     </div >
   )

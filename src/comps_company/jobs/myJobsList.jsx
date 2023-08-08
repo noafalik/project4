@@ -47,10 +47,13 @@ const MyJobsList = () => {
 
   return (
       <div className='container mt-5' style={{ minHeight:'100vh'}}>
-          <h1 className='display-4'>My jobs</h1>
-          <Link to="/company/addJob" className='btn btn-info my-2'>Add job</Link>
+          <h1 className='display-4 text-center'>My jobs</h1>
+          <div className='text-center'>
+          <Link to="/company/addJob" className='btn text-white my-2' style={{ background: '#5C2018' }}>Add job</Link>
+          </div>
           <CompanySearchComp setUrl={setUrl} setPagesUrl={setPagesUrl}/>
           <PagesBtns apiUrl={pagesUrl} linkTo={"/company/myJobs?page="} cssClass="btn btn-primary ms-2" />
+          <div className='scroll-container'>
           <table className='table table-striped table-hover table-info'>
               <thead>
                   <tr>
@@ -88,6 +91,7 @@ const MyJobsList = () => {
                   })}
               </tbody>
           </table>
+          </div>
       </div>
   )
 }

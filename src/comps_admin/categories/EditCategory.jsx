@@ -49,17 +49,20 @@ export default function EditCategory() {
 
 
   return (
-    <div className='container'>
-      <h1>Edit category form</h1>
+    <div className='container my-5' style={{ minHeight:'100vh'}}>
+      <h1 className='display-4 mx-auto text-center pt-5'>Edit category form</h1>
       {item.category_name ? 
-      <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 border p-2" >
-        <label>name</label>
-        <input defaultValue={item.category_name} {...register("category_name", { required: true, minLength: 2 })} className="form-control" type="text" />
+      <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 p-2 mx-auto" >
+        <label className='h5'>Name:</label>
+        <input defaultValue={item.category_name} {...register("category_name", { minLength: 2 })} className="form-control" type="text" />
         {errors.name && <div className="text-danger">* Enter valid name</div>}
-        <label>info</label>
-        <textarea defaultValue={item.info} {...register("info", { required: true, minLength: 2 })} className="form-control" type="textarea"></textarea>
+        <br/>
+        <label className='h5'>Info:</label>
+        <textarea defaultValue={item.info} {...register("info", { minLength: 2 })} className="form-control" type="textarea"></textarea>
         {errors.info && <div className="text-danger">* Enter valid info</div>}
-        <button className='btn btn-warning mt-3'>Update</button>
+        <div className='text-center'>
+        <button className='btn text-white my-4' style={{backgroundColor: '#5C2018'}}><h5 className='m-0'>Update</h5></button>
+        </div>
       </form> : <h2>Loading...</h2> }
     </div >
   )
