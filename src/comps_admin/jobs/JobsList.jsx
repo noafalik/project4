@@ -71,10 +71,11 @@ const JobsList = () => {
     }
 
     return (
-        <div className='container mt-5' style={{ minHeight:'100vh'}}>
-            <h1 className='display-4'>List of jobs in system</h1>
+        <div className='container mt-5' style={{ minHeight: '100vh' }}>
+            <h1 className='display-4 mx-auto text-center'>List of jobs in system</h1>
             <SearchComp setUrl={setUrl} setPagesUrl={setPagesUrl} />
             <PagesBtns apiUrl={pagesUrl} linkTo={"/admin/jobs?page="} cssClass="btn btn-primary ms-2" />
+            <div className='scroll-container'>
             <table className='table table-striped table-hover table-info'>
                 <thead>
                     <tr>
@@ -104,7 +105,7 @@ const JobsList = () => {
                                 <td title={item.info}>{item.info && item.info.substring(0, 15)}</td>
                                 <td>{item.salary}</td>
                                 <td>{item.location}</td>
-                                <td>{item.visa=="true"?"required":"not required"}</td>
+                                <td>{item.visa == "true" ? "required" : "not required"}</td>
                                 <td><button onClick={() => changeApproval(item)} style={{ background: item.approved ? "green" : "red" }}>{item.approved ? "approved" : "approve"}</button></td>
                                 <td><button className='bg-danger' onClick={() => deleteItem(item._id)}>X</button></td>
                             </tr>
@@ -112,6 +113,7 @@ const JobsList = () => {
                     })}
                 </tbody>
             </table>
+            </div>
         </div>
     )
 }

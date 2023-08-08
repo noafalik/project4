@@ -71,16 +71,17 @@ export default function AddJob() {
     }
 
     return (
-        <div className='container'>
-            <h1>Add new job</h1>
-            <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 border p-2" >
-                <label>Job title</label>
-                <input {...register("job_title", { required: true, minLength: 2 })} className="form-control" type="text" />
+        <div className='container' style={{ minHeight: '100vh' }}>
+            <h1 className='display-4 mx-auto text-center pt-5'>Add new job</h1>
+            <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 p-2 mx-auto" >
+                <label className='h5'>Job title:</label>
+                <input {...register("job_title", { required: true, minLength: 2 })} className="form-control h5" type="text" />
                 {errors.name && <div className="text-danger">* Enter valid job title</div>}
-                <label>Info</label>
+                <label className='h5'>Info:</label>
                 <textarea {...register("info", { required: true, minLength: 2 })} className="form-control" type="textarea"></textarea>
                 {errors.info && <div className="text-danger">* Enter valid info</div>}
-                <label>Category</label>
+                <br />
+                <label className='h5'>Category:</label>
                 <br />
                 <select className='select-box' {...register("category", { required: true, minLength: 2 })}>
                     {
@@ -93,13 +94,16 @@ export default function AddJob() {
                 </select>
                 {errors.category && <div className="text-danger">* Enter valid category</div>}
                 <br />
-                <label>Salary</label>
+                <br />
+                <label className='h5'>Salary:</label>
                 <input {...register("salary", { required: true })} className="form-control" type="number"></input>
                 {errors.salary && <div className="text-danger">* Enter valid salary</div>}
-                <label>Location</label>
+                <br />
+                <label className='h5'>Location:</label>
                 <input {...register("location", { required: true, minLength: 2 })} className="form-control" type="text" />
                 {errors.location && <div className="text-danger">* Enter valid location</div>}
-                <label>Visa</label>
+                <br />
+                <label className='h5'>Visa:</label>
                 <br />
                 <select {...register("visa", { required: true })}>
                     <option value={true}>required</option>
@@ -107,12 +111,16 @@ export default function AddJob() {
                 </select>
                 <br />
                 {errors.visa && <div className="text-danger">* Enter valid visa info</div>}
-                <label>Job Image</label>
+                <br />
+                <label className='h5'>Job Image:</label>
                 <input ref={uploadRef} type="file" className='form-control' />
-                <label className='m-1'>Continent</label>
+                <br />
+                <label className='h5'>Continent:</label>
                 <input {...register("continent", { required: true, minLength: 2 })} className="form-control" type="text" />
                 {errors.continent && <div className="text-danger">* Enter valid continent</div>}
-                <button className='btn btn-success mt-3'>Add new</button>
+                <div className='text-center'>
+                    <button className='btn text-white my-4' style={{ backgroundColor: '#5C2018' }}><h5 className='m-0'>Add new</h5></button>
+                </div>
                 {loading && <h2>Loading...</h2>}
             </form>
         </div >

@@ -54,8 +54,9 @@ const UsersList = () => {
   
     return (
       <div className='container mt-5' style={{ minHeight:'100vh'}}>
-        <h1 className='display-4'>List of users in system</h1>
+        <h1 className='display-4 mx-auto text-center'>List of users in system</h1>
         <PagesBtns apiUrl={API_URL+"/users/count"} linkTo={"/admin/users?page="} cssClass="btn btn-primary ms-2"/>
+        <div className='scroll-container'>
         <table className='table table-striped table-hover table-info'>
           <thead>
             <tr>
@@ -63,7 +64,7 @@ const UsersList = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Birth year</th>
-              <th>Nick name</th>
+              <th>Gender</th>
               <th>Role</th>
               <th>Del</th>
             </tr>
@@ -77,13 +78,14 @@ const UsersList = () => {
                   <td>{item.email}</td>
                   <td>{item.birth_date.substring(0,10)}</td>
                   <td>{item.gender}</td>
-                  <td><button onClick={() => changeRole(item)} style={{background:item.role=="admin"?"orange":"silver"}}>{item.role}</button></td>
+                  <td className='p-1'><button onClick={() => changeRole(item)} style={{background:item.role=="admin"?"orange":"silver"}} className='btn p-1'>{item.role}</button></td>
                   <td><button className='bg-danger' onClick={() => deleteItem(item._id)}>X</button></td>
                 </tr>
               )
             })}
           </tbody>
         </table>
+        </div>
       </div>
     )
 }
