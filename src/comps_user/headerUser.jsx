@@ -43,7 +43,7 @@ const HeaderUser = () => {
                 <ul className='list-unstyled d-flex justify-content-between align-items-center gap-5'>
                     <li><Link to="/jobs">Jobs</Link></li>
                     <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/flights">flights</Link></li>
+                    <li><Link to="/flights">Flights</Link></li>
 
                     {localStorage[TOKEN_KEY] ?
                         <>
