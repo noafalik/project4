@@ -85,6 +85,55 @@ header a {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.match-add{
+  background-image: url("../public/design/matchAdd.jpg");
+  background-position: center;
+  background-size: cover;
+  min-height: 190px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  border: #2f2f2f solid 1px;
+  background-color: rgba(255, 255, 255, 0.28);
+  position: relative;
+}
+
+.match-add .ad-box{
+  position: absolute;
+  top: 0px;
+  left: 0px; 
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: 300ms;
+}
+
+.match-add .ad-box:hover {
+  background-color: rgba(255, 255, 255, 0.37);
+}
+
+.match-add .ad-box .center-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} 
+
+.match-add .title-F{
+  display: flex;
+  margin-top: 10px;
+  color: #000000;
+  font-weight: bolder;
+}
+
+.match-add p{
+  display: flex;
+  margin-top: 10px;
+  color: #000000;
+  font-size: 22px;
+}
+
 
 
 .footer {

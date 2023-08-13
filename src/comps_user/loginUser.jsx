@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate,useLocation } from 'react-router-dom';
 import { doApiMethod, API_URL, TOKEN_KEY } from '../services/apiService';
 import { toast } from 'react-toastify';
 import { useUserData } from '../hooks/useUserData';
@@ -10,7 +10,16 @@ const LoginUser = () => {
     const nav = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {doApiUser,updateFav}=useUserData();
+    const location = useLocation();
     
+    useEffect(() => {
+        if (location.hash === '#top') {
+            const targetElement = document.getElementById('top');
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, [location.hash]);
 
     const onSubForm = (_bodyData) => {
         console.log(_bodyData);
@@ -39,8 +48,10 @@ const LoginUser = () => {
         }
     }
 
+    
+
     return (
-        <div className='container' style={{marginTop:'70px', minHeight:'100vh'}}>
+        <div className='container' id='top' style={{marginTop:'70px', minHeight:'100vh'}}>
             <h1 className='display-4 text-center'>Login</h1>
             <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubForm)}  >
                 <label>email</label>
@@ -52,6 +63,9 @@ const LoginUser = () => {
                 <div className='text-center'>
 
                     <button className='btn btn-dark mt-3 '>Log in</button>
+                    <div className='container mt-3'>
+                    <h6>New User? <Link to="/signup">Sign Up</Link></h6>
+                    </div>
                 </div>
             </form>
         </div>
