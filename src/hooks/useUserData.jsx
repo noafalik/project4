@@ -12,16 +12,17 @@ export const useUserData = () => {
   const { user, setUser, favs_ar, setFavsAr, company, setCompany, data, setData } = useContext(JobContext);
 
   const nav = useNavigate();
-  console.log(user);
+  
   useEffect(() => {
-    //  if(user===null)
-    // {doApiUser();}
-    doApiUser();
+    console.log('user');
+     if(!!!user){doApiUser();}
+    // doApiUser();
 
   }, [])
 
   const doApiUser = async () => {
     try {
+      console.log("doApiUser");
       const url = API_URL + "/users/userInfo";
       const data = await doApiGet(url)
       console.log(data);
