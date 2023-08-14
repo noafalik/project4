@@ -23,6 +23,7 @@ const Signup = () => {
         try {
             _bodyData.CV_link="";
             _bodyData.linkedIn_url="";
+            _bodyData.match_url="";
             const url = API_URL + "/users/";
             const data = await doApiMethod(url, "POST", _bodyData)
             console.log(data);
