@@ -11,7 +11,6 @@ const SearchCompJobs = ({setUrl, setPagesUrl}) => {
     const minRef = useRef();
     const locationRef = useRef();
     const visaRef = useRef();
-    const approvedRef = useRef();
     const [companiesAr, setCompaniesAr] = useState([]);
     const [categoriesAr, setCategoriesAr] = useState([]);   
 
@@ -44,11 +43,10 @@ const SearchCompJobs = ({setUrl, setPagesUrl}) => {
 
     const onSub = (e) => {
         e.preventDefault();
-        console.log(approvedRef.current.value)
-        const address = API_URL+"/jobs?"+(titleRef.current.value&&"s="+titleRef.current.value)+(categoryRef.current.value&&"&category="+categoryRef.current.value)+(companyRef.current.value&&"&company_id="+companyRef.current.value)+(minRef.current.value&&"&minSalary="+minRef.current.value)+(maxRef.current.value&&"&maxSalary="+maxRef.current.value)+(locationRef.current.value&&"&location="+locationRef.current.value)+(visaRef.current.value&&"&visa="+visaRef.current.value)+(approvedRef.current.value&&"&approved="+approvedRef.current.value);
+        const address = API_URL+"/jobs?"+(titleRef.current.value&&"s="+titleRef.current.value)+(categoryRef.current.value&&"&category="+categoryRef.current.value)+(companyRef.current.value&&"&company_id="+companyRef.current.value)+(minRef.current.value&&"&minSalary="+minRef.current.value)+(maxRef.current.value&&"&maxSalary="+maxRef.current.value)+(locationRef.current.value&&"&location="+locationRef.current.value)+(visaRef.current.value&&"&visa="+visaRef.current.value);
         console.log(address);
         setUrl(address);
-        setPagesUrl(API_URL+"/jobs/count?"+(titleRef.current.value&&"s="+titleRef.current.value)+(categoryRef.current.value&&"&category="+categoryRef.current.value)+(companyRef.current.value&&"&company_id="+companyRef.current.value)+(minRef.current.value&&"&minSalary="+minRef.current.value)+(maxRef.current.value&&"&maxSalary="+maxRef.current.value)+(locationRef.current.value&&"&location="+locationRef.current.value)+(visaRef.current.value&&"&visa="+visaRef.current.value)+(approvedRef.current.value&&"&approved="+approvedRef.current.value));
+        setPagesUrl(API_URL+"/jobs/count?"+(titleRef.current.value&&"s="+titleRef.current.value)+(categoryRef.current.value&&"&category="+categoryRef.current.value)+(companyRef.current.value&&"&company_id="+companyRef.current.value)+(minRef.current.value&&"&minSalary="+minRef.current.value)+(maxRef.current.value&&"&maxSalary="+maxRef.current.value)+(locationRef.current.value&&"&location="+locationRef.current.value)+(visaRef.current.value&&"&visa="+visaRef.current.value));
     }
     return (
         <form onSubmit={onSub} className='shadow my-4 p-2 d-flex gap-2 text-center align-items-center'>
@@ -100,15 +98,6 @@ const SearchCompJobs = ({setUrl, setPagesUrl}) => {
                 <label>Visa</label>
                 <br />
                 <input type='text' className='form-control' ref={visaRef}></input>
-            </div>
-            <div>
-                <label>Approved</label>
-                <br />
-                <select className='select-box' ref={approvedRef}>
-                    <option value={""}>All</option>
-                    <option value={"true"}>Approved</option>
-                    <option value={"false"}>Not approved</option>
-                </select>
             </div>
             <button type="submit" className='btn-light btn text-info h-25'>Find</button>
         </form>

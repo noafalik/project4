@@ -7,8 +7,7 @@ import { useUserData } from '../hooks/useUserData';
 import { FaUser } from "react-icons/fa";
 
 const HeaderUser = () => {
-    const { userSignOut } = useUserData();
-    const { user } = useUserData();
+    const { user,userSignOut } = useUserData();
 
     useEffect(() => {
 

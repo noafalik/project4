@@ -27,8 +27,8 @@ import AddJob from './comps_company/jobs/AddJob'
 import ContendersList from './comps_company/contenders/ContendersList'
 import ApplyPage from './comps_user/jobs/applyPage'
 import Footer from './comp_general/footer'
-import EditUserInfo from './comps_user/editUserInfo'
 import MatchForm from './comps_user/match/matchForm'
+import EditUserInfo from './comps_user/editUserInfo'
 
 
 export default function AppRouters() {

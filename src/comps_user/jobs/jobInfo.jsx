@@ -63,7 +63,7 @@ const JobInfo = () => {
       {localStorage.getItem(TOKEN_KEY) !== null ?
         <div style={{ marginTop: '70px' }}>
           <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
-            <h1 className='display-6 text-white'>JOB INFO-</h1>
+            <h1 className='display-6 text-white'>JOB INFO</h1>
           </div>
           <div className='container-fluid py-4'>
             <div className="container">

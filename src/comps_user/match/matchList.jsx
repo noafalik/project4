@@ -33,7 +33,6 @@ const MatchList = () => {
                                 )
                             })}
                         </div>
-                        {loading && <Loading />}
                     </div>
                 }
                 {fourMatchAr.length > 0 &&
@@ -47,7 +46,6 @@ const MatchList = () => {
                                 )
                             })}
                         </div>
-                        {loading && <Loading />}
                     </div>
                 }
                 {threeMatchAr.length > 0 &&
@@ -61,10 +59,10 @@ const MatchList = () => {
                                 )
                             })}
                         </div>
-                        {loading && <Loading />}
                     </div>
                 }
             </div>
+            {loading && <Loading />}
         </div>
     )
 }
