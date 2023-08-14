@@ -12,7 +12,7 @@ const Signup = () => {
     const uploadRef = useRef();
     // const { doApiUpload } = useUserData();
 
-    const onSubForm = async(_bodyData) => {
+    const onSubForm = async (_bodyData) => {
         console.log(_bodyData);
         //let data=await doApiUpload(uploadRef);
         //console.log(data+"here");
@@ -21,6 +21,8 @@ const Signup = () => {
 
     const doApiPost = async (_bodyData) => {
         try {
+            _bodyData.CV_link="";
+            _bodyData.linkedIn_url="";
             const url = API_URL + "/users/";
             const data = await doApiMethod(url, "POST", _bodyData)
             console.log(data);
@@ -41,7 +43,10 @@ const Signup = () => {
     }
     return (
         <div className='container py-4' style={{ marginTop: '70px', minHeight: '100vh' }} >
-            <h1 className='display-4 text-center'>Sign up</h1>
+
+            <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
+                <h1 className='display-6 text-white'>Sign up</h1>
+            </div>
             <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubForm)}  >
                 <label>Full name:</label>
                 <input {...register("full_name", { required: true, minLength: 2 })} className="form-control" type="text" />
