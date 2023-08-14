@@ -29,6 +29,7 @@ import ApplyPage from './comps_user/jobs/applyPage'
 import Footer from './comp_general/footer'
 import MatchForm from './comps_user/match/matchForm'
 import EditUserInfo from './comps_user/editUserInfo'
+import SignupCompany from './comp_general/signupCompany'
 
 
 export default function AppRouters() {
@@ -50,6 +51,7 @@ export default function AppRouters() {
                 <Route path="/flights" element={<FlightsPage />} />
                 <Route path="/login" element={<LoginUser />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/signupCompany" element={<SignupCompany/>} />
                 <Route path="/userinfo" element={<UserInfo />} />
                 <Route path='/editUserInfo/:id' element={<EditUserInfo />} />
                 <Route path='/match/matchform' element={<MatchForm />} />

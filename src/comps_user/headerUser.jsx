@@ -7,7 +7,7 @@ import { useUserData } from '../hooks/useUserData';
 import { FaUser } from "react-icons/fa";
 
 const HeaderUser = () => {
-    const { user,userSignOut } = useUserData();
+    const { user, userSignOut } = useUserData();
 
     useEffect(() => {
 
@@ -40,6 +40,10 @@ const HeaderUser = () => {
             </div>
             <nav className='d-flex justify-content-between align-items-center'>
                 <ul className='list-unstyled d-flex justify-content-between align-items-center gap-5'>
+                    {localStorage[TOKEN_KEY] &&
+                        <li><button className='btn-publish rounded-3'><Link to="/signupCompany">Publish A Job</Link></button></li>
+                    }
+
                     <li><Link to="/jobs">Jobs</Link></li>
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/flights">Flights</Link></li>
