@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import RecentJobsList from '../comps_user/jobs/recentJobsList';
-import JobItem from '../comps_user/jobs/jobItem';
 import JobListFav from '../comps_user/jobs/jobListFav';
 import { useUserData } from '../hooks/useUserData';
+import CommentsComp from './CommentsComp';
 import { TOKEN_KEY } from '../services/apiService';
 import { Link } from 'react-router-dom';
 // import '../App.css';
@@ -56,7 +56,7 @@ const Home = () => {
                     </Link>
                 }
             </div>
-
+            <CommentsComp />
         </div>
 
     )

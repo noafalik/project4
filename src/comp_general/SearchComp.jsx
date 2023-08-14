@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 import { API_URL, TOKEN_KEY, doApiGet } from '../services/apiService';
 import { useNavigate } from 'react-router-dom';
 
-const SearchComp = ({setUrl, setPagesUrl}) => {
+const SearchComp = ({ setUrl, setPagesUrl }) => {
     const titleRef = useRef();
     const categoryRef = useRef();
     const companyRef = useRef();
@@ -46,14 +46,14 @@ const SearchComp = ({setUrl, setPagesUrl}) => {
     const onSub = (e) => {
         e.preventDefault();
         console.log(approvedRef.current.value)
-        const address = API_URL+"/jobs?"+(titleRef.current.value&&"s="+titleRef.current.value)+(categoryRef.current.value&&"&category="+categoryRef.current.value)+(idRef.current.value&&"&id="+idRef.current.value)+(companyRef.current.value&&"&company_id="+companyRef.current.value)+(minRef.current.value&&"&minSalary="+minRef.current.value)+(maxRef.current.value&&"&maxSalary="+maxRef.current.value)+(locationRef.current.value&&"&location="+locationRef.current.value)+(visaRef.current.value&&"&visa="+visaRef.current.value)+(approvedRef.current.value&&"&approved="+approvedRef.current.value);
+        const address = API_URL + "/jobs?" + (titleRef.current.value && "s=" + titleRef.current.value) + (categoryRef.current.value && "&category=" + categoryRef.current.value) + (idRef.current.value && "&id=" + idRef.current.value) + (companyRef.current.value && "&company_id=" + companyRef.current.value) + (minRef.current.value && "&minSalary=" + minRef.current.value) + (maxRef.current.value && "&maxSalary=" + maxRef.current.value) + (locationRef.current.value && "&location=" + locationRef.current.value) + (visaRef.current.value && "&visa=" + visaRef.current.value) + (approvedRef.current.value && "&approved=" + approvedRef.current.value);
         console.log(address);
         setUrl(address);
-        setPagesUrl(API_URL+"/jobs/count?"+(titleRef.current.value&&"s="+titleRef.current.value)+(idRef.current.value&&"&id="+idRef.current.value)+(categoryRef.current.value&&"&category="+categoryRef.current.value)+(companyRef.current.value&&"&company_id="+companyRef.current.value)+(minRef.current.value&&"&minSalary="+minRef.current.value)+(maxRef.current.value&&"&maxSalary="+maxRef.current.value)+(locationRef.current.value&&"&location="+locationRef.current.value)+(visaRef.current.value&&"&visa="+visaRef.current.value)+(approvedRef.current.value&&"&approved="+approvedRef.current.value));
+        setPagesUrl(API_URL + "/jobs/count?" + (titleRef.current.value && "s=" + titleRef.current.value) + (idRef.current.value && "&id=" + idRef.current.value) + (categoryRef.current.value && "&category=" + categoryRef.current.value) + (companyRef.current.value && "&company_id=" + companyRef.current.value) + (minRef.current.value && "&minSalary=" + minRef.current.value) + (maxRef.current.value && "&maxSalary=" + maxRef.current.value) + (locationRef.current.value && "&location=" + locationRef.current.value) + (visaRef.current.value && "&visa=" + visaRef.current.value) + (approvedRef.current.value && "&approved=" + approvedRef.current.value));
     }
     return (
-        <form onSubmit={onSub} className='my-4 p-2 d-flex flex-wrap gap-3 text-center justify-content-center align-items-center text-white rounded-4 col-8 mx-auto' style={{backgroundColor: '#5C2018'}}>
-             {localStorage[TOKEN_KEY].role!="user"&&<div>
+        <form onSubmit={onSub} className='my-4 p-2 d-flex flex-wrap gap-3 text-center justify-content-center align-items-center text-white rounded-4 col-8 mx-auto' style={{ backgroundColor: '#5C2018' }}>
+            {localStorage[TOKEN_KEY].role != "user" && <div>
                 <label>ID</label>
                 <br />
                 <input type='text' className='form-control' ref={idRef}></input>
@@ -117,7 +117,7 @@ const SearchComp = ({setUrl, setPagesUrl}) => {
                 </select>
             </div>
             <div className='col-12'>
-            <button type="submit" className='btn btn-light my-3'><h5 className='m-0' style={{color: '#5C2018'}} >Find!</h5></button>
+                <button type="submit" className='btn btn-light my-3'><h5 className='m-0' style={{ color: '#5C2018' }} >Find!</h5></button>
             </div>
         </form>
     )

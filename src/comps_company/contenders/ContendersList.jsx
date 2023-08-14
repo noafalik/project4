@@ -40,7 +40,7 @@ const ContendersList = () => {
             }
         } catch (error) {
             console.log(error);
-            alert("there problem");
+            alert("There is problem");
         }
     }
 
