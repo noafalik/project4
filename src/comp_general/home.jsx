@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import RecentJobsList from '../comps_user/jobs/recentJobsList';
-import JobItem from '../comps_user/jobs/jobItem';
 import JobListFav from '../comps_user/jobs/jobListFav';
 import { useUserData } from '../hooks/useUserData';
+import CommentsComp from './CommentsComp';
 // import '../App.css';
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
 
     return (
         // <main className='container-fluid'>
-        <div style={{ minHeight:'100vh'}}>
+        <div style={{ minHeight: '100vh' }}>
             <main className="container-fluid background-video">
                 <video autoPlay muted loop className="video-element">
                     <source src="/design/homeMainB.mp4" type="video/mp4" />
@@ -26,7 +26,7 @@ const Home = () => {
             <div className='container d-flex justify-content-center align-item-center'>
                 <h2 className='display-5 m-2'>Recent Jobs</h2>
             </div>
-            
+
             <div className='container-fluid '>
                 <div className='container my-4'>
                     <RecentJobsList />
@@ -39,7 +39,7 @@ const Home = () => {
                     null
                 }
             </div>
-
+            <CommentsComp />
         </div>
 
     )
