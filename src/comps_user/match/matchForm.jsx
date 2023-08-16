@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { doApiMethod, API_URL, doApiGet } from '../../services/apiService';
+import { doApiMethod, API_URL, doApiGet, TOKEN_KEY } from '../../services/apiService';
 import { toast } from 'react-toastify';
 import { useUserData } from '../../hooks/useUserData';
 
@@ -15,7 +15,7 @@ const MatchForm = () => {
     const [categoriesAr, setCategoriesAr] = useState([]);
     const [locationsAr, setLocationsAr] = useState([]);
 
-    const { user,setData } = useUserData();
+    const { user } = useUserData();
     const nav = useNavigate();
 
     useEffect(() => {
@@ -34,8 +34,9 @@ const MatchForm = () => {
             const data = await doApiGet(url)
             console.log(data);
             if (data.jobsFive) {
-                setData(data)
                 user.match_url = url;
+                localStorage.setItem(TOKEN_KEY, JSON.stringify(user));
+                localStorage.setItem('match_data', JSON.stringify(data));
                 updateMatchUrl(url);
             }
             nav("/match");
@@ -75,7 +76,7 @@ const MatchForm = () => {
           const url = API_URL + "/users/updateMatch"
           const data = await doApiMethod(url, "PATCH", { match_url: _newUrl})
           if (data.modifiedCount) {
-            toast.success("add/remove from favorite")
+            toast.success("match changed")
           }
         }
         catch (err) {
@@ -100,8 +101,8 @@ const MatchForm = () => {
                             <option value="Africa"> Africa</option>
                             <option value="Australia"> Australia</option>
                             <option value="Europe"> Europe</option>
-                            <option value="North America"> North America</option>
-                            <option value="South America"> South America</option>
+                            <option value="North-America"> North-America</option>
+                            <option value="South-America"> South-America</option>
                         </select>
                     </div>
                     <div className='container m-1'>

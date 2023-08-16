@@ -18,7 +18,6 @@ function App() {
   const [favs_ar,setFavsAr] = useState([]);
   // const [request_jobs,setRequestJobs] = useState([]);
   const [authorized, setAuthorized] = useState(false);
-  const [data,setData]= useState({});
 
   useEffect(()=>{
       if(user){
@@ -32,7 +31,6 @@ function App() {
       user,setUser,
       company, setCompany,
       favs_ar,setFavsAr,authorized, setAuthorized,
-      data,setData
     // request_jobs,setRequestJobs
 
       // updateFav

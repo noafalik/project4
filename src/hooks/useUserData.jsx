@@ -9,7 +9,7 @@ import { imgToString } from "../services/cloudinaryServive";
 export const useUserData = () => {
   // const [userData,setUserData] = useState({});
 
-  const { user, setUser, favs_ar, setFavsAr, company, setCompany, data, setData } = useContext(JobContext);
+  const { user, setUser, favs_ar, setFavsAr, company, setCompany } = useContext(JobContext);
 
   const nav = useNavigate();
   
@@ -29,7 +29,7 @@ export const useUserData = () => {
       localStorage.setItem('user', JSON.stringify(data));
       setUser(data);
       if (data.role === "user"||data.role === "admin") {
-        MatchDataUpdate()
+        MatchDataUpdate(data.match_url)
       }
 
       if (data.role === "company") {
@@ -44,17 +44,14 @@ export const useUserData = () => {
     }
   }
 
-  const MatchDataUpdate = async () => {
+  const MatchDataUpdate = async (_url) => {
     try {
-      const url = user.match_url;
-      console.log(url)
-      const data = await doApiGet(url)
-      // console.log(data);
+      const url = _url;
+      const data = await doApiGet(url);
       if (data.jobsFive) {
-        setData(data)
-        console.log("here i am" + data)
-        // user.match_url = url;
-        // updateMatchUrl(url);
+        // setData(data);
+        localStorage.setItem('match_data', JSON.stringify(data))
+        console.log(data)
       }
     }
     catch (err) {
@@ -73,6 +70,8 @@ export const useUserData = () => {
     console.log(data);
     if (data.logout) {
       localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem('match_data');
+      localStorage.removeItem('company');
       setUser({});
       nav("/");
       toast.info("You logged out, see you soon...");
@@ -151,6 +150,6 @@ export const useUserData = () => {
 
   //  doApiUser -> נצטרך את הפונקציה כאשר משתמש
   // מתחבר 
-  return { doApiUser, user, userSignOut, favs_ar, updateFav, company, doApiUpload, unApplay, data, setData };
+  return { doApiUser, user, userSignOut, favs_ar, updateFav, company, doApiUpload, unApplay };
 
 }

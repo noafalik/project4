@@ -7,7 +7,7 @@ const AppliedJobsList = () => {
     const [ar, setAr] = useState([]);
     const [loading, setLoading] = useState(false);
     const { user } = useUserData();
-    const [length, setLength] = useState(1);
+    const [length, setLength] = useState(0);
 
     useEffect(() => {
         doApi();
@@ -15,41 +15,39 @@ const AppliedJobsList = () => {
 
     const doApi = async () => {
         try {
-            
-            const userData = user;
+
             setLoading(true);
-            if (userData.favs_ar) {
-                const url = API_URL + "/contenders/jobslist?user_id="+(user._id);
-                const data = await doApiGet(url)
-                setAr(data);
-                // setLength(data.length);
-                console.log("jobs ids",data);
-            }
+            const url = API_URL + "/contenders/jobslist?user_id=" + (user._id);
+            const data = await doApiGet(url)
+            setAr(data);
+            setLength(data.length);
+            console.log("jobs ids", data);
+
             setLoading(false)
         }
         catch (err) {
             console.log(err);
         }
     }
-    
-  return (
-    <>
-    {localStorage.getItem(TOKEN_KEY) !== null ? (
-        <div className='container-fluid py-3'>
-            {length > 0 &&
-                <div className='container d-flex justify-content-center align-item-center'>
-                    <h2 className='display-5 m-2'>Applied Jobs</h2>
+
+    return (
+        <>
+            {localStorage.getItem(TOKEN_KEY) !== null ? (
+                <div className='container-fluid py-3'>
+                    {length > 0 &&
+                        <div className='container d-flex justify-content-center align-item-center'>
+                            <h2 className='display-5 m-2'>Applied Jobs</h2>
+                        </div>
+                    }
+                    <div className="row justify-content-center align-item-center mt-3">
+                        {ar.map(item => (
+                            <JobItem key={item._id} item={item} />
+                        ))}
+                    </div>
                 </div>
-            }
-            <div className="row justify-content-center align-item-center mt-3">
-                {ar.map(item => (
-                    <JobItem key={item._id} item={item} />
-                ))}
-            </div>
-        </div>
-    ) : null}
-</>
-  )
+            ) : null}
+        </>
+    )
 }
 
 export default AppliedJobsList
