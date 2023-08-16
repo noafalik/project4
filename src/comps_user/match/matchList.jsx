@@ -5,8 +5,9 @@ import Loading from '../../comp_general/loading';
 import { doApiGet } from '../../services/apiService';
 
 const MatchList = () => {
-    const { user, data } = useUserData();
-    console.log(data);
+
+    const data = JSON.parse(localStorage.getItem('data') || '{}')
+    console.log("this is the lists:",data);
     const [loading, setLoading] = useState(false);
     // const [data,setData]= useState({})
     const fullMatchAr = data.jobsFive;
