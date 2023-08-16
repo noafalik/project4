@@ -6,7 +6,7 @@ import { doApiGet } from '../../services/apiService';
 
 const MatchList = () => {
 
-    const data = JSON.parse(localStorage.getItem('data') || '{}')
+    const data = JSON.parse(localStorage.getItem('match_data') || '{}')
     console.log("this is the lists:",data);
     const [loading, setLoading] = useState(false);
     // const [data,setData]= useState({})
