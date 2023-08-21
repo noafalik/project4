@@ -46,9 +46,9 @@ const CommentsComp = () => {
             <h3 className='display-4 text-center text-dark'>Our customers reviews:</h3>
             <div>
                 {localStorage["user"] &&
-                    <LeaveComment setNewComment={setNewComment} newComment={newComment} />
+                    <LeaveComment setNewComment={setNewComment} newComment={newComment} setPage={setPage} setCommentsAr={setCommentsAr} />
                 }
-                <Carousel fade>
+                <Carousel fade interval={null}>
                     {commentsAr.map(item => {
                         const stars = new Array(item.stars).fill(null);
                         return (
