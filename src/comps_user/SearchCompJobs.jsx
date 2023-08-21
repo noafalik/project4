@@ -135,4 +135,4 @@ const SearchCompJobs = ({ setUrl, setPagesUrl }) => {
     )
 }
 
-export default SearchComp
+export default SearchCompJobs
