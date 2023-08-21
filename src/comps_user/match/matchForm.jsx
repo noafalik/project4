@@ -96,7 +96,7 @@ const MatchForm = () => {
                     <div className='container m-1'>
                         <label>Continent:</label>
                         <select ref={continentRef} className='m-2' name="continent">
-                            <option value={""}>All</option>
+                            {/* <option value={""}>All</option> */}
                             <option value="Asia">Asia</option>
                             <option value="Africa"> Africa</option>
                             <option value="Australia"> Australia</option>
@@ -108,7 +108,7 @@ const MatchForm = () => {
                     <div className='container m-1'>
                         <label>Location: </label>
                         <select ref={locationRef} className='location'>
-                            <option value={""}>All</option>
+                            {/* <option value={""}>All</option> */}
                             {locationsAr.map((item, i) => {
                                 return (
                                     <option key={i} value={locationsAr[i]}>{locationsAr[i]}</option>
@@ -119,7 +119,7 @@ const MatchForm = () => {
                     <div className='container m-1'>
                         <label>Category: </label>
                         <select ref={categoryRef} className='category'>
-                            <option value={""}>All</option>
+                            {/* <option value={""}>All</option> */}
                             {categoriesAr.map((item, i) => {
                                 return (
                                     <option key={i} value={item.category}>{item.category_name}</option>
@@ -131,7 +131,7 @@ const MatchForm = () => {
                     <div className='container m-1'>
                         <label>Visa: </label>
                         <select ref={visaRef} className='m-2' name="visa">
-                            <option value={JSON.stringify(null)}>All</option>
+                            {/* <option value={JSON.stringify(null)}>All</option> */}
                             <option value={JSON.stringify(true)}>Needed</option>
                             <option value={JSON.stringify(false)}> Doesn't needed</option>
                         </select>

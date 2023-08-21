@@ -44,10 +44,76 @@ header .admin{
 }
 
 header a {
+  font-size: 18px;
   text-decoration: none;
   color: black;
   font-weight: bolder;
 }
+
+header .logo img {
+  transition: 500ms;
+}
+
+header .logo img:hover {
+  transform: scale(1.1);
+  /* color: white; */
+}
+
+/* Styling for the burger menu */
+.bm-burger-button {
+  position: relative;
+  width: 36px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.bm-burger-bars {
+  background: #5C2018;
+  height: 4px;
+  width: 30px;
+  border-radius: 4px;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #c7bdc5;
+}
+
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+.bm-menu {
+  background-color: #ffffff;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+.bm-morph-shape {
+  fill: #ffffff;
+}
+
+/* Styling for the menu items */
+.menu-item {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.user-icon {
+  border: 1px black solid;
+  border-radius: 25px;
+  font-size: 32px;
+}
+
 
 .btn-publish{
   border: 1px solid rgb(44, 95, 136);
@@ -55,6 +121,7 @@ header a {
   color: rgb(19, 33, 82);
   transition: 450ms;
 }
+
 .btn-publish:hover{
   background-color: rgb(184, 223, 255);
 }
@@ -215,6 +282,96 @@ header a {
   color: #999;
 }
 
+@media screen and (min-width: 992px) {
+  .burger-menu {
+    display: none;
+  }
+}
 
+@media (max-width:  991px) {
+
+}
+
+@media (max-width: 720px) {
+  .footer .noa-falik{
+    font-size:22px;
+  }
+  .footer .footer__logo{
+    font-size:37px;
+  }
+
+  .footer .dora-yaroshenko{
+    font-size:18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer .noa-falik{
+    font-size:17px;
+  }
+  .footer .footer__logo{
+    font-size:30px;
+  }
+
+  .footer .dora-yaroshenko{
+    font-size:13px;
+  }
+}
+
+@media (max-width: 470px) {
+  .logo-r{
+    width: 50px;
+  }
+  
+  .footer .noa-falik{
+    font-size:15px;
+  }
+  .footer .footer__logo{
+    font-size:22px;
+  }
+  .footer .footer__btn {
+    font-size:15px;
+  }
+
+  .footer .dora-yaroshenko{
+    font-size:10px;
+  }
+}
+
+
+@media (max-width: 405px) {
+  .log-out-btn{
+    font-size: 12px;
+  }
+  .footer{
+    flex-flow: column;
+    flex-direction: column;
+  }
+
+  .footer .noa-falik{
+    font-size:15px;
+  }
+  .footer .footer__logo{
+    font-size:22px;
+    
+  }
+
+  .footer .dora-yaroshenko{
+    font-size:15px;
+  }
+  .Noa {
+    order: 2;
+  }
+
+  .footer__addr {
+    order: 1;
+    width: 100%;
+    margin: 0;
+  }
+
+  .Dora {
+    order: 2;
+  }
+}
 
 
