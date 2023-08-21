@@ -52,12 +52,12 @@ const HeaderAdmin = () => {
                 </Link>
             </div>
 
-            <ul>
+            <>
 
                 <li className="log_out col-auto d-flex align-items-center ">
                     <button onClick={onLogOut} className="btn btn-danger">Log out</button>
                 </li>
-            </ul>
+            </>
 
             {authorized &&
                 <Menu right className="burger-menu">
