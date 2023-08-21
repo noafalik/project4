@@ -3,13 +3,16 @@ import { useRef, useState, useEffect } from 'react';
 import { API_URL, TOKEN_KEY, doApiGet } from '../services/apiService';
 import { useNavigate } from 'react-router-dom';
 
-const SearchComp = ({ setUrl, setPagesUrl }) => {
+
+const SearchCompJobs = ({ setUrl, setPagesUrl }) => {
+
     const titleRef = useRef();
     const categoryRef = useRef();
     const companyRef = useRef();
     const maxRef = useRef();
     const minRef = useRef();
     const locationRef = useRef();
+    const continentRef = useRef();
     const visaRef = useRef();
     const continentRef = useRef();
     const [companiesAr, setCompaniesAr] = useState([]);
@@ -42,8 +45,21 @@ const SearchComp = ({ setUrl, setPagesUrl }) => {
         }
     }
 
+    const resetFilter = () => {
+        titleRef.current.value = "";
+        categoryRef.current.value = "";
+        companyRef.current.value = "";
+        maxRef.current.value = "";
+        minRef.current.value = "";
+        locationRef.current.value = "";
+        continentRef.current.value = "";
+        visaRef.current.value = "";
+        onSub();
+    }
+
     const onSub = (e) => {
         e.preventDefault();
+
         const address = API_URL + "/jobs?" + (titleRef.current.value && "s=" + titleRef.current.value) + (categoryRef.current.value && "&category=" + categoryRef.current.value) + (companyRef.current.value && "&company_id=" + companyRef.current.value) + (minRef.current.value && "&minSalary=" + minRef.current.value) + (maxRef.current.value && "&maxSalary=" + maxRef.current.value) + (locationRef.current.value && "&location=" + locationRef.current.value) + (visaRef.current.value && "&visa=" + visaRef.current.value) + (continentRef.current.value && "&continent=" + continentRef.current.value);
         console.log(address);
         setUrl(address);
@@ -116,6 +132,7 @@ const SearchComp = ({ setUrl, setPagesUrl }) => {
                 <button type="submit" className='btn btn-light my-3'><h5 className='m-0' style={{ color: '#5C2018' }} >Find!</h5></button>
             </div>
         </form>
+       
     )
 }
 
