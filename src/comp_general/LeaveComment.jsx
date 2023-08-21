@@ -26,18 +26,18 @@ const LeaveComment = ({setNewComment, newComment}) => {
     }
 
     return (
-        <div className='bg-white rounded-3 p-5 mb-2'>
-            <h5>Leave your review here:</h5>
+        <div className='bg-white rounded-3 p-5 mb-5 col-12 mx-auto'>
+            <h5 className='text-dark'>Leave your review here:</h5>
             <form onSubmit={handleSubmit(onSub)}>
                 <div>
-                    <button type='button' className='btn btn-white' onClick={() => setStars(1)}><BsFillStarFill className={stars >= 1 ? 'text-warning' : 'text-dark'} /></button>
-                    <button type='button' className='btn btn-white' onClick={() => setStars(2)}><BsFillStarFill className={stars >= 2 ? 'text-warning' : 'text-dark'} /></button>
-                    <button type='button' className='btn btn-white'
+                    <button type='button' className='btn btn-white border-0' onClick={() => setStars(1)}><BsFillStarFill className={stars >= 1 ? 'text-warning' : 'text-dark'} /></button>
+                    <button type='button' className='btn btn-white border-0' onClick={() => setStars(2)}><BsFillStarFill className={stars >= 2 ? 'text-warning' : 'text-dark'} /></button>
+                    <button type='button' className='btn btn-white border-0'
                         onClick={() => setStars(3)}><BsFillStarFill className={stars >= 3 ? 'text-warning' : 'text-dark'} /></button>
-                    <button type='button' className='btn btn-white' onClick={() => setStars(4)}><BsFillStarFill className={stars >= 4 ? 'text-warning' : 'text-dark'} /></button>
-                    <button type='button' className='btn btn-white' onClick={() => setStars(5)}><BsFillStarFill className={stars >= 5 ? 'text-warning' : 'text-dark'} /></button>
+                    <button type='button' className='btn btn-white border-0' onClick={() => setStars(4)}><BsFillStarFill className={stars >= 4 ? 'text-warning' : 'text-dark'} /></button>
+                    <button type='button' className='btn btn-white border-0' onClick={() => setStars(5)}><BsFillStarFill className={stars >= 5 ? 'text-warning' : 'text-dark'} /></button>
                 </div>
-                <input type='text' className='form-control' placeholder='Write your comment here...' {...register("content", { maxLength: 150 })} />
+                <input type='text' className='form-control text-dark' placeholder='Write your comment here...' {...register("content", { maxLength: 150 })} />
                 <div className='p-2'><button type='submit' className='btn btn-dark mt-2 float-end'>Publish</button></div>
             </form>
         </div>

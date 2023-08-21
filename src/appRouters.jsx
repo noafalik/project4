@@ -30,6 +30,7 @@ import Footer from './comp_general/footer'
 import MatchForm from './comps_user/match/matchForm'
 import EditUserInfo from './comps_user/editUserInfo'
 import SignupCompany from './comp_general/signupCompany'
+import EditCompany from './comps_admin/companies/EditCompany'
 
 
 export default function AppRouters() {
@@ -60,6 +61,7 @@ export default function AppRouters() {
                 {localStorage["user"] && (JSON.parse(localStorage["user"])).role == "admin" && <>
                     <Route path="/admin/users" element={<UsersList />} />
                     <Route path="/admin/companies" element={<CompaniesList />} />
+                    <Route path="/admin/companies/edit/:id" element={<EditCompany/>} />
                     <Route path="/admin/categories" element={<CategoriesList />} />
                     <Route path="/admin/categories/add" element={<AddCategory />} />
                     <Route path="/admin/categories/edit/:id" element={<EditCategory />} />
