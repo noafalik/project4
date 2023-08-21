@@ -52,11 +52,11 @@ const HeaderUser = () => {
             <ul className='list-unstyled d-flex align-items-center gap-3'>
                 
                 {localStorage[TOKEN_KEY] ? (
-                    <>
+                    <ul>
                         <li>
                             <button onClick={onLogOut} className="btn btn-danger log-out-btn">Log out</button>
                         </li>
-                    </>
+                    </ul>
                 ) : (
                     <li className="log_in">
                         <Link to="/login">Log in</Link> | <Link to="/signup">Sign up</Link>
