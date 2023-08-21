@@ -46,21 +46,15 @@ const HeaderUser = () => {
         <header className='py-1 px-5 d-flex justify-content-between' style={{ height: "70px" }}>
             <div className='h-100 logo col-auto' style={{ zIndex: '9999999999999' }}>
                 <Link to="/">
-                    <img src="./design/logo1.png" alt="icon" width="70" />
+                    <img className='logo-r' src="./design/logo1.png" alt="icon" width="70" />
                 </Link>
             </div>
             <ul className='list-unstyled d-flex align-items-center gap-3'>
-                {localStorage[TOKEN_KEY] && (
-                    <li>
-                        <button className='btn-publish rounded-3'>
-                            <Link to="/signupCompany">Publish A Job</Link>
-                        </button>
-                    </li>
-                )}
+                
                 {localStorage[TOKEN_KEY] ? (
                     <>
                         <li>
-                            <button onClick={onLogOut} className="btn btn-danger">Log out</button>
+                            <button onClick={onLogOut} className="btn btn-danger log-out-btn">Log out</button>
                         </li>
                     </>
                 ) : (
@@ -71,7 +65,13 @@ const HeaderUser = () => {
             </ul>
             <Menu right className="burger-menu">
                 <ul className='list-unstyled d-flex flex-column align-items-center gap-3'>
-
+                {localStorage[TOKEN_KEY] && (
+                    <li>
+                        <button className='btn-publish rounded-3'>
+                            <Link to="/signupCompany">Publish A Job</Link>
+                        </button>
+                    </li>
+                )}
                     <li><Link to="/jobs" >Jobs</Link></li>
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/flights">Flights</Link></li>

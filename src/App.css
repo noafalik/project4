@@ -67,6 +67,7 @@ header .logo img:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 8px;
 }
 
 .bm-burger-bars {
@@ -120,6 +121,7 @@ header .logo img:hover {
   color: rgb(19, 33, 82);
   transition: 450ms;
 }
+
 .btn-publish:hover{
   background-color: rgb(184, 223, 255);
 }
@@ -317,6 +319,10 @@ header .logo img:hover {
 }
 
 @media (max-width: 470px) {
+  .logo-r{
+    width: 50px;
+  }
+  
   .footer .noa-falik{
     font-size:15px;
   }
@@ -334,6 +340,9 @@ header .logo img:hover {
 
 
 @media (max-width: 405px) {
+  .log-out-btn{
+    font-size: 12px;
+  }
   .footer{
     flex-flow: column;
     flex-direction: column;
