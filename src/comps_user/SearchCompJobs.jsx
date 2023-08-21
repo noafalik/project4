@@ -14,7 +14,6 @@ const SearchCompJobs = ({ setUrl, setPagesUrl }) => {
     const locationRef = useRef();
     const continentRef = useRef();
     const visaRef = useRef();
-    const continentRef = useRef();
     const [companiesAr, setCompaniesAr] = useState([]);
     const [categoriesAr, setCategoriesAr] = useState([]);
 
