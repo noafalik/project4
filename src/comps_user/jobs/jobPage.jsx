@@ -34,8 +34,8 @@ const JobPage = () => {
 
   return (
     <div style={{ marginTop: '70px' , minHeight:'100vh'}}>
-      <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
-        <h1 className='display-6 text-white'>JOB OPTIONS</h1>
+      <div className='container ' >
+      <h1 className='display-4 mx-auto text-center'>JOB OPTIONS</h1>
       </div>
       <div className='container' >
         <SearchCompJobs setUrl={setUrl} setPagesUrl={setPagesUrl}/>

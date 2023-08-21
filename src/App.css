@@ -162,6 +162,12 @@ header .logo img:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* about us style*/
+.about-us .para-about{
+  font-size: 1.5em;
+}
+/* about us style- end*/
+
 .match-add{
   background-image: url("../public/design/matchAdd.jpg");
   background-position: center;
@@ -321,6 +327,14 @@ header .logo img:hover {
 @media (max-width: 470px) {
   .logo-r{
     width: 50px;
+  }
+
+  .about-us .para-about{
+    font-size:1.2em;
+  }
+
+  .about-us img{
+    width: 120px;
   }
   
   .footer .noa-falik{

@@ -9,7 +9,7 @@ const JobItem = (props) => {
     const { user } = useUserData();
     const item = props.item;
     return (
-        <div className='col-md-3 mb-4'>
+        <div className='col-lg-3 mb-4'>
             <Link 
             to=
              {localStorage.getItem(TOKEN_KEY) !== null? ("/jobs/" + item._id) 
