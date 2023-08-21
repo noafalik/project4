@@ -6,10 +6,10 @@ const Footer = () => {
     return (
         <>
             <footer className="footer">
-                <Row className="d-flex justify-content-between text-center">
-                    <Col className='Noa'>
+                <Row className="d-flex justify-content-around text-center">
+                    <Col className='Noa col-auto'>
                     <br/>
-                        <h3>Noa Falik</h3>
+                        <h3 className='noa-falik'>Noa Falik</h3>
                         <div className="d-flex justify-content-center align-items-center ">
                             <a className='m-2' href="https://www.linkedin.com/in/noa-falik-607389266/" target="_blank" style={{ fontSize:'1.5rem'}}>
                                 <BsLinkedin />
@@ -20,16 +20,16 @@ const Footer = () => {
                         </div>
                     </Col>
 
-                    <Col className="footer__addr ">
+                    <Col className="footer__addr col-auto">
                         <h1 className="footer__logo">ReloMatch</h1>
                         <address className='d-flex justify-content-center align-items-center'>
                             <a className="footer__btn" href="mailto:reloMatch@gmail.com">Email Us</a>
                         </address>
                     </Col>
 
-                    <Col className='Dora'>
+                    <Col className='Dora col-auto'>
                     <br/>
-                        <h3>Dora Yaroshenko</h3>
+                        <h3 className='dora-yaroshenko'>Dora Yaroshenko</h3>
                         <div className="d-flex justify-content-center align-items-center">
                             <a className='m-2' href="https://www.linkedin.com/in/dora-yaroshenko-27544226a/" target="_blank" style={{ fontSize:'1.5rem'}}>
                                 <BsLinkedin />
@@ -42,7 +42,7 @@ const Footer = () => {
                 </Row>
 
                 <div className="legal d-flex justify-content-center align-items-center">
-                    <p>&copy; 2023 ReloMatch - Noa Falik & Dora Yaroshenko. All rights reserved.</p>
+                    <p className='text-center'>&copy; 2023 ReloMatch - Noa Falik & Dora Yaroshenko. All rights reserved.</p>
                 </div>
 
             </footer>
