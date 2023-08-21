@@ -70,7 +70,7 @@ header .logo img:hover {
 }
 
 .bm-burger-bars {
-  background: #373a47;
+  background: #5C2018;
   height: 4px;
   width: 30px;
   border-radius: 4px;
@@ -82,7 +82,7 @@ header .logo img:hover {
 }
 
 .bm-cross {
-  background: #bdc3c7;
+  background: #c7bdc5;
 }
 
 .bm-menu-wrap {
@@ -91,13 +91,13 @@ header .logo img:hover {
 }
 
 .bm-menu {
-  background-color: #373a47;
+  background-color: #ffffff;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
 
 .bm-morph-shape {
-  fill: #373a47;
+  fill: #ffffff;
 }
 
 /* Styling for the menu items */

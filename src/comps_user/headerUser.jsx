@@ -72,7 +72,7 @@ const HeaderUser = () => {
             <Menu right className="burger-menu">
                 <ul className='list-unstyled d-flex flex-column align-items-center gap-3'>
 
-                    <li><Link to="/jobs">Jobs</Link></li>
+                    <li><Link to="/jobs" >Jobs</Link></li>
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/flights">Flights</Link></li>
                     {localStorage[TOKEN_KEY] ? (
