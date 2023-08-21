@@ -113,13 +113,6 @@ header .logo img:hover {
   font-size: 32px;
 }
 
-/* Add any other custom styles here */
-
-@media screen and (min-width: 992px) {
-  .burger-menu {
-    display: none;
-  }
-}
 
 .btn-publish{
   border: 1px solid rgb(44, 95, 136);
@@ -287,6 +280,89 @@ header .logo img:hover {
   color: #999;
 }
 
+@media screen and (min-width: 992px) {
+  .burger-menu {
+    display: none;
+  }
+}
 
+@media (max-width:  991px) {
+
+}
+
+@media (max-width: 720px) {
+  .footer .noa-falik{
+    font-size:22px;
+  }
+  .footer .footer__logo{
+    font-size:37px;
+  }
+
+  .footer .dora-yaroshenko{
+    font-size:18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer .noa-falik{
+    font-size:17px;
+  }
+  .footer .footer__logo{
+    font-size:30px;
+  }
+
+  .footer .dora-yaroshenko{
+    font-size:13px;
+  }
+}
+
+@media (max-width: 470px) {
+  .footer .noa-falik{
+    font-size:15px;
+  }
+  .footer .footer__logo{
+    font-size:22px;
+  }
+  .footer .footer__btn {
+    font-size:15px;
+  }
+
+  .footer .dora-yaroshenko{
+    font-size:10px;
+  }
+}
+
+
+@media (max-width: 405px) {
+  .footer{
+    flex-flow: column;
+    flex-direction: column;
+  }
+
+  .footer .noa-falik{
+    font-size:15px;
+  }
+  .footer .footer__logo{
+    font-size:22px;
+    
+  }
+
+  .footer .dora-yaroshenko{
+    font-size:15px;
+  }
+  .Noa {
+    order: 2;
+  }
+
+  .footer__addr {
+    order: 1;
+    width: 100%;
+    margin: 0;
+  }
+
+  .Dora {
+    order: 2;
+  }
+}
 
 
