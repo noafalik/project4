@@ -87,6 +87,7 @@ const JobsList = () => {
                         <th>Info</th>
                         <th>Salary</th>
                         <th>Location</th>
+                        <th>Continent</th>
                         <th>Visa</th>
                         <th>Approved</th>
                         <th>Del</th>
@@ -105,6 +106,7 @@ const JobsList = () => {
                                 <td title={item.info}>{item.info && item.info.substring(0, 15)}</td>
                                 <td>{item.salary}</td>
                                 <td>{item.location}</td>
+                                <td>{item.continent}</td>
                                 <td>{item.visa == "true" ? "required" : "not required"}</td>
                                 <td><button onClick={() => changeApproval(item)} style={{ background: item.approved ? "green" : "red" }}>{item.approved ? "approved" : "approve"}</button></td>
                                 <td><button className='bg-danger' onClick={() => deleteItem(item._id)}>X</button></td>

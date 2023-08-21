@@ -13,6 +13,7 @@ const SearchComp = ({ setUrl, setPagesUrl }) => {
     const visaRef = useRef();
     const approvedRef = useRef();
     const idRef = useRef();
+    const continentRef = useRef();
     const [companiesAr, setCompaniesAr] = useState([]);
     const [categoriesAr, setCategoriesAr] = useState([]);
 
@@ -46,13 +47,13 @@ const SearchComp = ({ setUrl, setPagesUrl }) => {
     const onSub = (e) => {
         e.preventDefault();
         console.log(approvedRef.current.value)
-        const address = API_URL + "/jobs?" + (titleRef.current.value && "s=" + titleRef.current.value) + (categoryRef.current.value && "&category=" + categoryRef.current.value) + (idRef.current.value && "&id=" + idRef.current.value) + (companyRef.current.value && "&company_id=" + companyRef.current.value) + (minRef.current.value && "&minSalary=" + minRef.current.value) + (maxRef.current.value && "&maxSalary=" + maxRef.current.value) + (locationRef.current.value && "&location=" + locationRef.current.value) + (visaRef.current.value && "&visa=" + visaRef.current.value) + (approvedRef.current.value && "&approved=" + approvedRef.current.value);
+        const address = API_URL + "/jobs?" + (titleRef.current.value && "s=" + titleRef.current.value) + (categoryRef.current.value && "&category=" + categoryRef.current.value) + (idRef.current.value && "&id=" + idRef.current.value) + (companyRef.current.value && "&company_id=" + companyRef.current.value) + (minRef.current.value && "&minSalary=" + minRef.current.value) + (maxRef.current.value && "&maxSalary=" + maxRef.current.value) + (locationRef.current.value && "&location=" + locationRef.current.value) + (visaRef.current.value && "&visa=" + visaRef.current.value) + (approvedRef.current.value && "&approved=" + approvedRef.current.value) + (continentRef.current.value && "&continent=" + continentRef.current.value);
         console.log(address);
         setUrl(address);
-        setPagesUrl(API_URL + "/jobs/count?" + (titleRef.current.value && "s=" + titleRef.current.value) + (idRef.current.value && "&id=" + idRef.current.value) + (categoryRef.current.value && "&category=" + categoryRef.current.value) + (companyRef.current.value && "&company_id=" + companyRef.current.value) + (minRef.current.value && "&minSalary=" + minRef.current.value) + (maxRef.current.value && "&maxSalary=" + maxRef.current.value) + (locationRef.current.value && "&location=" + locationRef.current.value) + (visaRef.current.value && "&visa=" + visaRef.current.value) + (approvedRef.current.value && "&approved=" + approvedRef.current.value));
+        setPagesUrl(API_URL + "/jobs/count?" + (titleRef.current.value && "s=" + titleRef.current.value) + (idRef.current.value && "&id=" + idRef.current.value) + (categoryRef.current.value && "&category=" + categoryRef.current.value) + (companyRef.current.value && "&company_id=" + companyRef.current.value) + (minRef.current.value && "&minSalary=" + minRef.current.value) + (maxRef.current.value && "&maxSalary=" + maxRef.current.value) + (locationRef.current.value && "&location=" + locationRef.current.value) + (visaRef.current.value && "&visa=" + visaRef.current.value) + (approvedRef.current.value && "&approved=" + approvedRef.current.value) + (continentRef.current.value && "&continent=" + continentRef.current.value));
     }
     return (
-        <form onSubmit={onSub} className='my-4 p-2 d-flex flex-wrap gap-3 text-center justify-content-center align-items-center text-white rounded-4 col-8 mx-auto' style={{ backgroundColor: '#5C2018' }}>
+        <form onSubmit={onSub} className='my-4 p-2 d-flex flex-wrap gap-3 text-center justify-content-center align-items-center text-white rounded-4 col-12 mx-auto' style={{ backgroundColor: '#5C2018' }}>
             {localStorage[TOKEN_KEY].role != "user" && <div>
                 <label>ID</label>
                 <br />
@@ -66,7 +67,7 @@ const SearchComp = ({ setUrl, setPagesUrl }) => {
             <div>
                 <label>Category</label>
                 <br />
-                <select className='select-box' ref={categoryRef}>
+                <select className='form-select' ref={categoryRef}>
                     <option value={""}>All</option>
                     {categoriesAr.map((item, i) => {
                         return (
@@ -78,7 +79,7 @@ const SearchComp = ({ setUrl, setPagesUrl }) => {
             <div>
                 <label>Company</label>
                 <br />
-                <select className='select-box' ref={companyRef}>
+                <select className='form-select' ref={companyRef}>
                     <option value={""}>All</option>
                     {companiesAr.map((item, i) => {
                         return (
@@ -103,6 +104,17 @@ const SearchComp = ({ setUrl, setPagesUrl }) => {
                 <input type='text' className='form-control' ref={locationRef}></input>
             </div>
             <div>
+                <label>Continent</label>
+                <br />
+                <select ref={continentRef} className='form-select'>
+                    <option>Europe</option>
+                    <option>Asia</option>
+                    <option>North-America</option>
+                    <option>South-America</option>
+                    <option>Australia</option>
+                </select>
+            </div>
+            <div>
                 <label>Visa</label>
                 <br />
                 <input type='text' className='form-control' ref={visaRef}></input>
@@ -110,7 +122,7 @@ const SearchComp = ({ setUrl, setPagesUrl }) => {
             <div>
                 <label>Approved</label>
                 <br />
-                <select className='select-box' ref={approvedRef}>
+                <select className='form-select' ref={approvedRef}>
                     <option value={""}>All</option>
                     <option value={"true"}>Approved</option>
                     <option value={"false"}>Not approved</option>
