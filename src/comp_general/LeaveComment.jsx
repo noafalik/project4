@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import { BsFillStarFill } from 'react-icons/bs'
 import { useForm } from "react-hook-form"
 import { API_URL, doApiMethod } from '../services/apiService';
 import { toast } from 'react-toastify';
 
-const LeaveComment = ({setNewComment, newComment}) => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+const LeaveComment = ({setNewComment, newComment, setPage, setCommentsAr}) => {
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [stars, setStars] = useState(0);
 
     const onSub = async (_bodyData) => {
@@ -15,8 +15,12 @@ const LeaveComment = ({setNewComment, newComment}) => {
             const data = await doApiMethod(url, "POST", _bodyData);
             console.log(data);
             if (data._id) {
+                reset();
+                setStars(0);
                 toast.success("Comment added");
                 console.log(newComment);
+                setPage(1);
+                setCommentsAr([]);
                 setNewComment(!newComment);
             }
         } catch (error) {
