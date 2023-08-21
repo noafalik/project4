@@ -44,9 +44,81 @@ header .admin{
 }
 
 header a {
+  font-size: 18px;
   text-decoration: none;
   color: black;
   font-weight: bolder;
+}
+
+header .logo img {
+  transition: 500ms;
+}
+
+header .logo img:hover {
+  transform: scale(1.1);
+  /* color: white; */
+}
+
+/* Styling for the burger menu */
+.bm-burger-button {
+  position: relative;
+  width: 36px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bm-burger-bars {
+  background: #373a47;
+  height: 4px;
+  width: 30px;
+  border-radius: 4px;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+.bm-menu {
+  background-color: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Styling for the menu items */
+.menu-item {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.user-icon {
+  border: 1px black solid;
+  border-radius: 25px;
+  font-size: 32px;
+}
+
+/* Add any other custom styles here */
+
+@media screen and (min-width: 992px) {
+  .burger-menu {
+    display: none;
+  }
 }
 
 .btn-publish{
