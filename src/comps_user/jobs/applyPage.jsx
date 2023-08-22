@@ -47,10 +47,10 @@ const ApplyPage = () => {
                 <label>Starting Date</label>
                 <input {...register("starting")} type="date" className="form-control" />
                 <br />
-                <label>Upload Resume</label>
+                {/* <label>Upload Resume</label>
                 <br />
                 <input {...register("cv_link")} type="text" className="form-control-file" />
-                <br /> <br />
+                <br /> <br /> */}
                 {/* <label>Upload Resume</label>
                 <input {...register("cv_link")} type="file" accept=".pdf,.doc,.docx" className="form-control-file" />
                 <br /> */}
