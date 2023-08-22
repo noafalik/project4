@@ -33,7 +33,9 @@ const CompanyInfo = () => {
 
                 </div>
                 <div className='container col-auto ' style={{ maxHeight: '50px' }}>
-                    <button className='btn text-center' style={{ backgroundColor: '#d1cf60' }}><Link className='text-black text-decoration-none' to={"/company/editInfo/" + JSON.parse(localStorage["company"])._id}> <BsPencil /> </Link></button>
+                    {localStorage["company"] &&
+                        <button className='btn text-center' style={{ backgroundColor: '#d1cf60' }}><Link className='text-black text-decoration-none' to={"/company/editInfo/" + JSON.parse(localStorage["company"])._id}> <BsPencil /> </Link></button>
+                    }
                 </div>
 
 

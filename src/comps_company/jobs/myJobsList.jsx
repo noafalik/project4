@@ -11,7 +11,7 @@ const MyJobsList = () => {
   const [ar, setAr] = useState([]);
   const page = query.get("page") || 1;
   const [url, setUrl] = useState(API_URL + "/jobs/myJobs");
-  const [pagesUrl, setPagesUrl] = useState(API_URL + "/jobs/count?company_id="+JSON.parse(localStorage["company"])._id);
+  const [pagesUrl, setPagesUrl] = useState(API_URL + "/jobs/count?company_id="+(localStorage["company"]&&JSON.parse(localStorage["company"])._id));
 
   useEffect(() => {
       doApi();

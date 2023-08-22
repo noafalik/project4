@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState } from 'react';
 import AuthUser from './authUser';
-import { API_URL, doApiGet, doApiMethod } from '.././services/apiService';
 import { useUserData } from '../hooks/useUserData';
 import Loading from '../comp_general/loading';
 import JobListFav from './jobs/jobListFav';

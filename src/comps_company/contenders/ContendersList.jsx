@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { API_URL, doApiGet, doApiMethod } from '../../services/apiService';
 import PagesBtns from '../../comp_general/PagesBtns';
 import ContendersSearch from './ContendersSearch';
@@ -94,7 +94,7 @@ const ContendersList = () => {
                             return (
                                 <tr key={item._id}>
                                     <td>{(page - 1) * 5 + i + 1}</td>
-                                    <td>{item.user_id.full_name}</td>
+                                    <td><Link to={"/company/contenderInfo/"+item.user_id._id}>{item.user_id.full_name}</Link></td>
                                     <td>{item.job_id._id}</td>
                                     <td>{item.job_id.job_title}</td>
                                     <td title={item.notes}>{item.notes && item.notes.substring(0, 100)}</td>
