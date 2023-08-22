@@ -31,6 +31,8 @@ import MatchForm from './comps_user/match/matchForm'
 import EditUserInfo from './comps_user/editUserInfo'
 import SignupCompany from './comp_general/signupCompany'
 import EditCompany from './comps_admin/companies/EditCompany'
+import ContenderInfo from './comps_company/contenders/ContenderInfo'
+import Page404 from './comp_general/Page404'
 
 
 export default function AppRouters() {
@@ -74,8 +76,9 @@ export default function AppRouters() {
                 <Route path='/company/editJob/:id' element={<EditJob />} />
                 <Route path='/company/addJob' element={<AddJob />} />
                 <Route path='/company/myContenders' element={<ContendersList />} />
+                <Route path='/company/contenderInfo/:id' element={<ContenderInfo />} />
+                <Route path='*' element={<Page404/>}/>
             </Routes>
-
             <Footer/>
         </BrowserRouter>
     )

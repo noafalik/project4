@@ -30,7 +30,7 @@ export default function AddJob() {
             // הופך את הקובץ למידע כסטרינג
             const imgData = await imgToString(myFile);
             const url = "http://localhost:3001/upload/cloud";
-            const resp = await doApiMethod(url, "POST", { image: imgData })
+            const resp = await doApiMethod(url, "POST", { image: imgData})
             console.log(resp);
             console.log(resp.data.secure_url)
             imgUrl = resp.data.secure_url;
@@ -38,7 +38,6 @@ export default function AddJob() {
         }
         catch (err) {
             console.log(err);
-            alert("There problem , come back later")
         }
     }
 
@@ -83,7 +82,7 @@ export default function AddJob() {
                 <br />
                 <label className='h5'>Category:</label>
                 <br />
-                <select className='select-box' {...register("category", { required: true, minLength: 2 })}>
+                <select className='form-select' {...register("category", { required: true, minLength: 2 })}>
                     {
                         categoriesAr.map((item, i) => {
                             return (
@@ -103,9 +102,20 @@ export default function AddJob() {
                 <input {...register("location", { required: true, minLength: 2 })} className="form-control" type="text" />
                 {errors.location && <div className="text-danger">* Enter valid location</div>}
                 <br />
+                <label className='h5'>Continent:</label>
+                <select {...register("continent", { required: true})} className="form-select">
+                    <option value={""}>All</option>
+                    <option>Europe</option>
+                    <option>Asia</option>
+                    <option>North-America</option>
+                    <option>South-America</option>
+                    <option>Australia</option>
+                </select>
+                {errors.continent && <div className="text-danger">* Enter valid continent</div>}
+                <br />
                 <label className='h5'>Visa:</label>
                 <br />
-                <select {...register("visa", { required: true })}>
+                <select className='form-select' {...register("visa", { required: true })}>
                     <option value={true}>required</option>
                     <option value={false}>not required</option>
                 </select>
@@ -115,9 +125,6 @@ export default function AddJob() {
                 <label className='h5'>Job Image:</label>
                 <input ref={uploadRef} type="file" className='form-control' />
                 <br />
-                <label className='h5'>Continent:</label>
-                <input {...register("continent", { required: true, minLength: 2 })} className="form-control" type="text" />
-                {errors.continent && <div className="text-danger">* Enter valid continent</div>}
                 <div className='text-center'>
                     <button className='btn text-white my-4' style={{ backgroundColor: '#5C2018' }}><h5 className='m-0'>Add new</h5></button>
                 </div>

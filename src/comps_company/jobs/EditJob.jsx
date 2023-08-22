@@ -45,7 +45,6 @@ const EditJob = () => {
         }
         catch (err) {
             console.log(err);
-            alert("There problem , come back later")
         }
     }
 
@@ -119,7 +118,7 @@ const EditJob = () => {
                     <br />
                     <label className='h5'>Visa:</label>
                     <br />
-                    <select {...register("visa")}>
+                    <select className='form-select' {...register("visa")}>
                         <option value={true}>required</option>
                         <option value={false}>not required</option>
                     </select>

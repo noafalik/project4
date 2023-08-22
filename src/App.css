@@ -1,7 +1,12 @@
 /* global css */
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;600&family=Courgette&display=swap');
 
-table {
+.Toastify__toast{
+  z-index: 9999999999999;
+  margin-top: 50px;
+}
+
+table{
   margin-top: 30px;
 }
 
