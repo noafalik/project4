@@ -71,9 +71,10 @@ export const useUserData = () => {
     if (data.logout) {
       localStorage.removeItem(TOKEN_KEY);
       localStorage.removeItem('match_data');
-      localStorage.removeItem('company');
       setUser({});
+      setCompany({});
       nav("/");
+      localStorage.removeItem('company');
       toast.info("You logged out, see you soon...");
     }
   }
