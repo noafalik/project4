@@ -20,7 +20,7 @@ const Footer = () => {
                         </div>
                     </Col>
 
-                    <Col className="footer__addr col-auto">
+                    <Col className="footer__addr col-auto m-0">
                         <h1 className="footer__logo">ReloMatch</h1>
                         <address className='d-flex justify-content-center align-items-center'>
                             <a className="footer__btn" href="mailto:reloMatch@gmail.com">Email Us</a>

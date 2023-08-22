@@ -10,7 +10,8 @@ table{
   margin-top: 30px;
 }
 
-th,td{
+th,
+td {
   text-align: center;
 }
 
@@ -27,7 +28,7 @@ th,td{
   font-weight: bold;
 }
 
-header:not(.admin){
+header:not(.admin) {
   background-color: transparent;
   position: absolute;
   top: 0;
@@ -38,7 +39,7 @@ header:not(.admin){
 }
 
 
-header .admin{
+header .admin {
   /* background-color: transparent; */
   /* position: absolute;
   top: 0;
@@ -120,14 +121,14 @@ header .logo img:hover {
 }
 
 
-.btn-publish{
+.btn-publish {
   border: 1px solid rgb(44, 95, 136);
   background-color: rgb(114, 189, 250);
   color: rgb(19, 33, 82);
   transition: 450ms;
 }
 
-.btn-publish:hover{
+.btn-publish:hover {
   background-color: rgb(184, 223, 255);
 }
 
@@ -168,12 +169,17 @@ header .logo img:hover {
 }
 
 /* about us style*/
-.about-us .para-about{
+.about-us .para-about {
   font-size: 1.5em;
 }
+
 /* about us style- end*/
 
-.match-add{
+
+
+
+/* match style */
+.match-add {
   background-image: url("../public/design/matchAdd.jpg");
   background-position: center;
   background-size: cover;
@@ -187,11 +193,11 @@ header .logo img:hover {
   position: relative;
 }
 
-.match-add .ad-box{
+.match-add .ad-box {
   position: absolute;
   top: 0px;
-  left: 0px; 
-  width: 100%; 
+  left: 0px;
+  width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   transition: 300ms;
@@ -201,35 +207,39 @@ header .logo img:hover {
   background-color: rgba(255, 255, 255, 0.37);
 }
 
-.match-add .ad-box .center-box{
+.match-add .ad-box .center-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-} 
+}
 
-.match-add .title-F{
+.match-add .title-F {
   display: flex;
   margin-top: 10px;
   color: #000000;
   font-weight: bolder;
 }
 
-.match-add p{
+.match-add p {
   display: flex;
   margin-top: 10px;
   color: #000000;
   font-size: 22px;
 }
 
-.btn-download{
+
+/* match style - end*/
+
+.btn-download {
   font-size: 23px;
   border: 1px solid rgb(44, 95, 136);
   background-color: rgb(114, 189, 250);
   color: rgb(19, 33, 82);
   transition: 500ms;
 }
-.btn-download:hover{
+
+.btn-download:hover {
   transform: scale(1.1);
   background-color: rgb(149, 203, 247);
 }
@@ -293,91 +303,207 @@ header .logo img:hover {
   color: #999;
 }
 
+
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  margin: -4px 0 0 -4px;
+}
+
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 @media screen and (min-width: 992px) {
   .burger-menu {
     display: none;
   }
 }
 
-@media (max-width:  991px) {
-
-}
+@media (max-width: 991px) {}
 
 @media (max-width: 720px) {
-  .footer .noa-falik{
-    font-size:22px;
-  }
-  .footer .footer__logo{
-    font-size:37px;
+  .footer .noa-falik {
+    font-size: 22px;
   }
 
-  .footer .dora-yaroshenko{
-    font-size:18px;
+  .footer .footer__logo {
+    font-size: 37px;
+  }
+
+  .footer .dora-yaroshenko {
+    font-size: 18px;
   }
 }
 
 @media (max-width: 576px) {
-  .footer .noa-falik{
-    font-size:17px;
-  }
-  .footer .footer__logo{
-    font-size:30px;
+  .footer .noa-falik {
+    font-size: 17px;
   }
 
-  .footer .dora-yaroshenko{
-    font-size:13px;
+  .footer .footer__logo {
+    font-size: 30px;
+  }
+
+  .footer .dora-yaroshenko {
+    font-size: 13px;
   }
 }
 
 @media (max-width: 470px) {
-  .logo-r{
+  .logo-r {
     width: 50px;
   }
 
-  .about-us .para-about{
-    font-size:1.2em;
+  .about-us .para-about {
+    font-size: 1.2em;
   }
 
-  .about-us img{
+  .about-us img {
     width: 120px;
   }
-  
-  .footer .noa-falik{
-    font-size:15px;
-  }
-  .footer .footer__logo{
-    font-size:22px;
-  }
-  .footer .footer__btn {
-    font-size:15px;
+
+  .job-info-img img{
+    width: 300px;
   }
 
-  .footer .dora-yaroshenko{
-    font-size:10px;
+  .footer .noa-falik {
+    font-size: 15px;
+  }
+
+  .footer .footer__logo {
+    font-size: 22px;
+  }
+
+  .footer .footer__btn {
+    font-size: 15px;
+  }
+
+  .footer .dora-yaroshenko {
+    font-size: 10px;
   }
 }
 
 
 @media (max-width: 405px) {
-  .log-out-btn{
+  .log-out-btn {
     font-size: 12px;
   }
-  .footer{
+
+  .footer {
     flex-flow: column;
     flex-direction: column;
   }
 
-  .footer .noa-falik{
-    font-size:15px;
-  }
-  .footer .footer__logo{
-    font-size:22px;
-    
+  .footer .noa-falik {
+    font-size: 15px;
   }
 
-  .footer .dora-yaroshenko{
-    font-size:15px;
+  .footer .footer__logo {
+    font-size: 22px;
+
   }
+
+  .footer .dora-yaroshenko {
+    font-size: 15px;
+  }
+
   .Noa {
     order: 2;
   }
@@ -392,5 +518,3 @@ header .logo img:hover {
     order: 2;
   }
 }
-
-

@@ -44,7 +44,7 @@ const UserInfo = () => {
             <AuthUser />
 
             <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
-                <h1 className='display-6 text-white'>USER INFO</h1>
+                <h1 className='display-6 text-white m-0'>USER INFO</h1>
             </div>
             <div className='container d-flex justify-content-center '>
 

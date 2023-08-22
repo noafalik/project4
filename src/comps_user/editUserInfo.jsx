@@ -34,8 +34,8 @@ export default function EditUserInfo() {
             cvUrl = resp.data.secure_url;;
         }
         catch (err) {
-            console.log(err);
-            alert("There problem , come back later")
+            // console.log(err);
+            // alert("There problem , come back later")
         }
     }
 
@@ -77,7 +77,7 @@ export default function EditUserInfo() {
         <div className='container-fluid pt-5' style={{ minHeight: '100vh' }}>
             <div className='container mt-5'>
                 <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
-                    <h1 className='display-6 text-white'>Edit My Info</h1>
+                    <h1 className='display-6 text-white m-0'>Edit My Info</h1>
                 </div>
                 {user.email ?
                     <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubForm)}  >
@@ -95,14 +95,19 @@ export default function EditUserInfo() {
                         {errors.birth_date && <div className="text-danger">* Enter valid Year (1900 to 2030)</div>}
 
                         <label>Gender: </label>
-                        <select defaultValue={user.gender} {...register("gender")} className='m-2' name="gender">
+                        <select defaultValue={user.gender} {...register("gender")} className='form-select' name="gender">
                             <option value="F">Female</option>
                             <option value="M">Male</option>
                         </select>
-                        <br />
+
                         <label>Resume: </label>
-                        <input ref={uploadRef} type="file" className='form-control' />
-                        {errors.logo_url && <div className="text-danger">* Enter valid file</div>}
+                        {user.CV_link&& <>
+                        <a className='text-decoration-none' href={user.CV_link} target='_blank'> My_CV</a>
+                        <h6>Update your resume:</h6>
+                        </>
+                        }
+                        <input ref={uploadRef} type="file" className='form-control' accept=".pdf"/>
+                        {errors.CV_link && <div className="text-danger">* Enter valid file</div>}
 
                         <label>LinkedIn url:</label>
                         <input defaultValue={user.linkedIn_url} {...register("linkedIn_url", { required: true,  minLength: 5  })} className="form-control" type="text" />

@@ -3,6 +3,7 @@ import { API_URL, TOKEN_KEY, doApiGet, doApiMethod } from '../../services/apiSer
 import JobItem from './jobItem';
 import Loading from '../../comp_general/loading';
 import { useUserData } from '../../hooks/useUserData';
+import JobItemLod from '../loading/jobItemLod';
 
 const JobListFav = () => {
     const [ar, setAr] = useState([]);
@@ -18,9 +19,10 @@ const JobListFav = () => {
     const doApi = async () => {
         try {
             // const userData = JSON.parse(localStorage.getItem(TOKEN_KEY) || null);
+            setLoading(true);
             const userData = user;
             console.log(userData);
-            setLoading(true);
+
             if (userData.favs_ar) {
                 const url = API_URL + "/jobs/group_in"
                 const data = await doApiMethod(url, "POST", { favs_ar: userData.favs_ar })
@@ -31,26 +33,42 @@ const JobListFav = () => {
             setLoading(false)
         }
         catch (err) {
+            setLoading(false)
             console.log(err);
         }
+        setLoading(false)
     }
 
     return (
         <>
-            {localStorage.getItem(TOKEN_KEY) !== null ? (
+            {loading ?
                 <div className='container-fluid'>
-                    {length > 0 &&
-                        <div className='container d-flex justify-content-center align-item-center'>
-                            <h2 className='display-5 m-1'>Favorite Jobs</h2>
-                        </div>
-                    }
+
                     <div className="row justify-content-center align-item-center mt-3">
-                        {ar.map(item => (
-                            <JobItem key={item._id} item={item} />
-                        ))}
+                        <JobItemLod />
+                        <JobItemLod />
+                        <JobItemLod />
+                        <JobItemLod />
                     </div>
                 </div>
-            ) : null}
+                :
+                <>
+                    {localStorage.getItem(TOKEN_KEY) !== null ? (
+                        <div className='container-fluid'>
+                            {length > 0 &&
+                                <div className='container d-flex justify-content-center align-item-center'>
+                                    <h2 className='display-5 m-1'>Favorite Jobs</h2>
+                                </div>
+                            }
+                            <div className="row justify-content-center align-item-center mt-3">
+                                {ar.map(item => (
+                                    <JobItem key={item._id} item={item} />
+                                ))}
+                            </div>
+                        </div>
+                    ) : null}
+                </>
+            }
         </>
     )
 }
