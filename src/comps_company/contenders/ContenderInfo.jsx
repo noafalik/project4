@@ -54,7 +54,7 @@ const ContenderInfo = () => {
     return (
         <div style={{ marginTop: '70px', minHeight: '100vh' }}>
             <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
-                <h1 className='display-6 text-white'>CONTENDER INFO</h1>
+                <h1 className='display-6 text-white m-0'>CONTENDER INFO</h1>
             </div>
             <div className='container d-flex justify-content-center '>
 
