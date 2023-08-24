@@ -14,7 +14,7 @@ const JobInfo = () => {
   const [itemJob, setItemJob] = useState({});
   const [loading, setLoading] = useState(false);
   const params = useParams();
-
+  const [countApplied, setCountApplied] = useState(0);
   const [applied, setApplied] = useState(false);
 
   const { favs_ar, updateFav, user, unApplay } = useUserData();
@@ -33,22 +33,16 @@ const JobInfo = () => {
         setLoading(true);
         const url = API_URL + "/jobs/single/" + params["id"];
         const data = await doApiGet(url)
-        // console.log(data);
         setItemJob(data);
-        // מוסיף 1 לויוס 
-        // const urlInc = API_URL + "/jobs/inc/" + params["id"];
-        // const dataInc = await doApiMethod(urlInc, "patch");
         setLoading(false);
+        getAppliedCount();
 
         const urlApp = API_URL + "/contenders/exists?job_id=" + params["id"];
         const dataApp = await doApiGet(urlApp)
-        // console.log(dataApp)
         if (dataApp) {
           setApplied(true);
+
         }
-        // else{
-        //   setApplied(true);
-        // }
         setLoading(false)
       }
 
@@ -60,6 +54,27 @@ const JobInfo = () => {
     setLoading(false)
 
   }
+
+  const getAppliedCount = async () => {
+    try {
+
+      const url = API_URL + "/contenders/countApplied?job_id=" + (params["id"]);
+      const data = await doApiGet(url)
+      setCountApplied(data);
+
+      console.log("applied count", data);
+
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
+  const handleUnapplay = async () => {
+    await unApplay(params["id"]);
+    setApplied(false);
+    getAppliedCount();
+  };
 
   return (
     <>
@@ -114,10 +129,14 @@ const JobInfo = () => {
                             {itemJob.location}
                           </div>
                           <div>Visa:
-                            {itemJob.visa}
+                            {itemJob.visa === true ? " Needed" : " Doesn't needed"}
                           </div>
                           <div>Salary:
                             {itemJob.salary.toLocaleString()}
+                          </div>
+                          <br />
+                          <div><h5>Applicants : {countApplied}</h5>
+
                           </div>
                           {user &&
                             <div className='row'>
@@ -137,8 +156,7 @@ const JobInfo = () => {
                               <div className='mt-2 col-1'>
                                 {applied ?
                                   <button onClick={() => {
-                                    unApplay(params["id"])
-                                    setApplied(false)
+                                    handleUnapplay()
                                   }} className='btn btn-info' style={{ textDecoration: 'none' }}>UNAPPLY</button>
                                   :
                                   <Link to={"/jobs/apply/" + itemJob._id + "/" + itemJob.job_title} style={{ textDecoration: 'none' }}>

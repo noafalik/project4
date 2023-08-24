@@ -240,9 +240,25 @@ header .logo img:hover {
 }
 
 .btn-download:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
   background-color: rgb(149, 203, 247);
 }
+
+/*user info style*/
+
+.user-profile{
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.323);
+}
+
+.user-profile-in{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+/*user info style-end*/
 
 
 
@@ -433,6 +449,7 @@ header .logo img:hover {
 }
 
 @media (max-width: 576px) {
+
   .footer .noa-falik {
     font-size: 17px;
   }
