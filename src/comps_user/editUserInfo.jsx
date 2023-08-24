@@ -110,7 +110,7 @@ export default function EditUserInfo() {
                         {errors.CV_link && <div className="text-danger">* Enter valid file</div>}
 
                         <label>LinkedIn url:</label>
-                        <input defaultValue={user.linkedIn_url} {...register("linkedIn_url", { required: true,  minLength: 5  })} className="form-control" type="text" />
+                        <input defaultValue={user.linkedIn_url} {...register("linkedIn_url", { minLength: 5  })} className="form-control" type="text" />
                         {errors.linkedIn_url && <div className="text-danger">* Enter valid url</div>}
 
                        
