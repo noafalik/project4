@@ -39,9 +39,11 @@ function LinkedInBadge() {
                   <div></div>
                   <div></div>
                 </div>:
-        <div className="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity={finalUserCode} data-version="v1">
+        <div className="badge-base LI-profile-badge " data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity={finalUserCode} data-version="v1">
             <a className="badge-base__link LI-simple-link" href={`https://il.linkedin.com/in/${finalUserCode}?trk=profile-badge`}></a>
         </div>
+
+        
 }
         </>
     );
