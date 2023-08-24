@@ -8,6 +8,7 @@ import LinkedInContender from '../linkedIn/LinkedInContender';
 const ContenderInfo = () => {
     const [contenderInfo, setContenderInfo] = useState([]);
     const params = useParams();
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         doApi();
@@ -15,10 +16,12 @@ const ContenderInfo = () => {
 
     const doApi = async () => {
         try {
+            setLoading(true);
             const url = API_URL + "/users/single/" + params["id"];
             const data = await doApiGet(url);
             console.log(data);
             setContenderInfo(data);
+            setLoading(false);
         } catch (error) {
             console.log(error);
             alert("There is a problem, come back later")
@@ -56,29 +59,43 @@ const ContenderInfo = () => {
             <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
                 <h1 className='display-6 text-white'>CONTENDER INFO</h1>
             </div>
-            <div className='container d-flex justify-content-center '>
+            {loading ? <div className='container text-center'>
+                <div className="lds-roller ">
+                    <div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div> :
+                <div className='container d-flex justify-content-center '>
 
-                <div className='container-fluid col-md-8'>
-                    <div className="container col-md-6 mx-auto py-4">
-                        {contenderInfo.full_name ?
-                            <>
-                                <h4 className='h3'><strong>Account name:</strong> {contenderInfo.full_name}</h4>
-                                <h4 className='h3'><strong>Email:</strong> {contenderInfo.email}</h4>
-                                {contenderInfo.CV_link.includes('http') &&
-                                    <h4 className='h3'>
-                                        <strong>Resume: </strong>
-                                        <button onClick={() => downloadFile(contenderInfo.CV_link)} className='rounded-3 btn-download'><GoDownload /> Download</button>
-                                    </h4>
-                                }
-                                {contenderInfo.linkedIn_url !== "" &&
-                                    <div className='container'>
-                                        <LinkedInContender contenderInfo={contenderInfo} />
-                                    </div>
-                                }
-                            </> : <Loading />}
+                    <div className='container-fluid col-md-8'>
+                        <div className="container col-md-6 mx-auto py-4">
+                            {contenderInfo.full_name ?
+                                <>
+                                    <h4 className='h3'><strong>Account name:</strong> {contenderInfo.full_name}</h4>
+                                    <h4 className='h3'><strong>Email:</strong> {contenderInfo.email}</h4>
+                                    {contenderInfo.CV_link.includes('http') &&
+                                        <h4 className='h3'>
+                                            <strong>Resume: </strong>
+                                            <button onClick={() => downloadFile(contenderInfo.CV_link)} className='rounded-3 btn-download'><GoDownload /> Download</button>
+                                        </h4>
+                                    }
+                                    {contenderInfo.linkedIn_url !== "" &&
+                                        <div className='container'>
+                                            <LinkedInContender contenderInfo={contenderInfo} />
+                                        </div>
+                                    }
+                                </> : <Loading />}
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     )
 }

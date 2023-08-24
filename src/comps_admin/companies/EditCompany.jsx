@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { API_URL,doApiGet,doApiMethod } from '../../services/apiService';
+import { API_URL, doApiGet, doApiMethod } from '../../services/apiService';
 import { JobContext } from '../../context/jobContext';
 import { imgToString } from '../../services/cloudinaryServive';
 
@@ -13,6 +13,7 @@ export default function EditCompany() {
     const nav = useNavigate();
     const { setCompany } = useContext(JobContext);
     const uploadRef = useRef();
+    const [loading, setLoading] = useState(false);
     let imgUrl;
 
     useEffect(() => {
@@ -39,10 +40,12 @@ export default function EditCompany() {
     // אוסף את המידע של הפריט שנרצה לערוך כדי להציג באינפוטים
     const doApiInit = async () => {
         try {
-            const url = API_URL+"/companies/companiesList?id="+params["id"];
+            setLoading(true);
+            const url = API_URL + "/companies/companiesList?id=" + params["id"];
             const data = await doApiGet(url);
             console.log(data)
             setItem(data[0]);
+            setLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -56,6 +59,7 @@ export default function EditCompany() {
 
     const doApiEdit = async (_bodyData) => {
         try {
+            setLoading(true);
             const url = API_URL + "/companies/" + params["id"];
             _bodyData.logo_url = imgUrl;
             const data = await doApiMethod(url, "PUT", _bodyData);
@@ -66,6 +70,7 @@ export default function EditCompany() {
                 toast.success("company updated");
                 nav("/admin/companies");
             }
+            setLoading(false);
         } catch (error) {
             console.log(error);
             // alert("there problem");
@@ -77,8 +82,22 @@ export default function EditCompany() {
         <div className='container-fluid pt-5' style={{ minHeight: '100vh' }}>
             <div className='container'>
                 <h1 className='display-4 mx-auto text-center pt-5'>Edit company info</h1>
-                {item._id ?
-                    <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 p-2 mx-auto" >
+                {loading ? <div className='container text-center'>
+                    <div className="lds-roller ">
+                        <div>
+                        </div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                    :
+                   <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 p-2 mx-auto" >
+                    { item._id&&<div>
                         <label className='h5'>Company Name:</label>
                         <input defaultValue={item.company_name} {...register("company_name", { required: true, minLength: 2 })} className="form-control" type="text" />
                         {errors.company_name && <div className="text-danger">* Enter valid name</div>}
@@ -98,9 +117,10 @@ export default function EditCompany() {
                         <div className='text-center'>
                             <button className='btn text-white mt-3' style={{ backgroundColor: '#5C2018' }}><h5 className='m-0'>Update</h5></button>
                         </div>
-
-                    </form> : <h2>Loading...</h2>}
-            </div >
-        </div>
-    )
+                        </div>
+                        }
+                    </form>
+                }
+                </div >
+                </div> )
 }

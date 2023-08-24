@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import { API_URL, doApiMethod } from '../services/apiService';
 import { toast } from 'react-toastify';
 
-const LeaveComment = ({setNewComment, newComment, setPage, setCommentsAr}) => {
+const LeaveComment = ({setNewComment, newComment, setCommentsAr}) => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [stars, setStars] = useState(0);
 
@@ -19,7 +19,6 @@ const LeaveComment = ({setNewComment, newComment, setPage, setCommentsAr}) => {
                 setStars(0);
                 toast.success("Comment added");
                 console.log(newComment);
-                setPage(1);
                 setCommentsAr([]);
                 setNewComment(!newComment);
             }
