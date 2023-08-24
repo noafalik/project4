@@ -1,17 +1,27 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate,useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { doApiMethod, API_URL, TOKEN_KEY } from '../services/apiService';
 import { toast } from 'react-toastify';
 import { useUserData } from '../hooks/useUserData';
+import { useQuery } from 'react-query';
 
 const LoginUser = () => {
 
+    const url = window.location.href;
+    const queryString = url.split('?')[1]; // Get the part after the '?'
+
+    const location = useLocation();
+
+    const [query] = useSearchParams(queryString);
+
+    const navQ = query.get('nav');
+
     const nav = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {doApiUser,updateFav}=useUserData();
-    const location = useLocation();
-    
+    const { doApiUser, updateFav } = useUserData();
+
+
     useEffect(() => {
         if (location.hash === '#top') {
             const targetElement = document.getElementById('top');
@@ -19,6 +29,8 @@ const LoginUser = () => {
                 targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+
     }, [location.hash]);
 
     const onSubForm = (_bodyData) => {
@@ -28,18 +40,26 @@ const LoginUser = () => {
 
     const doApiPost = async (_bodyData) => {
         try {
+
             const url = API_URL + "/users/login";
             const data = await doApiMethod(url, "POST", _bodyData)
             console.log(data);
+
             // if (data.token) {
             //     toast.success("Welcome, you logged in")
             //     nav("/")
             // }
-            if(data.login){
+            if (data.login) {
                 console.log("works");
                 await doApiUser();
                 toast.success("Welcome, you logged in")
-                JSON.parse(localStorage["user"]).role == "company"?nav("/company"):nav("/");
+                JSON.parse(localStorage["user"]).role == "company" ?
+                    nav("/company") :
+                    <>
+                    {navQ? 
+                    nav(navQ) :
+                    nav("/") }
+                    </>;
             }
         }
         catch (err) {
@@ -48,10 +68,10 @@ const LoginUser = () => {
         }
     }
 
-    
+
 
     return (
-        <div className='container' id='top' style={{marginTop:'70px', minHeight:'100vh'}}>
+        <div className='container' id='top' style={{ marginTop: '70px', minHeight: '100vh' }}>
             <h1 className='display-4 text-center'>Login</h1>
             <form className='col-md-6 p-2 border mx-auto' onSubmit={handleSubmit(onSubForm)}  >
                 <label>email</label>
@@ -64,7 +84,7 @@ const LoginUser = () => {
 
                     <button className='btn btn-dark mt-3 '>Log in</button>
                     <div className='container mt-3'>
-                    <h6>New User? <Link to="/signup">Sign Up</Link></h6>
+                        <h6>New User? <Link to="/signup">Sign Up</Link></h6>
                     </div>
                 </div>
             </form>

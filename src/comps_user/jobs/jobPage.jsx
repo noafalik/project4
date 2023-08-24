@@ -8,7 +8,7 @@ import JobItemLod from '../loading/jobItemLod';
 const JobPage = () => {
   const [ar, setAr] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [url, setUrl] = useState(API_URL + "/jobs?approved=true");
+  const [url, setUrl] = useState(API_URL + "/jobs?perPage=Infinity&approved=true");
   const [pagesUrl, setPagesUrl] = useState(API_URL + "/jobs/count?");
 
 

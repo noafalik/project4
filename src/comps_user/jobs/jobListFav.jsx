@@ -10,7 +10,7 @@ const JobListFav = () => {
     const [loading, setLoading] = useState(false);
     const { user } = useUserData();
     const [length, setLength] = useState(0);
-
+    const favs_ar = JSON.parse(localStorage.getItem('favs_ar'));
 
     useEffect(() => {
         doApi();
@@ -18,16 +18,15 @@ const JobListFav = () => {
 
     const doApi = async () => {
         try {
-            // const userData = JSON.parse(localStorage.getItem(TOKEN_KEY) || null);
             setLoading(true);
-            const userData = user;
-            console.log(userData);
+            
 
-            if (userData.favs_ar) {
+            if (favs_ar) {
                 const url = API_URL + "/jobs/group_in"
-                const data = await doApiMethod(url, "POST", { favs_ar: userData.favs_ar })
+                const data = await doApiMethod(url, "POST", { favs_ar:favs_ar })
+                console.log(favs_ar)
                 setAr(data);
-                setLength(userData.favs_ar.length);
+                setLength(favs_ar.length);
                 console.log("fav exist");
             }
             setLoading(false)
@@ -53,7 +52,7 @@ const JobListFav = () => {
                 </div>
                 :
                 <>
-                    {localStorage.getItem(TOKEN_KEY) !== null ? (
+                    {favs_ar !== null ? (
                         <div className='container-fluid'>
                             {length > 0 &&
                                 <div className='container d-flex justify-content-center align-item-center'>
