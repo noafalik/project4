@@ -29,7 +29,9 @@ export const useUserData = () => {
       localStorage.setItem('user', JSON.stringify(data));
       setUser(data);
       if (data.role === "user"||data.role === "admin") {
-        MatchDataUpdate(data.match_url)
+        MatchDataUpdate(data.match_url);
+        localStorage.setItem('favs_ar', JSON.stringify(data.favs_ar));
+        console.log(data.favs_ar);
       }
 
       if (data.role === "company") {
@@ -71,6 +73,7 @@ export const useUserData = () => {
     if (data.logout) {
       localStorage.removeItem(TOKEN_KEY);
       localStorage.removeItem('match_data');
+      localStorage.removeItem('favs_ar');
       setUser({});
       setCompany({});
       nav("/");
@@ -84,7 +87,8 @@ export const useUserData = () => {
   // מעדכן את המועדפים , גם בהחסרה וגם בהוספה
   // ואת המסד של המשתמש
   const updateFav = async (_newIdFav) => {
-    const temp_ar = [...favs_ar];
+    const favs = JSON.parse(localStorage.getItem('favs_ar'))
+    const temp_ar = [...favs];
     // בודק אם האיי די קיים במועדפים כבר או לא ופועל בהתאם
     if (!temp_ar.includes(_newIdFav)) {
       // מוסיף אותו למועדפים
@@ -94,7 +98,7 @@ export const useUserData = () => {
       // מחסיר אותו מהמערך של המעודפים
       temp_ar.splice(temp_ar.indexOf(_newIdFav), 1)
     }
-    setFavsAr(temp_ar)
+     setFavsAr(temp_ar)
 
     try {
       const url = API_URL + "/users/updateFav"
@@ -102,6 +106,7 @@ export const useUserData = () => {
       if (data.modifiedCount) {
         toast.success("add/remove from favorite")
       }
+      localStorage.setItem('favs_ar', JSON.stringify(temp_ar));
     }
     catch (err) {
       console.log(err)

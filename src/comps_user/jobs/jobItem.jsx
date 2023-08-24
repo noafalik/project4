@@ -14,7 +14,7 @@ const JobItem = (props) => {
             to=
              {localStorage.getItem(TOKEN_KEY) !== null? ("/jobs/" + item._id) 
              :
-             ("/login#top")} 
+             (`/login#top?nav=/jobs/${item._id}`)} 
              style={{ textDecoration: 'none' }}>
                 <div className='job_item_box shadow rounded-3 h-100' style={{ backgroundColor: '#5C2018', color: 'white' }}>
                     <div className='job_img' style={{ minHeight: "140px", backgroundImage: `url(${item.img_url})`, backgroundSize: 'cover', position: 'relative' }}>

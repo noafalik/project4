@@ -38,10 +38,10 @@ const Home = () => {
                         <JobListFav />
                     </div>
                     :
-                    <Link to='/login#top'>
+                    <Link to='/login#top?nav=/match'>
                         <div className='container match-add rounded-3 mb-3 col-11 '>
                             <div className='ad-box rounded'>
-                                <div className='container center-box '>
+                                <div className='container center-box'>
                                     <h1 className='title-F '>Find Your Match</h1>
                                     <p className='text-center'>
                                         Discover your ideal job effortlessly with our Match option.
