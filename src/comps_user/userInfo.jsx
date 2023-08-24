@@ -50,7 +50,7 @@ const UserInfo = () => {
                 <div className='user-profile container-fluid col-md-8 rounded-3 p-2'>
                     <div className="container-fluid user-profile-in  mx-auto py-4">
                         {user.full_name ?
-                            <div className='container col-9'>
+                            <div className='container col-9 m-0'>
 
                                 <h4 className='h3'>Account name: <strong>{user.full_name}</strong> </h4>
                                 <h4 className='h3'>Birth year:<strong> {user.birth_date.substring(0, 10)}</strong> </h4>
@@ -75,19 +75,23 @@ const UserInfo = () => {
                         </div>
 
                         {user.full_name ?
-                            <div className='container col-auto '>
+                            // <div className='container col-auto '>
+                            <>
                                 {
                                     user.linkedIn_url !== "" ?
-                                        <div className='container' >
+                                        <div className='container col-auto ' >
                                             <LinkedInBadge />
                                         </div>
                                         :
-                                        <h4 className='h3'>
-                                            <strong>LinkedIn:</strong>
-                                            <Link to={"/editUserInfo/" + user._id} > add LinkedIn url</Link>
-                                        </h4>
+                                        <div className='container'>
+                                            <h4 className='h3'>
+                                                <strong>LinkedIn:</strong>
+                                                <Link to={"/editUserInfo/" + user._id} > add LinkedIn url</Link>
+                                            </h4>
+                                        </div>
                                 }
-                            </div>
+                            </>
+                            // </div>
                             : null}
                     </div>
                 </div>
