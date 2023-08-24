@@ -12,6 +12,7 @@ const EditJob = () => {
     const nav = useNavigate();
     const [categoriesAr, setCategoriesAr] = useState([]);
     const uploadRef = useRef();
+    const [loading, setLoading] = useState(false);
     let imgUrl;
 
     useEffect(() => {
@@ -22,10 +23,12 @@ const EditJob = () => {
     // אוסף את המידע של הפריט שנרצה לערוך כדי להציג באינפוטים
     const doApiInit = async () => {
         try {
+            setLoading(true);
             const url = API_URL + "/jobs/single/" + params["id"];
             const data = await doApiGet(url);
             console.log(data);
             setItem(data);
+            setLoading(false);
 
         } catch (error) {
             console.log(error);
@@ -67,6 +70,7 @@ const EditJob = () => {
 
     const doApiEdit = async (_bodyData) => {
         try {
+            setLoading(true);
             const url = API_URL + "/jobs/" + params["id"];
             _bodyData.img_url = imgUrl;
             const data = await doApiMethod(url, "PUT", _bodyData);
@@ -75,6 +79,7 @@ const EditJob = () => {
                 toast.success("job updated");
                 nav("/company/myJobs");
             }
+            setLoading(false);
         } catch (error) {
             console.log(error);
             alert("there problem");
@@ -82,60 +87,75 @@ const EditJob = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='container mt-5'>
             <h1 className='display-4 mx-auto text-center pt-5'>Edit job</h1>
-            {item.job_title ?
-                <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 p-2 mx-auto" >
-                    <label className='h5'>Job title:</label>
-                    <input defaultValue={item.job_title} {...register("job_title", { minLength: 2 })} className="form-control" type="text" />
-                    {errors.job_title && <div className="text-danger">* Enter valid name</div>}
-                    <br />
-                    <label className='h5'>Info:</label>
-                    <textarea defaultValue={item.info} {...register("info", { minLength: 2 })} className="form-control" type="textarea"></textarea>
-                    {errors.info && <div className="text-danger">* Enter valid info</div>}
-                    <br />
-                    <label className='h5'>Category:</label>
-                    <br />
-                    <select {...register("category", { minLength: 2 })}>
-                        {
-                            categoriesAr.map((item, i) => {
-                                return (
-                                    <option key={i} value={item.category_name}>{item.category_name}</option>
-                                )
-                            })
-                        }
-                    </select>
-                    {errors.category && <div className="text-danger">* Enter valid category</div>}
-                    <br />
-                    <br />
-                    <label className='h5'>Salary:</label>
-                    <input defaultValue={item.salary} {...register("salary")} className="form-control" type="number"></input>
-                    {errors.salary && <div className="text-danger">* Enter valid salary</div>}
-                    <br />
-                    <label className='h5'>Location:</label>
-                    <input defaultValue={item.location} {...register("location", { minLength: 2 })} className="form-control" type="text" />
-                    {errors.location && <div className="text-danger">* Enter valid location</div>}
-                    <br />
-                    <label className='h5'>Visa:</label>
-                    <br />
-                    <select className='form-select' {...register("visa")}>
-                        <option value={true}>required</option>
-                        <option value={false}>not required</option>
-                    </select>
-                    <br />
-                    {errors.visa && <div className="text-danger">* Enter valid visa info</div>}
-                    <br />
-                    <label className='h5'>Job Image:</label>
-                    <input ref={uploadRef} type="file" className='form-control' />
-                    {errors.img_url && <div className="text-danger">* Enter valid img_url</div>}
-                    <br />
-                    <label className='h5'>Continent</label>
-                    <input defaultValue={item.continent} {...register("continent", { minLength: 2 })} className="form-control" type="text" />
-                    {errors.continent && <div className="text-danger">* Enter valid continent</div>}
-                    <div className='text-center'>
-                        <button className='btn text-white my-4' style={{ backgroundColor: '#5C2018' }}><h5 className='m-0'>Update</h5></button>
+            {loading ? <div className='container text-center'>
+                <div className="lds-roller ">
+                    <div>
                     </div>
-                </form> : <h2>Loading...</h2>}
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div> : <>
+                {item.job_title ?
+                    <form onSubmit={handleSubmit(onSubForm)} className="col-md-6 p-2 mx-auto" >
+                        <label className='h5'>Job title:</label>
+                        <input defaultValue={item.job_title} {...register("job_title", { minLength: 2 })} className="form-control" type="text" />
+                        {errors.job_title && <div className="text-danger">* Enter valid name</div>}
+                        <br />
+                        <label className='h5'>Info:</label>
+                        <textarea defaultValue={item.info} {...register("info", { minLength: 2 })} className="form-control" type="textarea"></textarea>
+                        {errors.info && <div className="text-danger">* Enter valid info</div>}
+                        <br />
+                        <label className='h5'>Category:</label>
+                        <br />
+                        <select {...register("category", { minLength: 2 })}>
+                            {
+                                categoriesAr.map((item, i) => {
+                                    return (
+                                        <option key={i} value={item.category_name}>{item.category_name}</option>
+                                    )
+                                })
+                            }
+                        </select>
+                        {errors.category && <div className="text-danger">* Enter valid category</div>}
+                        <br />
+                        <br />
+                        <label className='h5'>Salary:</label>
+                        <input defaultValue={item.salary} {...register("salary")} className="form-control" type="number"></input>
+                        {errors.salary && <div className="text-danger">* Enter valid salary</div>}
+                        <br />
+                        <label className='h5'>Location:</label>
+                        <input defaultValue={item.location} {...register("location", { minLength: 2 })} className="form-control" type="text" />
+                        {errors.location && <div className="text-danger">* Enter valid location</div>}
+                        <br />
+                        <label className='h5'>Visa:</label>
+                        <br />
+                        <select className='form-select' {...register("visa")}>
+                            <option value={true}>required</option>
+                            <option value={false}>not required</option>
+                        </select>
+                        <br />
+                        {errors.visa && <div className="text-danger">* Enter valid visa info</div>}
+                        <br />
+                        <label className='h5'>Job Image:</label>
+                        <input ref={uploadRef} type="file" className='form-control' />
+                        {errors.img_url && <div className="text-danger">* Enter valid img_url</div>}
+                        <br />
+                        <label className='h5'>Continent</label>
+                        <input defaultValue={item.continent} {...register("continent", { minLength: 2 })} className="form-control" type="text" />
+                        {errors.continent && <div className="text-danger">* Enter valid continent</div>}
+                        <div className='text-center'>
+                            <button className='btn text-white my-4' style={{ backgroundColor: '#5C2018' }}><h5 className='m-0'>Update</h5></button>
+                        </div>
+                    </form> : <h2>Loading...</h2>}
+            </>
+            }
         </div >
     )
 }
