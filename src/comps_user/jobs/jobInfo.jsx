@@ -39,9 +39,13 @@ const JobInfo = () => {
 
         const urlApp = API_URL + "/contenders/exists?job_id=" + params["id"];
         const dataApp = await doApiGet(urlApp)
+        console.log("this is it"+dataApp);
         if (dataApp) {
           setApplied(true);
 
+        }
+        else{
+          setApplied(false);
         }
         setLoading(false)
       }
@@ -132,7 +136,7 @@ const JobInfo = () => {
                             {itemJob.visa === true ? " Needed" : " Doesn't needed"}
                           </div>
                           <div>Salary:
-                            {itemJob.salary.toLocaleString()}
+                            {itemJob.salary.toLocaleString()}$
                           </div>
                           <br />
                           <div><h5>Applicants : {countApplied}</h5>

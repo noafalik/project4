@@ -26,7 +26,7 @@ const JobItem = (props) => {
                                 {item.job_title}
                             </h3>
                             <h2 className='display-6 mb-3 text-center' style={{ fontSize: '1em', color: '#fff' }}>
-                                Salary: {item.salary.toLocaleString()}
+                                Salary: {item.salary.toLocaleString()}$
                             </h2>
                         </div>
                     </div>
