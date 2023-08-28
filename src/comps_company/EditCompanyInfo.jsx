@@ -57,11 +57,10 @@ export default function EditCompanyInfo() {
             const url = API_URL + "/companies/" + params["id"];
             _bodyData.logo_url = imgUrl;
             const data = await doApiMethod(url, "PUT", _bodyData);
-            if (data.modifiedCount) {
+            if (data.data.modifiedCount) {
                 setLoading(false);
-                _bodyData._id = params["id"];
-                setCompany(_bodyData);
-                localStorage.setItem("company", JSON.stringify(_bodyData));
+                setCompany(data.company);
+                localStorage.setItem("company", JSON.stringify(data.company));
                 toast.success("company updated");
                 nav("/company");
             }
