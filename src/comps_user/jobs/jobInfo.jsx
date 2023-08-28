@@ -16,6 +16,7 @@ const JobInfo = () => {
   const params = useParams();
   const [countApplied, setCountApplied] = useState(0);
   const [applied, setApplied] = useState(false);
+  const [companyInfo, setCompanyInfo] = useState(false);
 
   const { favs_ar, updateFav, user, unApplay } = useUserData();
 
@@ -23,8 +24,13 @@ const JobInfo = () => {
 
   useEffect(() => {
     doApi();
-    console.log(itemJob);
-  }, [params])
+  }, [params]);
+
+  useEffect(() => {
+    if (itemJob && itemJob.company_id) {
+      getCompany();
+    }
+  }, [itemJob]);
 
   const doApi = async () => {
     try {
@@ -36,19 +42,21 @@ const JobInfo = () => {
         setItemJob(data);
         setLoading(false);
         getAppliedCount();
+        // getCompany();
+
 
         const urlApp = API_URL + "/contenders/exists?job_id=" + params["id"];
         const dataApp = await doApiGet(urlApp)
-        console.log("this is it"+dataApp);
         if (dataApp) {
           setApplied(true);
 
         }
-        else{
+        else {
           setApplied(false);
         }
         setLoading(false)
       }
+
 
     }
     catch (err) {
@@ -59,6 +67,21 @@ const JobInfo = () => {
 
   }
 
+  const getCompany = async () => {
+    try {
+      console.log(itemJob.company_id)
+      const companyUrl = API_URL + "/companies/companiesList?id=" + itemJob.company_id;
+      const companyData = await doApiGet(companyUrl);
+      setCompanyInfo(companyData[0])
+
+      console.log("company data", companyData);
+
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
   const getAppliedCount = async () => {
     try {
 
@@ -66,7 +89,7 @@ const JobInfo = () => {
       const data = await doApiGet(url)
       setCountApplied(data);
 
-      console.log("applied count", data);
+      // console.log("applied count", data);
 
     }
     catch (err) {
@@ -115,6 +138,7 @@ const JobInfo = () => {
               <div className='container d-flex justify-content-center col-7 mb-4' style={{ backgroundColor: '#5C2018', borderRadius: '70px' }}>
                 <h1 className='display-6 text-white m-0'>JOB INFO</h1>
               </div>
+
               <div className='container-fluid py-4'>
                 <div className="container">
                   {itemJob.img_url &&
@@ -174,6 +198,15 @@ const JobInfo = () => {
                         </div>
 
                       </article>
+                      <div className='text-center d-flex align-items-center justify-content-center m-1'>
+                        {companyInfo.img_url &&
+                          <div className="me-2">
+                            <img className='rounded-3' src={companyInfo.logo_url} alt="img" width={80} />
+                          </div>
+                        }
+                        <h2 >{companyInfo.company_name}</h2>
+                      </div>
+
                       <div className='container text-center m-4'>
                         {/* <div className='container d-flex justify-content-center col-5 mb-4' style={{ borderRadius: '5px' }}>
                       <h2 className='display-6' style={{ fontSize: '35px', color: '#5c2018', fontWeight: 'bold' }}>
