@@ -3,6 +3,7 @@ import { API_URL, doApiGet} from '../services/apiService'
 import LeaveComment from './LeaveComment';
 import Carousel from 'react-bootstrap/Carousel';
 import CommentItem from './CommentItem';
+import { useUserData } from '../hooks/useUserData';
 
 const CommentsComp = () => {
     const [commentsAr, setCommentsAr] = useState([]);
@@ -14,14 +15,14 @@ const CommentsComp = () => {
 
     const doApi = async () => {
         try {
-            const URL = API_URL + "/comments?perPage=Infinity";
+            const URL = localStorage["user"]?(API_URL + "/comments/myComments?perPage=Infinity"):(API_URL + "/comments?perPage=Infinity");
             const data = await doApiGet(URL);
             const comments = [...data]
             console.log(comments)
             setCommentsAr(comments);
         } catch (error) {
             console.log(error);
-            alert("There is a problem");
+            // alert("There is a problem");
         }
     }
 

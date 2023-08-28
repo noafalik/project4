@@ -57,7 +57,7 @@ const UserInfo = () => {
                                 <h4 className='h3'>Email:<strong> {user.email}</strong> </h4>
                                 <h4 className='h3'>Gender:<strong> {user.gender}</strong> </h4>
                                 {/* <h4 className='h3'><strong>Signup date:</strong> {user.date_created ? user.date_created.substring(0, 10) : user.createdAt.substring(0, 10)}</h4> */}
-                                {user.CV_link.includes('http') ?
+                                {user.CV_link&&user.CV_link.includes('http') ?
                                     <h4 className='h3'>
                                         Resume:
                                         <button onClick={() => downloadFile(user.CV_link)} className='rounded-3 btn-download m-1'><GoDownload /> Download</button>

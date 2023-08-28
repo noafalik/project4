@@ -80,7 +80,7 @@ const ContenderInfo = () => {
                                 <>
                                     <h4 className='h3'><strong>Account name:</strong> {contenderInfo.full_name}</h4>
                                     <h4 className='h3'><strong>Email:</strong> {contenderInfo.email}</h4>
-                                    {contenderInfo.CV_link.includes('http') &&
+                                    {contenderInfo.CV_link&&contenderInfo.CV_link.includes('http') &&
                                         <h4 className='h3'>
                                             <strong>Resume: </strong>
                                             <button onClick={() => downloadFile(contenderInfo.CV_link)} className='rounded-3 btn-download'><GoDownload /> Download</button>
