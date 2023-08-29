@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { API_URL, doApiGet, doApiMethod } from '../../services/apiService';
+import { API_URL, TOKEN_KEY, doApiGet, doApiMethod } from '../../services/apiService';
 import { JobContext } from '../../context/jobContext';
 import { imgToString } from '../../services/cloudinaryServive';
 
@@ -25,7 +25,7 @@ export default function EditCompany() {
             const myFile = uploadRef.current.files[0];
             // הופך את הקובץ למידע כסטרינג
             const imgData = await imgToString(myFile);
-            const url = "http://localhost:3001/upload/cloud";
+            const url = TOKEN_KEY+"/upload/cloud";
             const resp = await doApiMethod(url, "POST", { image: imgData })
             console.log(resp);
             console.log(resp.data.secure_url)
