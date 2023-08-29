@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_URL = "http://localhost:3001";
+export const API_URL = "https://nice-jade-giraffe-belt.cyclic.app";
 
 export const TOKEN_KEY = "user";
 
