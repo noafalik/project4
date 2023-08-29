@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export const API_URL = "https://nice-jade-giraffe-belt.cyclic.app";
+export const API_URL = "https://relomatch-d8yz.onrender.com";
+// http://localhost:3001
 
 export const TOKEN_KEY = "user";
 
