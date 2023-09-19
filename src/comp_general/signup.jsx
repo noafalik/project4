@@ -56,7 +56,7 @@ const Signup = () => {
                 <input {...register("email", { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })} className="form-control" type="text" />
                 {errors.email && <div className="text-danger">* Enter valid email</div>}
                 <label>Password:</label>
-                <input {...register("password", { required: true, minLength: 3 })} className="form-control" type="text" />
+                <input {...register("password", { required: true, minLength: 3 })} className="form-control" type="password" />
                 {errors.password && <div className="text-danger">* Enter valid password (min 3 chars)</div>}
 
 
